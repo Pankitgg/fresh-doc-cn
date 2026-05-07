@@ -74,7 +74,7 @@ import {
 | [`asset`](https://jsr.io/@fresh/core/doc/runtime/~/asset)             | Function  | Add cache-busting query params to asset URLs. See [Static Files](/docs/concepts/static-files). |
 | [`assetSrcSet`](https://jsr.io/@fresh/core/doc/runtime/~/assetSrcSet) | Function  | Apply `asset()` to all URLs in a `srcset` string.                                              |
 | [`Partial`](https://jsr.io/@fresh/core/doc/runtime/~/Partial)         | Component | Mark a region for partial updates. See [Partials](/docs/advanced/partials).                    |
-| [`Head`](https://jsr.io/@fresh/core/doc/runtime/~/Head)               | Component | Add elements to the document `<head>`. See [<head> element](/docs/advanced/head).              |
+| [`Head`](https://jsr.io/@fresh/core/doc/runtime/~/Head)               | Component | Add elements to the document `&lt;head&gt;`. See [&lt;head&gt; element](/docs/advanced/head).              |
 | [`HttpError`](https://jsr.io/@fresh/core/doc/runtime/~/HttpError)     | Class     | HTTP error class (re-exported from `fresh`).                                                   |
 
 ## `fresh/dev`

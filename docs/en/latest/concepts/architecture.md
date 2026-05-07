@@ -9,7 +9,8 @@ browser. This page explains how a request flows through the framework.
 
 ## Request lifecycle
 
-![Request lifecycle flow diagram](/docs/architecture-flow-v2.svg)
+<!-- ![Request lifecycle flow diagram](/docs/architecture-flow-v2.svg) -->
+**[Image to be added]**: Request lifecycle flow diagram
 
 ## Key concepts
 

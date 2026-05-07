@@ -73,7 +73,7 @@ import {
 | [`asset`](https://jsr.io/@fresh/core/doc/runtime/~/asset) | 函数 | 向资源 URL 添加缓存破坏查询参数。参见 [静态文件](/docs/concepts/static-files)。 |
 | [`assetSrcSet`](https://jsr.io/@fresh/core/doc/runtime/~/assetSrcSet) | 函数 | 对 `srcset` 字符串中的所有 URL 应用 `asset()`。 |
 | [`Partial`](https://jsr.io/@fresh/core/doc/runtime/~/Partial) | 组件 | 标记一个区域用于部分更新。参见 [部分更新](/docs/advanced/partials)。 |
-| [`Head`](https://jsr.io/@fresh/core/doc/runtime/~/Head) | 组件 | 向文档 `<head>` 添加元素。参见 [<head> 元素](/docs/advanced/head)。 |
+| [`Head`](https://jsr.io/@fresh/core/doc/runtime/~/Head) | 组件 | 向文档 `&lt;head&gt;` 添加元素。参见 [&lt;head&gt; 元素](/docs/advanced/head)。 |
 | [`HttpError`](https://jsr.io/@fresh/core/doc/runtime/~/HttpError) | 类 | HTTP 错误类（从 `fresh` 重新导出）。 |
 
 ## `fresh/dev`

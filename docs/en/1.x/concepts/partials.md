@@ -76,7 +76,8 @@ Let's use a typical documentation page layout as an example. It often features a
 main content area and a sidebar of links to switch between pages of the
 documentation (marked green here).
 
-![A sketched layout of a typical documentation page with the sidebar on the left composed of green links and a main content area on the right. The main content area is labeled as Partial docs-content](/docs/fresh-partial-docs.png)
+<!-- ![A sketched layout of a typical documentation page with the sidebar on the left composed of green links and a main content area on the right. The main content area is labeled as Partial docs-content](/docs/fresh-partial-docs.png) -->
+**[图片待补充]**: 典型文档页面布局示意图，左侧为绿色链接组成的侧边栏，右侧为主内容区域，主内容区域标记为 Partial docs-content
 
 The code for such a page (excluding styling) might look like this:
 

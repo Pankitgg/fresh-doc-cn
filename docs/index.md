@@ -10,7 +10,7 @@ hero:
       link: /zh/latest/getting-started/
     - theme: alt
       text: 在 GitHub 上查看
-      link: https://github.com/denoland/fresh
+      link: https://github.com/Pankitgg/fresh-doc-cn
 features:
   - title: 即时渲染
     details: 选择在服务端或客户端渲染，灵活配置。

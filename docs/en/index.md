@@ -10,7 +10,7 @@ hero:
       link: /en/latest/getting-started/
     - theme: alt
       text: View on GitHub
-      link: https://github.com/denoland/fresh
+      link: https://github.com/Pankitgg/fresh-doc-cn
 features:
   - title: Just-in-time Rendering
     details: Render on the server or client, choose what works best for you.
