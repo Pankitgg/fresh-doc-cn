@@ -35,4 +35,13 @@ Fresh 是一个下一代 Web 框架。它是为 Deno 从头构建的，使用 Pr
 - [岛屿](/zh/latest/concepts/islands) - 客户端交互性
 - [路由](/zh/latest/concepts/routing) - 路由匹配和方法处理
 
-更多文档正在翻译中... 您可以先查看 [英文文档](/en/)。
+### 高级
+- [应用包装器](/zh/latest/advanced/app-wrapper) - 自定义外部 HTML 结构
+- [错误处理](/zh/latest/advanced/error-handling) - 自定义错误和 404 页面
+- [部分更新](/zh/latest/advanced/partials) - 客户端部分页面更新
+
+### 部署
+- [概述](/zh/latest/deployment/index) - 部署 Fresh 应用
+- [Deno Deploy](/zh/latest/deployment/deno-deploy) - 在 Deno Deploy 上部署
+
+您也可以查看 [英文文档](/en/latest/)。
