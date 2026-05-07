@@ -27,8 +27,16 @@ export default defineConfig({
               text: '核心概念',
               items: [
                 { text: '架构', link: '/zh/latest/concepts/architecture' },
+                { text: 'App 类', link: '/zh/latest/concepts/app' },
+                { text: 'Context 对象', link: '/zh/latest/concepts/context' },
+                { text: '数据获取', link: '/zh/latest/concepts/data-fetching' },
+                { text: '文件路由', link: '/zh/latest/concepts/file-routing' },
+                { text: '布局', link: '/zh/latest/concepts/layouts' },
+                { text: '中间件', link: '/zh/latest/concepts/middleware' },
                 { text: '岛屿', link: '/zh/latest/concepts/islands' },
                 { text: '路由', link: '/zh/latest/concepts/routing' },
+                { text: 'Signals', link: '/zh/latest/concepts/signals' },
+                { text: '静态文件', link: '/zh/latest/concepts/static-files' },
               ]
             },
           ],
