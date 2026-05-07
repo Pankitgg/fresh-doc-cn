@@ -7,7 +7,7 @@ hero:
   actions:
     - theme: brand
       text: 快速入门
-      link: /
+      link: /zh/latest/getting-started/
     - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/denoland/fresh
@@ -22,6 +22,17 @@ features:
 
 Fresh 是一个下一代 Web 框架。它是为 Deno 从头构建的，使用 Preact 进行渲染，使用 Twind 进行样式设计。Fresh 支持服务器端的即时（JIT）渲染，以实现最佳性能和最小化客户端 JavaScript。
 
-# 快速开始
+## 中文文档
 
-中文文档正在建设中，您可以先查看 [英文文档](/en/)。
+以下文档已翻译成中文：
+
+### 入门
+- [介绍](/zh/latest/introduction/) - 了解 Fresh 框架
+- [快速开始](/zh/latest/getting-started/) - 创建你的第一个 Fresh 项目
+
+### 核心概念
+- [架构](/zh/latest/concepts/architecture/) - 请求生命周期和核心概念
+- [岛屿](/zh/latest/concepts/islands/) - 客户端交互性
+- [路由](/zh/latest/concepts/routing/) - 路由匹配和方法处理
+
+更多文档正在翻译中... 您可以先查看 [英文文档](/en/)。

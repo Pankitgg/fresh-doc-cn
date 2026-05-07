@@ -13,7 +13,26 @@ export default defineConfig({
         nav: [
           { text: '主页', link: '/' },
         ],
-        sidebar: [],
+        sidebar: {
+          '/zh/latest/': [
+            {
+              text: '介绍',
+              link: '/zh/latest/introduction/'
+            },
+            {
+              text: '快速开始',
+              link: '/zh/latest/getting-started/'
+            },
+            {
+              text: '核心概念',
+              items: [
+                { text: '架构', link: '/zh/latest/concepts/architecture' },
+                { text: '岛屿', link: '/zh/latest/concepts/islands' },
+                { text: '路由', link: '/zh/latest/concepts/routing' },
+              ]
+            },
+          ],
+        },
       },
     },
     en: {

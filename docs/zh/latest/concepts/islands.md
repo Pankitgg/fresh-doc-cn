@@ -1,0 +1,182 @@
+---
+description: |
+  岛屿在 Fresh 中实现客户端交互性。它们在服务器上渲染，并在客户端进行水合。
+---
+
+# 岛屿
+
+岛屿在 Fresh 中实现客户端交互性，它们在服务器和客户端上都会渲染。
+
+岛屿通过在 `islands/` 文件夹或 `routes/` 目录中的某个 `(_islands)` 文件夹中创建文件来定义。此文件的名称必须是岛屿的 PascalCase 或 kebab-case 名称。
+
+```tsx islands/my-island.tsx
+import { useSignal } from "@preact/signals";
+
+export default function MyIsland() {
+  const count = useSignal(0);
+
+  return (
+    <div>
+      <p>计数: {count}</p>
+      <button onClick={() => (count.value += 1)}>+</button>
+    </div>
+  );
+}
+```
+
+岛屿可以像普通的 Preact 组件一样在任何地方使用。Fresh 会负责使其在客户端具有交互性。
+
+```tsx main.tsx
+import { App, staticFiles } from "fresh";
+import MyIsland from "./islands/my-island.tsx";
+
+const app = new App()
+  .use(staticFiles())
+  .get("/", (ctx) => ctx.render(<MyIsland />));
+```
+
+## 向岛屿传递 props
+
+支持向岛屿传递 props，但前提是 props 必须是[可序列化的](/docs/advanced/serialization)。Fresh 可以序列化以下类型的值：
+
+- 基本类型 `string`、`number`、`boolean`、`bigint`、`undefined` 和 `null`
+- `Infinity`、`-Infinity`、`-0` 和 `NaN`
+- `Uint8Array`
+- `URL`
+- `Date`
+- `RegExp`
+- `JSX` 元素
+- 集合 `Map` 和 `Set`
+- `Temporal` 对象 (`Instant`、`ZonedDateTime`、`PlainDate`、`PlainTime`、`PlainDateTime`、`PlainYearMonth`、`PlainMonthDay`、`Duration`)
+- 具有字符串键和可序列化值的普通对象
+- 包含可序列化值的数组
+- Preact [Signals](/docs/concepts/signals)（如果内部值是可序列化的）
+
+支持循环引用。如果一个对象或 signal 被多次引用，它只会被序列化一次，引用会在反序列化时恢复。
+
+> [警告]: 不支持向岛屿传递函数。
+>
+> ```tsx routes/example.tsx
+> export default function () {
+>   // 错误
+>   return <MyIsland onClick={() => console.log("hey")} />;
+> }
+> ```
+
+### 传递 JSX
+
+Fresh 的一个强大功能是你可以通过 props 向岛屿传递服务器渲染的 JSX。
+
+```tsx routes/index.tsx
+import { staticFiles } from "fresh";
+import MyIsland from "../islands/my-island.tsx";
+
+const app = new App()
+  .use(staticFiles())
+  .get("/", (ctx) => {
+    return ctx.render(
+      <MyIsland jsx={<h1>hello</h1>}>
+        <p>这段文本在服务器上渲染</p>
+      </MyIsland>,
+    );
+  });
+```
+
+### 嵌套岛屿
+
+岛屿也可以嵌套在其他岛屿中。在这种情况下，它们的行为类似于普通的 Preact 组件，但仍然会接收序列化的 props（如果有的话）。
+
+本质上，Fresh 允许你以最适合你的应用的方式混合使用静态和交互部分。我们只会将岛屿所需的 JavaScript 发送到浏览器。
+
+```tsx islands/other-island.tsx
+export default (props: { foo: string }) => <>{props.foo}</>;
+```
+
+```tsx routes/index.tsx
+import MyIsland from "../islands/my-island.tsx";
+import OtherIsland from "../islands/other-island.tsx";
+
+// 稍后...
+<div>
+  <MyIsland>
+    <OtherIsland foo="此 prop 将被序列化" />
+  </MyIsland>
+  <p>更多服务器渲染的文本</p>
+</div>;
+```
+
+## 仅在客户端渲染岛屿
+
+当使用仅限客户端的 API（如 `EventSource` 或 `navigator.getUserMedia`）时，组件会在服务器端渲染期间报错。使用 `fresh/runtime` 中的 `IS_BROWSER` 常量来保护仅限浏览器的代码。它在服务器上为 `false`，在浏览器中为 `true`：
+
+```tsx islands/my-island.tsx
+import { IS_BROWSER } from "fresh/runtime";
+
+export function MyIsland() {
+  // 在这里返回任何可预渲染的 JSX，这对你的岛屿有意义
+  if (!IS_BROWSER) return <div></div>;
+
+  // 所有必须在浏览器中运行的代码都在这里！
+  // 例如：EventSource、navigator.getUserMedia 等。
+  return <div></div>;
+}
+```
+
+## 使用自定义元素（Web 组件）
+
+[自定义元素](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements)可以在 Fresh 中使用，但它们必须在客户端注册，因为 `customElements.define()` 是浏览器 API。
+
+### 注册自定义元素
+
+使用岛屿来注册和渲染自定义元素：
+
+```tsx islands/MyElement.tsx
+import { useEffect } from "preact/hooks";
+import { IS_BROWSER } from "fresh/runtime";
+
+export function MyElement() {
+  useEffect(() => {
+    if (customElements.get("my-greeting")) return;
+
+    customElements.define(
+      "my-greeting",
+      class extends HTMLElement {
+        connectedCallback() {
+          const name = this.getAttribute("name") ?? "World";
+          this.innerHTML = `<p>Hello, ${name}!</p>`;
+        }
+      },
+    );
+  }, []);
+
+  if (!IS_BROWSER) {
+    return <div></div>;
+  }
+
+  return <my-greeting name="Fresh" />;
+}
+```
+
+### 使用第三方 web 组件
+
+第三方 web 组件库的工作方式相同 - 在岛屿中导入并注册它们：
+
+```tsx islands/ThirdPartyElement.tsx
+import { useEffect } from "preact/hooks";
+import { IS_BROWSER } from "fresh/runtime";
+
+export function ShoelaceButton() {
+  useEffect(() => {
+    // 导入库的注册脚本
+    import("@shoelace-style/shoelace/dist/components/button/button.js");
+  }, []);
+
+  if (!IS_BROWSER) {
+    return <button>Click me</button>;
+  }
+
+  return <sl-button variant="primary">Click me</sl-button>;
+}
+```
+
+> [提示]: 从服务器端分支 (`!IS_BROWSER`) 返回一个普通的 HTML 回退，以便页面在 JavaScript 加载之前可用。
