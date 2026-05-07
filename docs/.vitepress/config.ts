@@ -45,7 +45,12 @@ export default defineConfig({
                 { text: '应用包装器', link: '/zh/latest/advanced/app-wrapper' },
                 { text: '错误处理', link: '/zh/latest/advanced/error-handling' },
                 { text: '表单', link: '/zh/latest/advanced/forms' },
+                { text: 'Builder', link: '/zh/latest/advanced/builder' },
+                { text: '编程式布局', link: '/zh/latest/advanced/layouts' },
                 { text: 'Partials', link: '/zh/latest/advanced/partials' },
+                { text: '序列化', link: '/zh/latest/advanced/serialization' },
+                { text: 'Vite 配置', link: '/zh/latest/advanced/vite' },
+                { text: '故障排除', link: '/zh/latest/advanced/troubleshooting' },
               ]
             },
         },
