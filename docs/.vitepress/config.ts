@@ -53,6 +53,14 @@ export default defineConfig({
                 { text: '故障排除', link: '/zh/latest/advanced/troubleshooting' },
               ]
             },
+            {
+              text: '部署',
+              items: [
+                { text: '概述', link: '/zh/latest/deployment/index' },
+                { text: 'Deno Deploy', link: '/zh/latest/deployment/deno-deploy' },
+                { text: 'Docker', link: '/zh/latest/deployment/docker' },
+              ]
+            },
         },
       },
     },
