@@ -31,8 +31,8 @@ Fresh 是一个下一代 Web 框架。它是为 Deno 从头构建的，使用 Pr
 - [快速开始](/zh/latest/getting-started/) - 创建你的第一个 Fresh 项目
 
 ### 核心概念
-- [架构](/zh/latest/concepts/architecture/) - 请求生命周期和核心概念
-- [岛屿](/zh/latest/concepts/islands/) - 客户端交互性
-- [路由](/zh/latest/concepts/routing/) - 路由匹配和方法处理
+- [架构](/zh/latest/concepts/architecture) - 请求生命周期和核心概念
+- [岛屿](/zh/latest/concepts/islands) - 客户端交互性
+- [路由](/zh/latest/concepts/routing) - 路由匹配和方法处理
 
 更多文档正在翻译中... 您可以先查看 [英文文档](/en/)。
