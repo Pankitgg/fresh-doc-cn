@@ -39,7 +39,15 @@ export default defineConfig({
                 { text: '静态文件', link: '/zh/latest/concepts/static-files' },
               ]
             },
-          ],
+            {
+              text: '高级',
+              items: [
+                { text: '应用包装器', link: '/zh/latest/advanced/app-wrapper' },
+                { text: '错误处理', link: '/zh/latest/advanced/error-handling' },
+                { text: '表单', link: '/zh/latest/advanced/forms' },
+                { text: 'Partials', link: '/zh/latest/advanced/partials' },
+              ]
+            },
         },
       },
     },
