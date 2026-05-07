@@ -2,12 +2,15 @@
 layout: home
 hero:
   name: Fresh
-  text: Fresh 中文文档
+  text: Fresh 文档
   tagline: 一个现代化的 Deno 全栈框架
   actions:
     - theme: brand
-      text: 快速入门
-      link: /zh/latest/getting-started/
+      text: 中文文档
+      link: /zh/latest/
+    - theme: alt
+      text: English Documentation
+      link: /en/latest/
     - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/Pankitgg/fresh-doc-cn
@@ -22,26 +25,20 @@ features:
 
 Fresh 是一个下一代 Web 框架。它是为 Deno 从头构建的，使用 Preact 进行渲染，使用 Twind 进行样式设计。Fresh 支持服务器端的即时（JIT）渲染，以实现最佳性能和最小化客户端 JavaScript。
 
-## 中文文档
+## 文档语言
 
-以下文档已翻译成中文：
+请选择您偏好的语言版本：
 
-### 入门
-- [介绍](/zh/latest/introduction/) - 了解 Fresh 框架
-- [快速开始](/zh/latest/getting-started/) - 创建你的第一个 Fresh 项目
+- [中文文档](/zh/latest/)
+- [English Documentation](/en/latest/)
 
-### 核心概念
-- [架构](/zh/latest/concepts/architecture) - 请求生命周期和核心概念
-- [岛屿](/zh/latest/concepts/islands) - 客户端交互性
-- [路由](/zh/latest/concepts/routing) - 路由匹配和方法处理
+## 功能特点
 
-### 高级
-- [应用包装器](/zh/latest/advanced/app-wrapper) - 自定义外部 HTML 结构
-- [错误处理](/zh/latest/advanced/error-handling) - 自定义错误和 404 页面
-- [部分更新](/zh/latest/advanced/partials) - 客户端部分页面更新
+### 零配置
+Fresh 开箱即用，无需复杂的配置文件。
 
-### 部署
-- [概述](/zh/latest/deployment/index) - 部署 Fresh 应用
-- [Deno Deploy](/zh/latest/deployment/deno-deploy) - 在 Deno Deploy 上部署
+### 快速开发
+借助 Deno 的快速启动和热模块替换，开发体验流畅。
 
-您也可以查看 [英文文档](/en/latest/)。
+### 生产就绪
+内置性能优化和最佳实践，直接部署到生产环境。
