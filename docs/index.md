@@ -27,6 +27,10 @@ onMounted(() => {
   background: linear-gradient(135deg, #a8e0e8 0%, #d8f5a2 50%, #fef9c3 100%);
   min-height: 100vh;
   margin: 0;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .home-container :deep(.VPNavBar) {
