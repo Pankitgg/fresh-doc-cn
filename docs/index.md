@@ -10,7 +10,7 @@ onMounted(() => {
   const banner = document.querySelector('.announcement-bar')
   if (banner) {
     banner.addEventListener('click', () => {
-      banner.classList.add('hide')
+      window.location.href = '/zh/getting-started/'
     })
   }
 })
