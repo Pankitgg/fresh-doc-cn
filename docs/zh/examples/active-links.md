@@ -3,38 +3,24 @@ description: |
   Style active links with ease in Fresh
 ---
 
-Fresh automatically enhances the accessibility of `<a>` elements by adding the
-aria-current attribute when rendering links that match the current URL. This
-attribute is recognized by assistive technologies and clearly indicates the
-current page within a set of pages.
+Fresh 会自动增强 `<a>` 元素的辅助功能，在渲染与当前 URL 匹配的链接时添加 aria-current 属性。这个属性可以被辅助技术识别，并清楚地指示当前页面在一组页面中的位置。
 
-- `aria-current="page"` - Added to links with an exact path match, enhancing
-  accessibility by indicating the current page to assistive technologies.
-- `aria-current="true"` - Added to ancestor links (e.g. `/docs` when the current
-  page is `/docs/intro`).
+- `aria-current="page"` - 添加到精确路径匹配的链接，通过向辅助技术指示当前页面来增强可访问性。
+- `aria-current="true"` - 添加到祖先链接（例如，当当前页面是 `/docs/intro` 时，添加到 `/docs`）。
 
-As we aim to improve accessibility, we encourage the use of aria-current for
-styling current links where applicable.
+由于我们致力于改善可访问性，我们鼓励在适用的情况下使用 aria-current 来设置当前链接的样式。
 
-### Query parameters
+### 查询参数
 
-When a link's `href` includes query parameters, Fresh considers them during
-matching. A link to `/products?sort=name` will only receive
-`aria-current="page"` when the current URL also has `?sort=name`. If the query
-parameters differ, the link is treated as an ancestor instead. Links without
-query parameters in their `href` match regardless of the current URL's query
-string.
+当链接的 `href` 包含查询参数时，Fresh 会在匹配时考虑它们。指向 `/products?sort=name` 的链接只有在当前 URL 也有 `?sort=name` 时才会获得 `aria-current="page"`。如果查询参数不同，则该链接会被视为祖先链接。`href` 中没有查询参数的链接会忽略当前 URL 的查询字符串进行匹配。
 
-### Preserving custom `aria-current`
+### 保留自定义的 `aria-current`
 
-If you set `aria-current` on an `<a>` element yourself, Fresh will leave it
-untouched. This is useful when integrating with component libraries (e.g.
-daisyUI tabs) that manage their own active state.
+如果你自己在 `<a>` 元素上设置了 `aria-current`，Fresh 将保持不变。这在集成管理自己活跃状态的组件库（如 daisyUI 标签页）时很有用。
 
-## Styling with CSS
+## 使用 CSS 样式
 
-The aria-current attribute is easily styled with CSS using attribute selectors,
-providing a native way to visually differentiate the active link.
+aria-current 属性可以通过属性选择器用 CSS 轻松设置样式，这提供了一种原生的方式来视觉区分活跃链接。
 
 ```css static/styles.css
 /* Give links pointing to the current page a green color */
@@ -50,9 +36,7 @@ a[aria-current="true"] {
 
 ## Tailwindcss
 
-In Tailwindcss or similar CSS frameworks, you can apply styles to elements with
-the `aria-current` attribute using bracket notation in your class definitions.
-For Tailwindcss, use the syntax:
+在 Tailwindcss 或类似的 CSS 框架中，你可以使用类定义中的方括号语法来为具有 `aria-current` 属性的元素应用样式。对于 Tailwindcss，请使用以下语法：
 
 ```tsx components/Menu.tsx
 function Menu() {

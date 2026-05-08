@@ -3,10 +3,9 @@ description: |
   Create JSON API endpoints by defining handler-only routes without a page component.
 ---
 
-A route that exports only `handlers` (no default component export) becomes an
-API endpoint - it returns responses directly instead of rendering HTML.
+只导出 `handlers`（没有默认组件导出）的路由会变成 API 端点——它直接返回响应而不是渲染 HTML。
 
-## Basic JSON API
+## 基本的 JSON API
 
 ```ts routes/api/users.ts
 import { define } from "@/utils.ts";
@@ -19,16 +18,15 @@ export const handlers = define.handlers({
 });
 ```
 
-A `GET /api/users` request returns:
+`GET /api/users` 请求返回：
 
 ```json
 [{ "id": 1, "name": "Alice" }, { "id": 2, "name": "Bob" }]
 ```
 
-## Method-specific handlers
+## 按方法定义处理器
 
-Define different logic per HTTP method. Methods you don't define will
-automatically return `405 Method Not Allowed`:
+可以为每个 HTTP 方法定义不同的逻辑。未定义的方法会自动返回 `405 Method Not Allowed`：
 
 ```ts routes/api/posts/[id].ts
 import { define } from "@/utils.ts";
@@ -55,9 +53,9 @@ export const handlers = define.handlers({
 });
 ```
 
-## Catch-all handler
+## 通配处理器
 
-Export a single function instead of a method object to handle all HTTP methods:
+导出一个函数而不是方法对象来处理所有 HTTP 方法：
 
 ```ts routes/api/health.ts
 import { define } from "@/utils.ts";
@@ -67,10 +65,9 @@ export const handlers = define.handlers((ctx) => {
 });
 ```
 
-## Programmatic API routes
+## 以编程方式定义 API 路由
 
-API routes can also be defined directly on the app without
-[file-based routing](/docs/concepts/file-routing):
+API 路由也可以直接在应用上定义，而不使用[文件路由](/docs/concepts/file-routing)：
 
 ```ts main.ts
 const app = new App()

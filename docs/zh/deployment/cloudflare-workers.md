@@ -1,12 +1,11 @@
 ---
-description: "Deploy Fresh on Cloudflare Workers"
+description: "在 Cloudflare Workers 上部署 Fresh"
 ---
 
-Deploy Fresh to Cloudflare Workers by following these instructions:
+按照以下说明将 Fresh 部署到 Cloudflare Workers：
 
-1. Run `deno install --allow-scripts npm:@cloudflare/vite-plugin npm:wrangler`
-2. Add the cloudflare plugin in your [vite](/docs/advanced/vite) configuration
-   file:
+1. 运行 `deno install --allow-scripts npm:@cloudflare/vite-plugin npm:wrangler`
+2. 在你的 [vite](/docs/advanced/vite) 配置文件中添加 cloudflare 插件：
 
 ```diff vite.config.ts
   import { defineConfig } from "vite";
@@ -21,7 +20,7 @@ Deploy Fresh to Cloudflare Workers by following these instructions:
   });
 ```
 
-3. Create a `server.js` file that serves as the cloudflare worker entry file:
+3. 创建一个 `server.js` 文件作为 cloudflare worker 入口文件：
 
 ```js
 import server from "./_fresh/server.js";
@@ -31,11 +30,8 @@ export default {
 };
 ```
 
-4. Follow further instructions provided by the cloudflare vite plugin.
+4. 按照 cloudflare vite 插件提供的进一步说明操作。
 
-Check out the
-[Cloudflare Documentation](https://developers.cloudflare.com/workers/vite-plugin/)
-for further information.
+有关更多信息，请查看 [Cloudflare 文档](https://developers.cloudflare.com/workers/vite-plugin/)。
 
-> [info]: Make sure that you set the correct entrypoint in your `wrangler.jsonc`
-> file. It should point to `"main": "./server.js"`
+> [info]：请确保在 `wrangler.jsonc` 文件中设置了正确的入口点。它应该指向 `"main": "./server.js"`。

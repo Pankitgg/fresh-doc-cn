@@ -1,16 +1,12 @@
 ---
-description: "Extend fresh with plugins"
+description: "使用插件扩展 Fresh"
 ---
 
-Fresh itself can be extended through the methods available on the
-[`App`](/docs/concepts/app) class or on the `Builder` class. Most of the
-features in Fresh itself are built using these APIs.
+Fresh 可以通过 [`App`](/docs/concepts/app) 类或 `Builder` 类上提供的方法进行扩展。Fresh 本身的大部分功能都是使用这些 API 构建的。
 
-## Custom middlewares
+## 自定义中间件
 
-If you need to modify requests, add HTTP headers or pass additional data to
-other [middlewares](/docs/concepts/middleware) via `ctx.state`, then going with
-a middleware is the way to go.
+如果你需要修改请求、添加 HTTP 头或通过 `ctx.state` 向其他[中间件](/docs/concepts/middleware)传递额外数据，那么使用中间件是最佳选择。
 
 ```ts middleware/fresh.ts
 const addXFreshHeader = define.middleware(async (ctx) => {
@@ -20,12 +16,11 @@ const addXFreshHeader = define.middleware(async (ctx) => {
 });
 ```
 
-Learn more about [middlewares](/docs/concepts/middleware).
+了解更多关于[中间件](/docs/concepts/middleware)的信息。
 
-## Creating reusable plugins
+## 创建可复用的插件
 
-Since Fresh plugins are just middlewares and route handlers, creating a reusable
-plugin is as simple as exporting a function that returns a middleware:
+由于 Fresh 插件本质上就是中间件和路由处理器，因此创建一个可复用的插件非常简单，只需导出一个返回中间件的函数即可：
 
 ```ts plugins/request-id.ts
 import type { MiddlewareFn } from "fresh";
@@ -50,15 +45,13 @@ const app = new App()
   .fsRoutes();
 ```
 
-For more complex plugins, you can combine multiple middlewares, add routes, or
-use the [`Builder`](/docs/advanced/builder) hooks for build-time processing.
+对于更复杂的插件，你可以组合多个中间件、添加路由，或使用[`Builder`](/docs/advanced/builder)钩子进行构建时处理。
 
-## Built-in plugins
+## 内置插件
 
-Fresh ships with the following plugins:
+Fresh 自带以下插件：
 
-- [cors()](/docs/plugins/cors) - Set CORS HTTP headers
-- [csrf()](/docs/plugins/csrf) - CSRF protection
-- [csp()](/docs/plugins/csp) - Content Security Policy headers
-- [trailingSlashes()](/docs/plugins/trailing-slashes) - Enforce trailing slash
-  behavior
+- [cors()](/docs/plugins/cors) - 设置 CORS HTTP 头
+- [csrf()](/docs/plugins/csrf) - CSRF 保护
+- [csp()](/docs/plugins/csp) - 内容安全策略头
+- [trailingSlashes()](/docs/plugins/trailing-slashes) - 强制尾部斜杠行为

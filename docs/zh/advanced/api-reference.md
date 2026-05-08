@@ -1,61 +1,60 @@
 ---
 description: |
-  Quick reference for all public exports from Fresh's entry points: fresh, fresh/runtime, and fresh/dev.
+  Fresh 入口点的所有公共导出的快速参考：fresh、fresh/runtime 和 fresh/dev。
 ---
 
-This page lists all public exports from Fresh's entry points.
+本页列出了 Fresh 入口点的所有公共导出。
 
-> [info]: You can also explore Fresh's full API documentation on JSR:
+> [info]: 你也可以在 JSR 上探索 Fresh 的完整 API 文档：
 > [`@fresh/core`](https://jsr.io/@fresh/core/doc)
 
 ## `fresh`
 
-The main entry point for server-side code.
+服务器端代码的主入口点。
 
 ```ts
 import { App, createDefine, HttpError, page, staticFiles } from "fresh";
 ```
 
-| Export                                                                | Kind     | Description                                                                                        |
-| --------------------------------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------- |
-| [`App`](https://jsr.io/@fresh/core/doc/~/App)                         | Class    | The main application class. See [App](/docs/concepts/app).                                         |
-| [`staticFiles`](https://jsr.io/@fresh/core/doc/~/staticFiles)         | Function | Middleware for serving static files. See [Static Files](/docs/concepts/static-files).              |
-| [`createDefine`](https://jsr.io/@fresh/core/doc/~/createDefine)       | Function | Create type-safe `define.*` helpers. See [Define Helpers](/docs/advanced/define).                  |
-| [`page`](https://jsr.io/@fresh/core/doc/~/page)                       | Function | Return data from a handler to a page component. See [Data Fetching](/docs/concepts/data-fetching). |
-| [`HttpError`](https://jsr.io/@fresh/core/doc/~/HttpError)             | Class    | Throw HTTP errors with status codes. See [Error Handling](/docs/advanced/error-handling).          |
-| [`cors`](https://jsr.io/@fresh/core/doc/~/cors)                       | Function | CORS middleware. See [cors](/docs/plugins/cors).                                                   |
-| [`csrf`](https://jsr.io/@fresh/core/doc/~/csrf)                       | Function | CSRF protection middleware. See [csrf](/docs/plugins/csrf).                                        |
-| [`csp`](https://jsr.io/@fresh/core/doc/~/csp)                         | Function | Content Security Policy middleware. See [csp](/docs/plugins/csp).                                  |
-| [`trailingSlashes`](https://jsr.io/@fresh/core/doc/~/trailingSlashes) | Function | Trailing slash enforcement middleware. See [trailingSlashes](/docs/plugins/trailing-slashes).      |
+| 导出                                                                | 类型     | 描述                                                                                        |
+| --------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------ |
+| [`App`](https://jsr.io/@fresh/core/doc/~/App)                         | 类       | 主应用程序类。参见 [App](/docs/concepts/app)。                                             |
+| [`staticFiles`](https://jsr.io/@fresh/core/doc/~/staticFiles)         | 函数     | 用于提供静态文件的中间件。参见 [静态文件](/docs/concepts/static-files)。                     |
+| [`createDefine`](https://jsr.io/@fresh/core/doc/~/createDefine)       | 函数     | 创建类型安全的 `define.*` 辅助函数。参见 [Define 辅助函数](/docs/advanced/define)。          |
+| [`page`](https://jsr.io/@fresh/core/doc/~/page)                       | 函数     | 将数据从处理器返回到页面组件。参见 [数据获取](/docs/concepts/data-fetching)。               |
+| [`HttpError`](https://jsr.io/@fresh/core/doc/~/HttpError)             | 类       | 抛出带有状态码的 HTTP 错误。参见 [错误处理](/docs/advanced/error-handling)。                 |
+| [`cors`](https://jsr.io/@fresh/core/doc/~/cors)                       | 函数     | CORS 中间件。参见 [cors](/docs/plugins/cors)。                                             |
+| [`csrf`](https://jsr.io/@fresh/core/doc/~/csrf)                       | 函数     | CSRF 保护中间件。参见 [csrf](/docs/plugins/csrf)。                                         |
+| [`csp`](https://jsr.io/@fresh/core/doc/~/csp)                         | 函数     | 内容安全策略中间件。参见 [csp](/docs/plugins/csp)。                                         |
+| [`trailingSlashes`](https://jsr.io/@fresh/core/doc/~/trailingSlashes) | 函数     | 尾部斜杠强制中间件。参见 [trailingSlashes](/docs/plugins/trailing-slashes)。                |
 
-**Types:**
+**类型：**
 
-| Export                                                                                                                                        | Kind      | Description                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------------------------------------------------------------------------- |
-| [`Context`](https://jsr.io/@fresh/core/doc/~/Context) / [`FreshContext`](https://jsr.io/@fresh/core/doc/~/FreshContext)                       | Interface | The request context passed to all middlewares and handlers.                 |
-| [`PageProps`](https://jsr.io/@fresh/core/doc/~/PageProps)                                                                                     | Type      | Props received by page components (`data`, `url`, `params`, `state`, etc.). |
-| [`Middleware`](https://jsr.io/@fresh/core/doc/~/Middleware) / [`MiddlewareFn`](https://jsr.io/@fresh/core/doc/~/MiddlewareFn)                 | Type      | Middleware function type.                                                   |
-| [`HandlerFn`](https://jsr.io/@fresh/core/doc/~/HandlerFn)                                                                                     | Type      | Single handler function type.                                               |
-| [`HandlerByMethod`](https://jsr.io/@fresh/core/doc/~/HandlerByMethod)                                                                         | Type      | Object with per-method handler functions.                                   |
-| [`RouteHandler`](https://jsr.io/@fresh/core/doc/~/RouteHandler)                                                                               | Type      | Union of `HandlerFn` and `HandlerByMethod`.                                 |
-| [`PageResponse`](https://jsr.io/@fresh/core/doc/~/PageResponse)                                                                               | Type      | Return type of `page()`.                                                    |
-| [`RouteConfig`](https://jsr.io/@fresh/core/doc/~/RouteConfig)                                                                                 | Interface | Route configuration (`routeOverride`, `skipInheritedLayouts`, etc.).        |
-| [`LayoutConfig`](https://jsr.io/@fresh/core/doc/~/LayoutConfig)                                                                               | Interface | Layout configuration (`skipInheritedLayouts`, `skipAppWrapper`).            |
-| [`Define`](https://jsr.io/@fresh/core/doc/~/Define)                                                                                           | Interface | Type of the object returned by `createDefine()`.                            |
-| [`FreshConfig`](https://jsr.io/@fresh/core/doc/~/FreshConfig) / [`ResolvedFreshConfig`](https://jsr.io/@fresh/core/doc/~/ResolvedFreshConfig) | Interface | App configuration types.                                                    |
-| [`ListenOptions`](https://jsr.io/@fresh/core/doc/~/ListenOptions)                                                                             | Interface | Options for `app.listen()`.                                                 |
-| [`Island`](https://jsr.io/@fresh/core/doc/~/Island)                                                                                           | Type      | Island component type.                                                      |
-| [`Method`](https://jsr.io/@fresh/core/doc/~/Method)                                                                                           | Type      | HTTP method union type.                                                     |
-| [`RouteData`](https://jsr.io/@fresh/core/doc/~/RouteData)                                                                                     | Type      | Data type returned by route handlers via `page()`.                          |
-| [`Lazy`](https://jsr.io/@fresh/core/doc/~/Lazy) / [`MaybeLazy`](https://jsr.io/@fresh/core/doc/~/MaybeLazy)                                   | Type      | Utility types for lazily-loaded routes and middleware.                      |
-| [`CORSOptions`](https://jsr.io/@fresh/core/doc/~/CORSOptions)                                                                                 | Interface | Options for `cors()`.                                                       |
-| [`CsrfOptions`](https://jsr.io/@fresh/core/doc/~/CsrfOptions)                                                                                 | Interface | Options for `csrf()`.                                                       |
-| [`CSPOptions`](https://jsr.io/@fresh/core/doc/~/CSPOptions)                                                                                   | Interface | Options for `csp()`.                                                        |
+| 导出                                                                                                                                        | 类型      | 描述                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ------------------------------------------------------------------- |
+| [`Context`](https://jsr.io/@fresh/core/doc/~/Context) / [`FreshContext`](https://jsr.io/@fresh/core/doc/~/FreshContext)                       | 接口      | 传递给所有中间件和处理器的请求上下文。                               |
+| [`PageProps`](https://jsr.io/@fresh/core/doc/~/PageProps)                                                                                     | 类型      | 页面组件接收的 props（`data`、`url`、`params`、`state` 等）。        |
+| [`Middleware`](https://jsr.io/@fresh/core/doc/~/Middleware) / [`MiddlewareFn`](https://jsr.io/@fresh/core/doc/~/MiddlewareFn)                 | 类型      | 中间件函数类型。                                                     |
+| [`HandlerFn`](https://jsr.io/@fresh/core/doc/~/HandlerFn)                                                                                     | 类型      | 单个处理器函数类型。                                                 |
+| [`HandlerByMethod`](https://jsr.io/@fresh/core/doc/~/HandlerByMethod)                                                                         | 类型      | 带按方法分类的处理器函数的对象。                                     |
+| [`RouteHandler`](https://jsr.io/@fresh/core/doc/~/RouteHandler)                                                                               | 类型      | `HandlerFn` 和 `HandlerByMethod` 的联合类型。                        |
+| [`PageResponse`](https://jsr.io/@fresh/core/doc/~/PageResponse)                                                                               | 类型      | `page()` 的返回类型。                                                |
+| [`RouteConfig`](https://jsr.io/@fresh/core/doc/~/RouteConfig)                                                                                 | 接口      | 路由配置（`routeOverride`、`skipInheritedLayouts` 等）。              |
+| [`LayoutConfig`](https://jsr.io/@fresh/core/doc/~/LayoutConfig)                                                                               | 接口      | 布局配置（`skipInheritedLayouts`、`skipAppWrapper`）。                |
+| [`Define`](https://jsr.io/@fresh/core/doc/~/Define)                                                                                           | 接口      | `createDefine()` 返回的对象的类型。                                   |
+| [`FreshConfig`](https://jsr.io/@fresh/core/doc/~/FreshConfig) / [`ResolvedFreshConfig`](https://jsr.io/@fresh/core/doc/~/ResolvedFreshConfig) | 接口      | 应用配置类型。                                                       |
+| [`ListenOptions`](https://jsr.io/@fresh/core/doc/~/ListenOptions)                                                                             | 接口      | `app.listen()` 的选项。                                              |
+| [`Island`](https://jsr.io/@fresh/core/doc/~/Island)                                                                                           | 类型      | Island 组件类型。                                                    |
+| [`Method`](https://jsr.io/@fresh/core/doc/~/Method)                                                                                           | 类型      | HTTP 方法联合类型。                                                  |
+| [`RouteData`](https://jsr.io/@fresh/core/doc/~/RouteData)                                                                                     | 类型      | 路由处理器通过 `page()` 返回的数据类型。                              |
+| [`Lazy`](https://jsr.io/@fresh/core/doc/~/Lazy) / [`MaybeLazy`](https://jsr.io/@fresh/core/doc/~/MaybeLazy)                                   | 类型      | 用于延迟加载路由和中间件的实用类型。                                   |
+| [`CORSOptions`](https://jsr.io/@fresh/core/doc/~/CORSOptions)                                                                                 | 接口      | `cors()` 的选项。                                                    |
+| [`CsrfOptions`](https://jsr.io/@fresh/core/doc/~/CsrfOptions)                                                                                 | 接口      | `csrf()` 的选项。                                                    |
+| [`CSPOptions`](https://jsr.io/@fresh/core/doc/~/CSPOptions)                                                                                   | 接口      | `csp()` 的选项。                                                     |
 
 ## `fresh/runtime`
 
-Shared runtime utilities for both server and client code. Safe to import in
-[islands](/docs/concepts/islands).
+服务器和客户端代码共享的运行时工具。可以安全地在 [islands](/docs/concepts/islands) 中导入。
 
 ```ts
 import {
@@ -68,31 +67,31 @@ import {
 } from "fresh/runtime";
 ```
 
-| Export                                                                | Kind      | Description                                                                                    |
-| --------------------------------------------------------------------- | --------- | ---------------------------------------------------------------------------------------------- |
-| [`IS_BROWSER`](https://jsr.io/@fresh/core/doc/runtime/~/IS_BROWSER)   | Constant  | `true` in the browser, `false` on the server. Use to guard browser-only code.                  |
-| [`asset`](https://jsr.io/@fresh/core/doc/runtime/~/asset)             | Function  | Add cache-busting query params to asset URLs. See [Static Files](/docs/concepts/static-files). |
-| [`assetSrcSet`](https://jsr.io/@fresh/core/doc/runtime/~/assetSrcSet) | Function  | Apply `asset()` to all URLs in a `srcset` string.                                              |
-| [`Partial`](https://jsr.io/@fresh/core/doc/runtime/~/Partial)         | Component | Mark a region for partial updates. See [Partials](/docs/advanced/partials).                    |
-| [`Head`](https://jsr.io/@fresh/core/doc/runtime/~/Head)               | Component | Add elements to the document `<head>`. See [<head> element](/docs/advanced/head).              |
-| [`HttpError`](https://jsr.io/@fresh/core/doc/runtime/~/HttpError)     | Class     | HTTP error class (re-exported from `fresh`).                                                   |
+| 导出                                                                | 类型      | 描述                                                                                    |
+| --------------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------- |
+| [`IS_BROWSER`](https://jsr.io/@fresh/core/doc/runtime/~/IS_BROWSER)   | 常量      | 在浏览器中为 `true`，在服务器上为 `false`。用于保护仅浏览器的代码。                     |
+| [`asset`](https://jsr.io/@fresh/core/doc/runtime/~/asset)             | 函数      | 向资产 URL 添加缓存破坏查询参数。参见 [静态文件](/docs/concepts/static-files)。         |
+| [`assetSrcSet`](https://jsr.io/@fresh/core/doc/runtime/~/assetSrcSet) | 函数      | 对 `srcset` 字符串中的所有 URL 应用 `asset()`。                                         |
+| [`Partial`](https://jsr.io/@fresh/core/doc/runtime/~/Partial)         | 组件      | 标记 partial 更新的区域。参见 [Partials](/docs/advanced/partials)。                     |
+| [`Head`](https://jsr.io/@fresh/core/doc/runtime/~/Head)               | 组件      | 向文档 `<head>` 添加元素。参见 [<head> 元素](/docs/advanced/head)。                     |
+| [`HttpError`](https://jsr.io/@fresh/core/doc/runtime/~/HttpError)     | 类        | HTTP 错误类（从 `fresh` 重新导出）。                                                     |
 
 ## `fresh/dev`
 
-Development and build tools. Only used in `dev.ts` (legacy) or build scripts.
+开发和构建工具。仅在 `dev.ts`（旧版）或构建脚本中使用。
 
 ```ts
 import { Builder } from "fresh/dev";
 ```
 
-| Export                                                    | Kind  | Description                                                            |
-| --------------------------------------------------------- | ----- | ---------------------------------------------------------------------- |
-| [`Builder`](https://jsr.io/@fresh/core/doc/dev/~/Builder) | Class | Pre-Vite build system (legacy). See [Builder](/docs/advanced/builder). |
+| 导出                                                    | 类型  | 描述                                                           |
+| --------------------------------------------------------- | ----- | ------------------------------------------------------------- |
+| [`Builder`](https://jsr.io/@fresh/core/doc/dev/~/Builder) | 类    | Vite 之前的构建系统（旧版）。参见 [Builder](/docs/advanced/builder)。 |
 
-**Types:**
+**类型：**
 
-| Export                                                                                                                                                                                                                          | Kind      | Description                   |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ----------------------------- |
-| [`BuildOptions`](https://jsr.io/@fresh/core/doc/dev/~/BuildOptions)                                                                                                                                                             | Interface | Options for `new Builder()`.  |
-| [`ResolvedBuildConfig`](https://jsr.io/@fresh/core/doc/dev/~/ResolvedBuildConfig)                                                                                                                                               | Interface | Resolved build configuration. |
-| [`OnTransformArgs`](https://jsr.io/@fresh/core/doc/dev/~/OnTransformArgs) / [`OnTransformOptions`](https://jsr.io/@fresh/core/doc/dev/~/OnTransformOptions) / [`TransformFn`](https://jsr.io/@fresh/core/doc/dev/~/TransformFn) | Type      | Build plugin hook types.      |
+| 导出                                                                                                                                                                                                                          | 类型      | 描述                   |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | --------------------- |
+| [`BuildOptions`](https://jsr.io/@fresh/core/doc/dev/~/BuildOptions)                                                                                                                                                             | 接口      | `new Builder()` 的选项。|
+| [`ResolvedBuildConfig`](https://jsr.io/@fresh/core/doc/dev/~/ResolvedBuildConfig)                                                                                                                                               | 接口      | 解析后的构建配置。      |
+| [`OnTransformArgs`](https://jsr.io/@fresh/core/doc/dev/~/OnTransformArgs) / [`OnTransformOptions`](https://jsr.io/@fresh/core/doc/dev/~/OnTransformOptions) / [`TransformFn`](https://jsr.io/@fresh/core/doc/dev/~/TransformFn) | 类型      | 构建插件钩子类型。      |

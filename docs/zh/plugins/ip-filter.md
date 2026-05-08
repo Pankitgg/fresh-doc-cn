@@ -1,10 +1,8 @@
 ---
-description: "Restrict access by IP address with the ipFilter middleware"
+description: "使用 ipFilter 中间件按 IP 地址限制访问"
 ---
 
-The `ipFilter()` middleware restricts access based on the client's IP address.
-It supports deny lists, allow lists, and CIDR subnet matching. Deny rules always
-take precedence over allow rules.
+`ipFilter()` 中间件可根据客户端的 IP 地址限制访问。它支持黑名单、白名单和 CIDR 子网匹配。黑名单规则始终优先于白名单规则。
 
 ```ts main.ts
 import { App, ipFilter } from "fresh";
@@ -17,10 +15,9 @@ const app = new App()
   .get("/", () => new Response("hello"));
 ```
 
-## Deny list
+## 黑名单
 
-Block specific IPs or subnets. Any request from a matching address receives a
-403 Forbidden response:
+阻止特定的 IP 或子网。来自匹配地址的任何请求都会收到 403 Forbidden 响应：
 
 ```ts main.ts
 import { App, ipFilter } from "fresh";
@@ -31,10 +28,9 @@ const app = new App()
   }));
 ```
 
-## Allow list
+## 白名单
 
-When an allow list is provided, only matching IPs are permitted. All other
-addresses are blocked:
+提供白名单后，只有匹配的 IP 才被允许。所有其他地址都会被阻止：
 
 ```ts main.ts
 import { App, ipFilter } from "fresh";
@@ -45,10 +41,9 @@ const app = new App()
   }));
 ```
 
-## Combined rules
+## 组合规则
 
-When both lists are provided, deny rules are checked first. An IP that appears
-in both lists is blocked:
+当两个列表都提供时，黑名单规则会首先被检查。同时出现在两个列表中的 IP 会被阻止：
 
 ```ts main.ts
 import { App, ipFilter } from "fresh";
@@ -60,12 +55,11 @@ const app = new App()
   }));
 ```
 
-In this example, all of `192.168.1.0/24` is allowed except `192.168.1.10`.
+在这个例子中，`192.168.1.0/24` 中的所有 IP 都被允许，但 `192.168.1.10` 除外。
 
-## Custom blocked response
+## 自定义阻止响应
 
-By default, blocked requests receive a `403 Forbidden` response. Use the
-`onBlocked` callback to customize this:
+默认情况下，被阻止的请求会收到 `403 Forbidden` 响应。使用 `onBlocked` 回调来自定义响应：
 
 ```ts main.ts
 import { App, ipFilter } from "fresh";
@@ -81,8 +75,8 @@ const app = new App()
   }));
 ```
 
-The `onBlocked` callback receives:
+`onBlocked` 回调接收以下参数：
 
-- `remote.addr` -- the client's IP address
-- `remote.type` -- `"IPv4"` or `"IPv6"`
-- `ctx` -- the request [context](/docs/concepts/context)
+- `remote.addr` -- 客户端的 IP 地址
+- `remote.type` -- `"IPv4"` 或 `"IPv6"`
+- `ctx` -- 请求[上下文](/docs/concepts/context)

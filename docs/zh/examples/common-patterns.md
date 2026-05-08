@@ -3,12 +3,11 @@ description: |
   Common patterns and recipes for Fresh applications: authentication, redirects, content negotiation, cookies, and more.
 ---
 
-This page collects common patterns you'll encounter when building Fresh apps.
+本页面收集了构建 Fresh 应用时会遇到的常见模式。
 
-## Protected routes
+## 受保护的路由
 
-Use [middleware](/docs/concepts/middleware) to check authentication and redirect
-unauthenticated users:
+使用[中间件](/docs/concepts/middleware)检查身份验证并重定向未认证的用户：
 
 ```ts routes/dashboard/_middleware.ts
 import { define } from "@/utils.ts";
@@ -23,12 +22,11 @@ export default define.middleware(async (ctx) => {
 });
 ```
 
-All routes under `routes/dashboard/` are now protected. The user data is
-available in any downstream handler or component via `ctx.state.user`.
+`routes/dashboard/` 下的所有路由现在都受到保护。用户数据可通过 `ctx.state.user` 在任何下游处理器或组件中使用。
 
-## Redirect old URLs
+## 重定向旧 URL
 
-Handle URL migrations with middleware:
+使用中间件处理 URL 迁移：
 
 ```ts routes/_middleware.ts
 import { define } from "@/utils.ts";
@@ -47,12 +45,11 @@ export default define.middleware((ctx) => {
 });
 ```
 
-> [info]: `ctx.redirect()` includes protection against open redirect attacks.
-> Protocol-relative URLs like `//evil.com` are rejected.
+> [info]：`ctx.redirect()` 包含针对开放重定向攻击的保护。协议相对 URL（如 `//evil.com`）会被拒绝。
 
-## Content negotiation
+## 内容协商
 
-Return different formats based on the `Accept` header:
+根据 `Accept` 头返回不同格式：
 
 ```ts routes/api/users/[id].ts
 import { HttpError } from "fresh";
@@ -74,9 +71,9 @@ export const handler = define.handlers({
 });
 ```
 
-## Setting cookies
+## 设置 Cookie
 
-Use the `@std/http` cookie utilities:
+使用 `@std/http` 的 Cookie 工具：
 
 ```ts routes/_middleware.ts
 import { getCookies, setCookie } from "@std/http";
@@ -102,12 +99,11 @@ export default define.middleware(async (ctx) => {
 });
 ```
 
-See [Session management](/docs/examples/session-management) for a complete
-session example.
+请参阅[会话管理](/docs/examples/session-management)以获取完整的会话示例。
 
-## Reading query parameters
+## 读取查询参数
 
-Access URL search params from the context:
+从上下文中访问 URL 搜索参数：
 
 ```ts routes/search.tsx
 import { page } from "fresh";
@@ -123,9 +119,9 @@ export const handler = define.handlers({
 });
 ```
 
-## Adding response headers
+## 添加响应头
 
-Set custom headers in middleware:
+在中间件中设置自定义头：
 
 ```ts routes/_middleware.ts
 import { define } from "@/utils.ts";
@@ -138,7 +134,7 @@ export default define.middleware(async (ctx) => {
 });
 ```
 
-Or set headers on a specific route using `page()`:
+或者使用 `page()` 在特定路由上设置头：
 
 ```ts
 import { page } from "fresh";
@@ -148,9 +144,9 @@ return page(data, {
 });
 ```
 
-## Streaming responses
+## 流式响应
 
-Return a streaming response from a handler:
+从处理器返回流式响应：
 
 ```ts routes/api/stream.ts
 import { define } from "@/utils.ts";
@@ -173,14 +169,13 @@ export const handler = define.handlers({
 });
 ```
 
-## WebSockets
+## WebSocket
 
-Fresh provides first-class WebSocket support via `ctx.upgrade()`. See the full
-[WebSocket guide](/docs/advanced/websockets) for all options.
+Fresh 通过 `ctx.upgrade()` 提供一流的 WebSocket 支持。请参阅完整的 [WebSocket 指南](/docs/advanced/websockets)以了解所有选项。
 
-## Subdomain routing
+## 子域路由
 
-Use middleware with `URLPattern` to route based on subdomains:
+使用带有 `URLPattern` 的中间件根据子域进行路由：
 
 ```ts routes/_middleware.ts
 import { define } from "@/utils.ts";
@@ -206,9 +201,9 @@ export default define.middleware(async (ctx) => {
 });
 ```
 
-## Proxying requests
+## 代理请求
 
-Forward requests to an upstream server from a route handler:
+从路由处理器将请求转发到上游服务器：
 
 ```ts routes/api/[...path].ts
 import { define } from "@/utils.ts";
@@ -232,13 +227,11 @@ export const handler = define.handlers({
 });
 ```
 
-This is useful for proxying to backend services or working around CORS
-restrictions during development.
+这对于代理到后端服务或在开发过程中绕过 CORS 限制很有用。
 
-## Lazy-loading island content
+## 延迟加载岛屿内容
 
-Use Preact's `lazy()` and `<Suspense>` to code-split heavy components inside an
-island, so their JavaScript is only loaded when needed:
+使用 Preact 的 `lazy()` 和 `<Suspense>` 对岛屿内的重型组件进行代码分割，这样它们的 JavaScript 只在需要时才加载：
 
 ```tsx islands/HeavyFeature.tsx
 import { lazy, Suspense } from "preact/compat";
@@ -254,12 +247,11 @@ export function HeavyFeature() {
 }
 ```
 
-The `Chart` component's code is split into a separate chunk and only fetched
-when `HeavyFeature` renders in the browser.
+`Chart` 组件的代码被分割到一个单独的块中，只在浏览器中渲染 `HeavyFeature` 时才会被获取。
 
-## Timing middleware
+## 计时中间件
 
-Measure how long request processing takes:
+测量请求处理所需的时间：
 
 ```ts routes/_middleware.ts
 import { define } from "@/utils.ts";

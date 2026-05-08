@@ -3,18 +3,15 @@ description: |
   How to render raw HTML in Fresh.
 ---
 
-Text content in Fresh is always escaped, whether serverside rendered or rendered
-in [islands](/docs/concepts/islands). While this is generally desired, it can
-create issues in certain situations.
+Fresh 中的文本内容总是会被转义，无论是服务端渲染还是在[岛屿](/docs/concepts/islands)中渲染。虽然这通常是期望的行为，但在某些情况下可能会造成问题。
 
-To address this you can render raw HTML via Preact's `dangerouslySetInnerHTML`
-prop:
+你可以通过 Preact 的 `dangerouslySetInnerHTML` 属性来渲染原始 HTML：
 
 ```tsx routes/dynamic-html.tsx
 <div dangerouslySetInnerHTML={{ __html: "<h1>This is raw HTML</h1>" }} />;
 ```
 
-This will output:
+输出结果：
 
 ```html Response body
 <div>
@@ -22,11 +19,6 @@ This will output:
 </div>
 ```
 
-A common use case for rendering raw HTML is syntax highlighting code blocks or
-rendering markdown.
+渲染原始 HTML 的一个常见用例是对代码块进行语法高亮或渲染 Markdown。
 
-> [warn]: Setting arbitrary HTML can be dangerous, hence the
-> `dangerouslySetInnerHTML` naming. Make sure you trust the source. Rendering
-> user-supplied HTML to the DOM makes your site vulnerable to cross-site
-> scripting. The markup must first be sanitized, or better yet, something you
-> trust.
+> [warn]：设置任意 HTML 可能存在危险，这就是 `dangerouslySetInnerHTML` 命名的由来。请确保你信任数据源。将用户提供的 HTML 渲染到 DOM 中会使你的网站容易受到跨站脚本攻击。必须先对标记进行清理，或者使用你信任的内容。

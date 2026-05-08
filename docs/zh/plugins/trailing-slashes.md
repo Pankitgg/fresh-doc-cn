@@ -1,10 +1,8 @@
 ---
-description: "Ensure URLs always end or never end with trailing slashes"
+description: "确保 URL 始终以或不以尾部斜杠结尾"
 ---
 
-The `trailingSlashes()` middleware can be used to ensure URL pathnames always
-end with a slash character or will never end with one. It redirects the user's
-request respectively.
+`trailingSlashes()` 中间件可用于确保 URL 路径始终以斜杠字符结尾或始终不以斜杠结尾。它会相应地重定向用户的请求。
 
 ```ts main.ts
 import { trailingSlashes } from "fresh";
@@ -14,7 +12,7 @@ const app = new App()
   .get("/", () => new Response("hello"));
 ```
 
-Always append a trailing slash:
+始终添加尾部斜杠：
 
 ```ts main.ts
 import { trailingSlashes } from "fresh";

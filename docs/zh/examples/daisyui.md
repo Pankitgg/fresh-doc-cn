@@ -3,30 +3,25 @@ title: Install daisyUI for Deno Fresh
 desc: How to install Tailwind CSS and daisyUI in a Deno Fresh project
 ---
 
-[daisyUI](https://daisyui.com/) is a component library for
-[Tailwind CSS](https://tailwindcss.com/) that provides semantic class names for
-common UI components like buttons, cards, and modals. It makes building
-beautiful interfaces faster while maintaining full Tailwind CSS compatibility.
+[daisyUI](https://daisyui.com/) 是一个为 [Tailwind CSS](https://tailwindcss.com/) 提供语义化类名的组件库，涵盖了按钮、卡片、模态框等常见 UI 组件。它能在保持完全兼容 Tailwind CSS 的同时，更快速地构建美观的界面。
 
-## Installation
+## 安装
 
-To get started with daisyUI, make sure you have Tailwind CSS enabled in your
-Fresh project, then install daisyUI and update your configuration.
+要开始使用 daisyUI，请确保你的 Fresh 项目已启用 Tailwind CSS，然后安装 daisyUI 并更新配置。
 
-1. Run `deno i -D npm:daisyui@latest` to install daisyUI
-2. Add daisyUI configuration in `./assets/styles.css`:
+1. 运行 `deno i -D npm:daisyui@latest` 安装 daisyUI
+2. 在 `./assets/styles.css` 中添加 daisyUI 配置：
 
    ```diff assets/styles.css
      @import "tailwindcss";
    + @plugin "daisyui";
    ```
 
-Now you're ready to use daisyUI.
+现在你可以开始使用 daisyUI 了。
 
-## Using daisyUI Components
+## 使用 daisyUI 组件
 
-Create a button component in the `components` directory, using daisyUI's style
-classes for reference.
+在 `components` 目录中创建一个按钮组件，可以参考 daisyUI 的样式类。
 
 ```tsx components/Button.tsx
 import type { ComponentChildren } from "preact";
@@ -48,11 +43,10 @@ export function Button(props: ButtonProps) {
 }
 ```
 
-### Display Effect
+### 展示效果
 
 ![DaisyUI Showcase](/docs/fresh-daisyui-showcase.jpg)
 
-### daisyUI Class Name Reference
+### daisyUI 类名参考
 
-For more components and usage, please refer to the
-[daisyUI official documentation](https://daisyui.com/)
+更多组件和使用方法，请参阅 [daisyUI 官方文档](https://daisyui.com/)。

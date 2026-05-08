@@ -3,16 +3,12 @@ description: |
   How to render markdown on your Fresh site.
 ---
 
-[Markdown](https://www.markdownguide.org/basic-syntax/) is a common text-based
-file format that is often used for writing documentation, blogs and more. In
-this example we are going convert markdown content to HTML and send it to the
-browser.
+[Markdown](https://www.markdownguide.org/basic-syntax/) 是一种常见的基于文本的文件格式，通常用于编写文档、博客等。在本示例中，我们将把 Markdown 内容转换为 HTML 并发送给浏览器。
 
-First, let's install the [`@deno/gfm`](https://jsr.io/@deno/gfm) package that
-can transform markdown to html.
+首先，安装能够将 Markdown 转换为 HTML 的 [`@deno/gfm`](https://jsr.io/@deno/gfm) 包。
 
-1. Run `deno install jsr:@deno/gfm`
-2. Create a markdown file like `content/example.md`:
+1. 运行 `deno install jsr:@deno/gfm`
+2. 创建一个 Markdown 文件，比如 `content/example.md`：
 
 ```md content/example.md
 ## some heading
@@ -22,7 +18,7 @@ and some interesting text here
 > oh look a blockquote
 ```
 
-3. Add a route that renders that file
+3. 添加一个渲染该文件的路由
 
 ```tsx routes/markdown.tsx
 import { define } from "@/utils.ts";
@@ -44,14 +40,11 @@ export default define.page(async () => {
 });
 ```
 
-For a more elaborate markdown system with Fresh, take a look at the
-[source code](https://github.com/denoland/fresh/tree/main/www) for this
-documentation website.
+要了解更完善的 Fresh Markdown 系统，请查看这个文档网站的[源代码](https://github.com/denoland/fresh/tree/main/www)。
 
-## Other libraries
+## 其他库
 
-There are several other popular libraries besides `@deno/gfm` that can be used
-to render markdown. The most common ones are:
+除了 `@deno/gfm` 之外，还有几个其他流行的库可以用于渲染 Markdown。最常用的有：
 
 - [marked](https://marked.js.org/)
 - [remark](https://remark.js.org/)

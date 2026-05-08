@@ -1,49 +1,37 @@
 ---
 description: |
-  Fresh has built-in OpenTelemetry instrumentation for tracing requests through middleware, handlers, and rendering.
+  Fresh 内置了 OpenTelemetry 工具，用于追踪请求通过中间件、处理器和渲染的过程。
 ---
 
-Fresh automatically instruments key operations with
-[OpenTelemetry](https://opentelemetry.io/) spans, giving you visibility into how
-requests flow through your application. No code changes are needed - just
-configure an exporter.
+Fresh 自动用 [OpenTelemetry](https://opentelemetry.io/) span 检测关键操作，让你了解请求如何流经你的应用程序。无需代码更改——只需配置一个导出器。
 
-## What's instrumented
+## 检测内容
 
-Fresh creates spans for:
+Fresh 为以下内容创建 span：
 
-- **[Middleware](/docs/concepts/middleware) execution** - each middleware in the
-  chain
-- **Route handler execution** - handler function calls
-- **Rendering** - server-side page rendering, including async components
-- **[Static file](/docs/concepts/static-files) serving** - file lookups,
-  caching, and responses
-- **Lazy route loading** - dynamic imports of route modules on first access
+- **[中间件](/docs/concepts/middleware) 执行**——链中的每个中间件
+- **路由处理器执行**——处理器函数调用
+- **渲染**——服务器端页面渲染，包括异步组件
+- **[静态文件](/docs/concepts/static-files) 服务**——文件查找、缓存和响应
+- **延迟路由加载**——首次访问时动态导入的路由模块
 
-All spans are created under the `fresh` tracer (named with the current Fresh
-version). The root span for each request includes `http.route` with the matched
-route pattern (e.g. `GET /blog/:slug`), making it easy to group traces by route.
+所有 span 都在 `fresh` 追踪器下创建（以当前 Fresh 版本命名）。每个请求的根 span 包含 `http.route`，其中有匹配的路由模式（例如 `GET /blog/:slug`），便于按路由对追踪进行分组。
 
-## Enabling tracing
+## 启用追踪
 
-Fresh uses the `@opentelemetry/api` package (the vendor-neutral API). Spans are
-created automatically - you just need to provide an OpenTelemetry SDK and
-exporter to collect them.
+Fresh 使用 `@opentelemetry/api` 包（供应商中立的 API）。Span 会自动创建——你只需要提供一个 OpenTelemetry SDK 和导出器来收集它们。
 
-If no exporter is configured, the spans are silently discarded with no
-performance overhead.
+如果没有配置导出器，span 将被静默丢弃，不会产生性能开销。
 
-### With Deno's built-in OpenTelemetry
+### 使用 Deno 内置的 OpenTelemetry
 
-Deno has
-[built-in OpenTelemetry support](https://docs.deno.com/runtime/fundamentals/open_telemetry/).
-Enable it with the `OTEL_DENO` environment variable:
+Deno 有[内置的 OpenTelemetry 支持](https://docs.deno.com/runtime/fundamentals/open_telemetry/)。使用 `OTEL_DENO` 环境变量启用它：
 
 ```sh Terminal
 OTEL_DENO=true deno task start
 ```
 
-This exports traces to an OTLP-compatible collector. Configure the endpoint:
+这会将追踪导出到 OTLP 兼容的收集器。配置端点：
 
 ```sh Terminal
 OTEL_DENO=true \
@@ -51,17 +39,13 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 \
 deno task start
 ```
 
-### With Deno Deploy
+### 使用 Deno Deploy
 
-[Deno Deploy](/docs/deployment/deno-deploy) collects Fresh traces automatically
-when using the Fresh preset - no configuration needed. Traces appear in the Deno
-Deploy dashboard.
+[Deno Deploy](/docs/deployment/deno-deploy) 在使用 Fresh 预设时会自动收集 Fresh 追踪——无需配置。追踪会出现在 Deno Deploy 仪表板中。
 
-### With a custom exporter
+### 使用自定义导出器
 
-You can use any OpenTelemetry-compatible backend (Jaeger, Zipkin, Honeycomb,
-Grafana Tempo, Datadog, etc.). Install the SDK and configure an exporter in your
-entry point:
+你可以使用任何 OpenTelemetry 兼容的后端（Jaeger、Zipkin、Honeycomb、Grafana Tempo、Datadog 等）。在你的入口点安装 SDK 并配置导出器：
 
 ```ts main.ts
 import { NodeSDK } from "@opentelemetry/sdk-node";
@@ -75,26 +59,24 @@ const sdk = new NodeSDK({
 sdk.start();
 ```
 
-## Span attributes
+## Span 属性
 
-Fresh sets the following attributes on spans:
+Fresh 在 span 上设置以下属性：
 
-| Attribute         | Span type   | Description                                                                |
-| ----------------- | ----------- | -------------------------------------------------------------------------- |
-| `http.route`      | Root        | The matched route pattern (e.g. `/blog/:slug`)                             |
-| `fresh.span_type` | Various     | Internal span classification (`render`, etc.)                              |
-| `fresh.cache`     | Static file | Cache status (`immutable`, `not_modified`, `no_cache`, `invalid_bust_key`) |
-| `fresh.cache_key` | Static file | The cache bust key for the asset                                           |
+| 属性              | Span 类型   | 描述                                                          |
+| ----------------- | ----------- | ------------------------------------------------------------ |
+| `http.route`      | 根          | 匹配的路由模式（例如 `/blog/:slug`）                          |
+| `fresh.span_type` | 多种        | 内部 span 分类（`render` 等）                                |
+| `fresh.cache`     | 静态文件    | 缓存状态（`immutable`、`not_modified`、`no_cache`、`invalid_bust_key`）|
+| `fresh.cache_key` | 静态文件    | 资产的缓存破坏键                                              |
 
-Errors in handlers or rendering are recorded on the span with
-`span.recordException()` and the span status is set to `ERROR`.
+处理器或渲染中的错误会使用 `span.recordException()` 记录在 span 上，span 状态会设置为 `ERROR`。
 
-## Local development
+## 本地开发
 
-### Console exporter
+### 控制台导出器
 
-The quickest way to see traces is to print them to the console. Deno (2.7+)
-supports this out of the box - no extra dependencies or services needed:
+查看追踪最快的方法是将它们打印到控制台。Deno（2.7+）原生支持此功能——无需额外依赖或服务：
 
 ```sh Terminal
 OTEL_DENO=true \
@@ -102,13 +84,11 @@ OTEL_TRACES_EXPORTER=console \
 deno task start
 ```
 
-Each request prints its spans directly to stderr, showing the full breakdown of
-middleware, handler, and rendering timings.
+每个请求的 span 会直接打印到 stderr，显示中间件、处理器和渲染时间的完整分解。
 
 ### Jaeger
 
-For a visual trace explorer, run [Jaeger](https://www.jaegertracing.io/) locally
-with Docker:
+对于可视化追踪浏览器，请使用 Docker 在本地运行 [Jaeger](https://www.jaegertracing.io/)：
 
 ```sh Terminal
 docker run -d --name jaeger \
@@ -117,7 +97,7 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:latest
 ```
 
-Then start your Fresh app pointing at the Jaeger collector:
+然后启动你的 Fresh 应用，指向 Jaeger 收集器：
 
 ```sh Terminal
 OTEL_DENO=true \
@@ -125,14 +105,11 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317 \
 deno task start
 ```
 
-Open `http://localhost:16686` to browse traces. You'll see each request broken
-down into its middleware, handler, and rendering spans.
+打开 `http://localhost:16686` 浏览追踪。你会看到每个请求被分解为其中间件、处理器和渲染 span。
 
-## Client-side trace correlation
+## 客户端追踪关联
 
-When an OpenTelemetry exporter is active, Fresh automatically injects a
-[W3C Trace Context](https://www.w3.org/TR/trace-context/) `<meta>` tag into the
-`<head>` of every rendered page:
+当 OpenTelemetry 导出器处于活动状态时，Fresh 会自动向每个渲染页面的 `<head>` 中注入一个 [W3C Trace Context](https://www.w3.org/TR/trace-context/) `<meta>` 标签：
 
 ```html
 <head>
@@ -144,8 +121,4 @@ When an OpenTelemetry exporter is active, Fresh automatically injects a
 </head>
 ```
 
-This allows client-side OpenTelemetry instrumentation (such as
-[`@opentelemetry/instrumentation-document-load`](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/c9d62be989802534c01373e8ab41e13747d7ee3e/packages/instrumentation-document-load))
-to link browser performance traces back to the server-side span that rendered
-the page, giving you end-to-end visibility from server rendering through page
-load.
+这允许客户端 OpenTelemetry 工具（如 [`@opentelemetry/instrumentation-document-load`](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/c9d62be989802534c01373e8ab41e13747d7ee3e/packages/instrumentation-document-load)）将浏览器性能追踪链接回渲染页面的服务器端 span，让你从服务器渲染到页面加载获得端到端的可见性。

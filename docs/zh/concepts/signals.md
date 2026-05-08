@@ -1,17 +1,13 @@
 ---
 description: |
-  Signals provide reactive state management in Fresh islands using @preact/signals.
+  Signals 提供使用 @preact/signals 的响应式状态管理。
 ---
 
-[Signals](https://preactjs.com/guide/v10/signals/) are Preact's reactive
-primitive for managing state in [islands](/docs/concepts/islands). When a
-signal's value changes, any component that reads it re-renders automatically -
-no need for `setState` or manual subscriptions.
+[Signals](https://preactjs.com/guide/v10/signals/) 是 Preact 的响应式原语，用于在 [islands](/docs/concepts/islands) 中管理状态。当一个 signal 的值发生变化时，任何读取它的组件都会自动重新渲染——无需使用 `setState` 或手动订阅。
 
-## Creating signals
+## 创建 Signals
 
-Use `useSignal` inside a component for local state, or `signal` at module level
-for shared state:
+在组件内使用 `useSignal` 管理局部状态，或在模块级别使用 `signal` 管理共享状态：
 
 ```tsx islands/Counter.tsx
 import { useSignal } from "@preact/signals";
@@ -28,13 +24,11 @@ export default function Counter() {
 }
 ```
 
-> [info]: Signals can be rendered directly in JSX (`{count}`) without accessing
-> `.value`. Preact detects the signal and subscribes to updates automatically.
+> [info]：Signals 可以直接在 JSX 中渲染（`{count}`），而无需访问 `.value`。Preact 会自动检测 signal 并订阅更新。
 
-## Computed signals
+## 计算 Signals
 
-Use `computed` to derive values from other signals. Computed signals update
-automatically when their dependencies change:
+使用 `computed` 从其他 signals 派生值。计算 signals 会在其依赖项发生变化时自动更新：
 
 ```tsx islands/TemperatureConverter.tsx
 import { useComputed, useSignal } from "@preact/signals";
@@ -58,10 +52,9 @@ export default function TemperatureConverter() {
 }
 ```
 
-## Passing signals as props
+## 将 Signals 作为 props 传递
 
-Signals can be passed as props to islands. Fresh automatically serializes them
-on the server and reconstructs them as live signals on the client:
+Signals 可以作为 props 传递给 islands。Fresh 会在服务器端自动序列化它们，并在客户端重新构建为实时的 signals：
 
 ```tsx routes/index.tsx
 import { useSignal } from "@preact/signals";
@@ -78,19 +71,13 @@ export default function Home() {
 }
 ```
 
-Both sliders share the same signal - moving one updates the other. When the same
-signal object is passed to multiple islands, Fresh preserves the reference so
-they stay synchronized.
+两个滑块共享同一个 signal——操作其中一个会更新另一个。当相同的 signal 对象被传递给多个 islands 时，Fresh 会保留引用以确保它们保持同步。
 
-> [info]: Using `useSignal` in a route component (not an island) is intentional
-> here. The signal is created during server rendering, serialized into the HTML,
-> and reconstructed as a live signal on the client. This is how Fresh shares
-> reactive state between multiple islands on the same page.
+> [info]：在路由组件（非 island）中使用 `useSignal` 是有意为之。Signal 在服务器渲染时创建，序列化到 HTML 中，然后在客户端重新构建为实时的 signal。这就是 Fresh 在同一页面的多个 islands 之间共享响应式状态的方式。
 
-## Shared state across islands
+## 跨 islands 共享状态
 
-For state that needs to be shared between unrelated islands, create a signal in
-a separate module:
+对于需要在不相关的 islands 之间共享的状态，请在单独的模块中创建一个 signal：
 
 ```ts utils/cart.ts
 import { signal } from "@preact/signals";
@@ -118,21 +105,14 @@ export default function CartCount() {
 }
 ```
 
-Since both islands import the same module-level signal, they share the same
-state automatically. See
-[Sharing state between islands](/docs/examples/sharing-state-between-islands)
-for more patterns.
+由于两个 islands 导入的是同一个模块级别的 signal，它们会自动共享相同的状态。更多模式请参见[在 islands 之间共享状态](/docs/examples/sharing-state-between-islands)。
 
-## Serialization
+## 序列化
 
-When signals are passed as island props, Fresh handles
-[serialization](/docs/advanced/serialization) automatically:
+当 signals 作为 island props 传递时，Fresh 会自动处理[序列化](/docs/advanced/serialization)：
 
-- The signal's current value is extracted on the server via `.peek()`
-- On the client, the value is wrapped back into a live `signal()` or
-  `computed()`
-- Circular references and duplicate signal references are preserved
+- Signal 的当前值通过 `.peek()` 在服务器端提取
+- 在客户端，值被重新包装成实时的 `signal()` 或 `computed()`
+- 循环引用和重复的 signal 引用会被保留
 
-The signal's inner value must itself be serializable (see
-[Islands - Passing props](/docs/concepts/islands#passing-props-to-islands) for
-the full list of supported types).
+Signal 的内部值本身必须是可序列化的（有关支持类型的完整列表，请参见 [Islands - 传递 props](/docs/concepts/islands#passing-props-to-islands)）。

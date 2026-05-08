@@ -2,15 +2,11 @@
 description: The Context object is shared across all middlewares and provides access to the request, URL, params, state, and response helpers.
 ---
 
-The `Context` instance is shared across all
-[middlewares](/docs/concepts/middleware) in Fresh. Use it to respond with HTML,
-trigger redirects, access the incoming
-[`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) or read
-other metadata.
+`Context` 对象在 Fresh 的所有[中间件](/docs/concepts/middleware)中共享。使用它可以响应 HTML、触发重定向、访问传入的[`请求`](https://developer.mozilla.org/en-US/docs/Web/API/Request) 或读取其他元数据。
 
 ## `.config`
 
-Contains the resolved Fresh configuration.
+包含已解析的 Fresh 配置。
 
 ```ts
 app.get("/", (ctx) => {
@@ -21,8 +17,7 @@ app.get("/", (ctx) => {
 
 ## `.url`
 
-Contains a [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL)
-instance of the requested url.
+包含请求 URL 的 [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) 实例。
 
 ```ts
 app.get("/", (ctx) => {
@@ -35,8 +30,7 @@ app.get("/", (ctx) => {
 
 ## `.req`
 
-Contains the incoming
-[`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) instance.
+包含传入的[`请求`](https://developer.mozilla.org/en-US/docs/Web/API/Request)实例。
 
 ```ts
 app.get("/", (ctx) => {
@@ -52,8 +46,7 @@ app.get("/", (ctx) => {
 
 ## `.route`
 
-Contains the matched route pattern as a `string`. Will be `null` if no pattern
-matched.
+包含匹配路由模式的 `string` 类型的字符串。如果没有匹配到模式，则为 `null`。
 
 ```ts
 app.get("/foo/:id", (ctx) => {
@@ -64,7 +57,7 @@ app.get("/foo/:id", (ctx) => {
 
 ## `.params`
 
-Contains the params of the matched route pattern.
+包含匹配路由模式的参数。
 
 ```ts
 app.get("/foo/:id", (ctx) => {
@@ -76,8 +69,7 @@ app.get("/foo/:id", (ctx) => {
 
 ## `.state`
 
-Pass data to the next middlewares with state. Every request has its own state
-object.
+使用 state 向下一个中间件传递数据。每个请求都有自己独立的 state 对象。
 
 ```ts
 interface State {
@@ -98,9 +90,7 @@ app.use((ctx) => {
 
 ## `.error`
 
-If an error was thrown, this property will hold the caught value (default:
-`null`). This is typically used mainly on an
-[error page](/docs/advanced/error-handling).
+如果抛出了错误，此属性将保存捕获的值（默认为 `null`）。这通常主要用于[错误页面](/docs/advanced/error-handling)。
 
 ```ts
 app.onError((ctx) => {
@@ -114,7 +104,7 @@ app.onError((ctx) => {
 
 ## `.redirect()`
 
-Trigger a redirect from a middleware:
+从中间件触发重定向：
 
 ```ts
 app.get("/old-url", (ctx) => {
@@ -122,7 +112,7 @@ app.get("/old-url", (ctx) => {
 });
 ```
 
-Set a custom status code (default is `302`):
+设置自定义状态码（默认为 `302`）：
 
 ```ts
 app.get("/old-url", (ctx) => {
@@ -132,7 +122,7 @@ app.get("/old-url", (ctx) => {
 
 ## `.render()`
 
-Render JSX and create a HTML `Response`.
+渲染 JSX 并创建 HTML `Response`。
 
 ```tsx
 app.get("/", (ctx) => {
@@ -140,7 +130,7 @@ app.get("/", (ctx) => {
 });
 ```
 
-Set custom response headers or other metadata:
+设置自定义响应头或其他元数据：
 
 ```tsx
 app.get("/teapot", (ctx) => {

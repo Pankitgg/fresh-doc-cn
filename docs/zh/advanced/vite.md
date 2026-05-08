@@ -1,16 +1,13 @@
 ---
 description: |
-  Configure the Fresh Vite plugin, add other Vite plugins, and understand how Fresh integrates with Vite.
+  配置 Fresh Vite 插件，添加其他 Vite 插件，以及了解 Fresh 如何与 Vite 集成。
 ---
 
-Fresh 2 uses [Vite](https://vite.dev/) for development and production builds.
-The Fresh Vite plugin handles JSX configuration, Hot Module Replacement (HMR),
-[island](/docs/concepts/islands) discovery, client/server code splitting, and
-React-to-Preact aliasing.
+Fresh 2 使用 [Vite](https://vite.dev/) 进行开发和生产构建。Fresh Vite 插件处理 JSX 配置、热模块替换（HMR）、[island](/docs/concepts/islands) 发现、客户端/服务器代码拆分以及 React 到 Preact 的别名。
 
-## Configuration
+## 配置
 
-The Fresh Vite plugin can be configured in `vite.config.ts`:
+Fresh Vite 插件可以在 `vite.config.ts` 中配置：
 
 ```ts vite.config.ts
 import { defineConfig } from "vite";
@@ -19,33 +16,29 @@ import { fresh } from "@fresh/plugin-vite";
 export default defineConfig({
   plugins: [
     fresh({
-      // Path to main server entry file. Default: main.ts
+      // 主服务器入口文件的路径。默认：main.ts
       serverEntry: "./path/to/main.ts",
-      // Path to main client entry file. Default: client.ts
+      // 主客户端入口文件的路径。默认：client.ts
       clientEntry: "./path/to/client.ts",
-      // Path to islands directory. Default: ./islands
+      // Islands 目录的路径。默认：./islands
       islandsDir: "./islands",
-      // Path to routes directory. Default: ./routes
+      // 路由目录的路径。默认：./routes
       routeDir: "./routes",
-      // Static file directory or directories. Default: "static"
-      // When multiple directories are given, they are searched in
-      // order and the first match wins.
+      // 静态文件目录或目录。默认："static"
+      // 当给出多个目录时，按顺序搜索，优先采用第一个匹配项。
       staticDir: ["static", "generated"],
-      // Optional regex to ignore folders when crawling the routes and
-      // island directory.
+      // 扫描路由和 island 目录时要忽略文件夹的可选正则表达式。
       ignore: [/[\\/]+some-folder[\\/]+/],
-      // Additional specifiers to treat as island files. This is used
-      // for declaring islands from third party packages.
+      // 要视为 island 文件的其他说明符。这用于声明来自第三方包的 islands。
       islandSpecifiers: ["@example/my-remote-island"],
     }),
   ],
 });
 ```
 
-## Adding other Vite plugins
+## 添加其他 Vite 插件
 
-You can use any Vite-compatible plugin alongside Fresh. The Fresh plugin should
-generally come first:
+你可以将任何 Vite 兼容的插件与 Fresh 一起使用。Fresh 插件通常应该放在第一位：
 
 ```ts vite.config.ts
 import { defineConfig } from "vite";
@@ -56,45 +49,36 @@ export default defineConfig({
   plugins: [
     fresh(),
     tailwindcss(),
-    // Add any other Vite plugins here
+    // 在这里添加其他 Vite 插件
   ],
 });
 ```
 
-## What the plugin does
+## 插件的作用
 
-Behind the scenes, the Fresh Vite plugin:
+在幕后，Fresh Vite 插件：
 
-- **Configures JSX** for Preact automatically (`jsxImportSource: "preact"`)
-- **Aliases React to Preact** so npm packages that depend on React work out of
-  the box
-- **Enables HMR** via [Prefresh](https://github.com/preactjs/prefresh) for fast
-  component reloading during development
-- **Discovers islands** by scanning the islands directory and any
-  `islandSpecifiers`
-- **Builds separate client and server bundles** using Vite's Environments
-  feature
-- **Generates a server entry** (`_fresh/server.js`) for production deployment
-- **Validates imports** to catch mistakes like importing Node.js-only modules in
-  browser code
+- **自动配置 JSX** 用于 Preact（`jsxImportSource: "preact"`）
+- **将 React 别名到 Preact**，这样依赖 React 的 npm 包开箱即用
+- **通过 [Prefresh](https://github.com/preactjs/prefresh) 启用 HMR**，实现快速的组件热重载开发
+- **发现 islands**，通过扫描 islands 目录和任何 `islandSpecifiers`
+- **使用 Vite 的 Environments 功能构建单独的客户端和服务器包**
+- **生成服务器入口**（`_fresh/server.js`）用于生产部署
+- **验证导入**，以捕获在浏览器代码中导入仅 Node.js 模块等错误
 
-## Hot Module Replacement
+## 热模块替换
 
-During development (`deno task dev`), the Fresh Vite plugin enables HMR so that
-changes to components, islands, and CSS are reflected in the browser instantly
-without a full page reload. This is powered by Prefresh, Preact's fast refresh
-implementation.
+在开发期间（`deno task dev`），Fresh Vite 插件启用 HMR，以便对组件、islands 和 CSS 的更改会立即反映在浏览器中，无需完全重新加载页面。这由 Prefresh（Preact 的快速刷新实现）提供支持。
 
-## Debugging
+## 调试
 
-To debug Vite resolution issues, run Vite with the `--debug` flag:
+要调试 Vite 解析问题，请使用 `--debug` 标志运行 Vite：
 
 ```sh Terminal
 deno run -A npm:vite --debug
 ```
 
-To inspect plugin transformations, use
-[`vite-plugin-inspect`](https://github.com/antfu-collective/vite-plugin-inspect):
+要检查插件转换，请使用 [`vite-plugin-inspect`](https://github.com/antfu-collective/vite-plugin-inspect)：
 
 ```ts vite.config.ts
 import { defineConfig } from "vite";
@@ -104,7 +88,7 @@ import inspect from "vite-plugin-inspect";
 export default defineConfig({
   plugins: [
     fresh(),
-    inspect(), // Opens a UI at /__inspect to view all transformations
+    inspect(), // 在 /__inspect 打开 UI 以查看所有转换
   ],
 });
 ```

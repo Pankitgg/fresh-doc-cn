@@ -3,9 +3,9 @@ description: |
   When you need to have state shared between islands, this page provides a few recipes.
 ---
 
-## Multiple Sibling Islands with Independent State
+## 多个具有独立状态的兄弟岛屿
 
-Imagine we have `Counter.tsx` like this:
+假设我们有一个这样的 `Counter.tsx`：
 
 ```tsx islands/Counter.tsx
 import { useSignal } from "@preact/signals";
@@ -29,20 +29,18 @@ export default function Counter(props: CounterProps) {
 }
 ```
 
-Note how `useSignal` is within the `Counter` component. Then if we instantiate
-some counters like this...
+注意 `useSignal` 是放在 `Counter` 组件内部的。然后如果我们像这样实例化一些计数器……
 
 ```tsx routes/index.tsx
 <Counter start={3} />
 <Counter start={4} />
 ```
 
-they'll keep track of their own independent state. Not much sharing going on
-here, yet.
+它们会各自维护独立的状态。这里还没有太多共享状态。
 
-## Multiple Sibling Islands with Shared State
+## 多个具有共享状态的兄弟岛屿
 
-But we can switch things up by looking at a `SynchronizedSlider.tsx` like this:
+但我们可以通过查看像这样的 `SynchronizedSlider.tsx` 来改变这种情况：
 
 ```tsx islands/SynchronizedSlider.tsx
 import { Signal } from "@preact/signals";
@@ -67,7 +65,7 @@ export default function SynchronizedSlider(props: SliderProps) {
 }
 ```
 
-Now if we were to do the following...
+现在如果我们像下面这样做……
 
 ```tsx routes/index.tsx
 export default function Home() {
@@ -82,13 +80,11 @@ export default function Home() {
 }
 ```
 
-they would all use the same value.
+它们都会使用相同的值。
 
-## Sharing State Across Independent Islands
+## 跨独立岛屿共享状态
 
-When islands are not rendered as siblings (e.g. one in a sidebar and one in the
-main content), you can share state by creating a signal in a parent component
-and passing it as a prop to each island.
+当岛屿不是作为兄弟组件渲染时（例如，一个在侧边栏，一个在主内容区），你可以通过在父组件中创建一个 signal 并将其作为 prop 传递给每个岛屿来共享状态。
 
 ```tsx islands/AddToCart.tsx
 import { type Signal } from "@preact/signals";
@@ -168,7 +164,7 @@ function CartItem(props: CartItemProps) {
 }
 ```
 
-Then wire them together from a route, passing the same signal to both:
+然后从路由中将它们连接起来，把同一个 signal 传递给两者：
 
 ```tsx routes/cart.tsx
 import { useSignal } from "@preact/signals";
@@ -188,13 +184,7 @@ export default define.page(function CartPage() {
 });
 ```
 
-The `cart` signal is created per-render (not at module level), so each request
-gets its own independent cart. Fresh [serializes](/docs/advanced/serialization)
-the signal and passes it to both islands, keeping them in sync on the client.
+`cart` signal 是在每次渲染时创建的（不是在模块级别），因此每个请求都有自己独立的购物车。Fresh 会[序列化](/docs/advanced/serialization)这个 signal 并将其传递给两个岛屿，使它们在客户端保持同步。
 
 > [!CAUTION]
-> Avoid creating signals at the module level (e.g.
-> `export const cart =
-> signal([])` in a utility file). Module-level state is
-> shared across all requests on the server, which means different users would
-> see the same cart. Always create signals inside components or handlers.
+> 避免在模块级别创建 signal（例如在工具文件中写 `export const cart = signal([])`）。模块级别的状态在服务器上会在所有请求之间共享，这意味着不同用户会看到相同的购物车。请始终在组件或处理器内部创建 signal。

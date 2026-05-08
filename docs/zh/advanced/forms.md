@@ -1,23 +1,17 @@
 ---
 description: |
-  Robustly handle user inputs using HTML `<form>` elements client side, and form
-  submission handlers server side.
+  使用 HTML `<form>` 元素在客户端稳健地处理用户输入，并在服务器端处理表单提交。
 ---
 
-For stronger resiliency and user experience, Fresh relies on native browser
-support for form submissions with the HTML `<form>` element.
+为了更强的弹性和用户体验，Fresh 依赖浏览器对 HTML `<form>` 元素表单提交的本机支持。
 
-In the browser, a `<form>` submit will send an HTML action (usually `GET` or
-`POST`) to the server, which responds with a new page to render.
+在浏览器中，`<form>` 提交会向服务器发送一个 HTML action（通常是 `GET` 或 `POST`），服务器响应一个新页面进行渲染。
 
-## POST request with `application/x-www-form-urlencoded`
+## 使用 `application/x-www-form-urlencoded` 的 POST 请求
 
-Forms typically submit as a `GET` request with data encoded in the URL's search
-parameters, or as a `POST` request with either an
-`application/x-www-form-urlencoded` or `multipart/form-data` body.
+表单通常作为 `GET` 请求提交，数据编码在 URL 的搜索参数中，或者作为 `POST` 请求提交，数据在 `application/x-www-form-urlencoded` 或 `multipart/form-data` 正文中。
 
-This example demonstrates how to handle `application/x-www-form-urlencoded`
-`<form>` submissions:
+此示例演示如何处理 `application/x-www-form-urlencoded` `<form>` 提交：
 
 ```tsx routes/subscribe.tsx
 import { define } from "../utils.ts";
@@ -30,13 +24,13 @@ export const handlers = define.handlers({
     const form = await ctx.req.formData();
     const email = form.get("email")?.toString();
 
-    // Add email to list.
+    // 将邮箱添加到列表。
 
-    // Redirect user to thank you page.
+    // 重定向用户到感谢页面。
     const headers = new Headers();
     headers.set("location", "/thanks-for-subscribing");
     return new Response(null, {
-      status: 303, // See Other
+      status: 303, // 参见其他
       headers,
     });
   },
@@ -54,15 +48,11 @@ export default define.page<typeof handlers>(function Subscribe() {
 });
 ```
 
-When the user submits the form, Deno will retrieve the `email` value using the
-request's `formData()` method, add the email to a list, and redirect the user to
-a thank you page.
+当用户提交表单时，Deno 将使用请求的 `formData()` 方法获取 `email` 值，将邮箱添加到列表中，然后将用户重定向到感谢页面。
 
-## Handling file uploads
+## 处理文件上传
 
-File uploads can be handled in a very similar manner to the example above. Note
-that this time, we have to explicitly declare the form's encoding to be
-`multipart/form-data`.
+文件上传的处理方式与上面的示例非常相似。请注意，这次我们必须显式声明表单的编码为 `multipart/form-data`。
 
 ```tsx routes/subscribe.tsx
 import { define } from "../utils.ts";
@@ -102,9 +92,6 @@ export default define.page<typeof handler>(function Upload(props) {
 });
 ```
 
-## A note of caution
+## 注意事项
 
-These examples are simplified to demonstrate how Deno and Fresh handle HTTP
-requests. In the Real World™, you'll want to validate your data (_especially the
-file type_) and protect against cross-site request forgery. Consider yourself
-warned.
+这些示例经过简化，以演示 Deno 和 Fresh 如何处理 HTTP 请求。在现实世界中，你需要验证数据（_尤其是文件类型_）并防止跨站请求伪造。请注意这一点。

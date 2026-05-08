@@ -1,24 +1,21 @@
 ---
 description: |
-  Error pages can be used to customize the page that is shown when an error occurs in the application.
+  错误页面可用于自定义应用程序发生错误时显示的页面。
 ---
 
-Error pages are used to ensure that your app keeps working and display relevant
-feedback to the one who made the request.
+错误页面用于确保你的应用保持运行，并向请求者显示相关的反馈。
 
-Fresh supports two kind of error pages:
+Fresh 支持两种错误页面：
 
-1. Generic error pages
-2. 404 Not found error pages
+1. 通用错误页面
+2. 404 未找到错误页面
 
-> [tip]: Be sure to return the appropriate
-> [HTTP Status](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)
-> code. This makes it a lot easier for clients of your app to act appropriately.
-> It also makes it easier to find failed requests when going through traces.
+> [tip]: 请确保返回适当的
+> [HTTP 状态码](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status)。这使应用的客户端更容易做出适当的响应。也更容易在追踪失败请求时找到它们。
 
-## Generic error pages
+## 通用错误页面
 
-To add an error page use [`app.onError()`](/docs/concepts/app#onerror).
+要添加错误页面，请使用 [`app.onError()`](/docs/concepts/app#onerror)。
 
 ```ts main.ts
 import { App } from "fresh";
@@ -33,14 +30,13 @@ const app = new App()
   });
 ```
 
-When you access `/thrower` the error will be caught and the `onError` callback
-will be invoked.
+当你访问 `/thrower` 时，错误会被捕获并调用 `onError` 回调。
 
-You can also nest error pages:
+你也可以嵌套错误页面：
 
 ```ts
 const app = new App()
-  // Top level error page
+  // 顶级错误页面
   .onError("*", (ctx) => {
     return new Response("Oops!", { status: 500 });
   })
@@ -52,35 +48,30 @@ const app = new App()
   });
 ```
 
-## Not found error
+## 未找到错误
 
-Not found errors are often treated differently than generic errors. You can both
-treat them with the `.onError()` way, but by adding a specific `.notFound()`
-handler, Fresh ensures that every 404 error will invoke this callback.
+未找到错误通常与通用错误处理方式不同。你可以使用 `.onError()` 的方式处理它们，但通过添加特定的 `.notFound()` 处理器，Fresh 确保每个 404 错误都会调用此回调。
 
 ```ts
 const app = new App()
-  // Top level error page
+  // 顶级错误页面
   .notFound((ctx) => {
     return new Response("Page not found", { status: 404 });
   })
   .get("/", () => new Response("foo"));
 ```
 
-Accessing an unknown route like `/invalid` will trigger the `notFound`
-[middleware](/docs/concepts/middleware). Contrary to generic error pages this
-handler cannot be nested.
+访问未知路由（如 `/invalid`）将触发 `notFound`[中间件](/docs/concepts/middleware)。与通用错误页面不同，此处理器不能嵌套。
 
-## Throwing HTTP errors
+## 抛出 HTTP 错误
 
-If you need to bail out of execution and need to respond with a particular HTTP
-error code, you can use Fresh's `HttpError` class:
+如果你需要中止执行并使用特定的 HTTP 错误码进行响应，可以使用 Fresh 的 `HttpError` 类：
 
 ```ts
 import { HttpError } from "fresh";
 ```
 
-`HttpError` takes a status code and an optional message:
+`HttpError` 接受一个状态码和一个可选的消息：
 
 ```ts middleware/auth.ts
 import { HttpError } from "fresh";
@@ -88,12 +79,12 @@ import { HttpError } from "fresh";
 async function authMiddleware(ctx) {
   const user = ctx.state.user;
 
-  // Check if user is authenticated, throw 404 error if not
+  // 检查用户是否已认证，如果未认证则抛出 404 错误
   if (!isAuthenticated(user)) {
     throw new HttpError(404);
   }
 
-  // Forbidden with a custom message
+  // 禁止访问，并附带自定义消息
   if (!isAdmin(user)) {
     throw new HttpError(403, "Admin access required");
   }
@@ -102,8 +93,7 @@ async function authMiddleware(ctx) {
 }
 ```
 
-When an `HttpError` is thrown, Fresh catches it and invokes the error handler.
-You can check the status code in your error handler:
+当抛出 `HttpError` 时，Fresh 会捕获它并调用错误处理器。你可以在错误处理器中检查状态码：
 
 ```ts
 import { HttpError } from "fresh";
@@ -118,5 +108,4 @@ app.onError("*", (ctx) => {
 });
 ```
 
-`HttpError` is also available in the browser via `fresh/runtime` for use in
-[island code](/docs/concepts/islands).
+`HttpError` 也可以通过 `fresh/runtime` 在浏览器中使用，用于 [island 代码](/docs/concepts/islands)。

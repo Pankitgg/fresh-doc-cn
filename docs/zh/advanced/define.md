@@ -1,13 +1,11 @@
 ---
 description: |
-  Define helpers are a less TypeScripty way to declare [middlewares](/docs/concepts/middleware), routes and [layouts](/docs/concepts/layouts)
+  Define 辅助函数是一种更简洁的 TypeScript 方式来声明[中间件](/docs/concepts/middleware)、路由和[布局](/docs/concepts/layouts)
 ---
 
-Define helpers can be used to shorten the amount of types you have to type
-yourself in code. They are entirely optional as some developers prefer the
-explicitness of types, others like the convenience of `define.*` helpers.
+Define 辅助函数可用于减少你需要在代码中手动输入的类型。它们完全是可选的，因为有些开发者喜欢类型的明确性，而有些开发者喜欢 `define.*` 辅助函数带来的便利。
 
-Without define helpers:
+不使用 Define 辅助函数：
 
 ```ts util.ts
 export interface State {
@@ -27,19 +25,19 @@ export async function otherMiddleware(ctx: Context<State>): Promise<Response> {
 }
 ```
 
-With define helpers:
+使用 Define 辅助函数：
 
 ```ts util.ts
 import { createDefine } from "fresh";
 
-// Setup, do this once in a file and import it everywhere else.
+// 设置，在一个文件中执行一次，然后在其他地方导入。
 export const define = createDefine<{ foo: string }>();
 ```
 
 ```ts middleware.ts
 import { define } from "./util.ts";
 
-// Usage
+// 使用方法
 export const myMiddleware = define.middleware((ctx) => {
   return new Response("hello " + ctx.state.foo);
 });
@@ -49,11 +47,9 @@ export const otherMiddleware = define.middleware((ctx) => {
 });
 ```
 
-## File routes
+## 文件路由
 
-The `define.*` helpers include a `define.handler()` and `define.page()` function
-to make it easy for TypeScript to establish a relation between the two. That way
-you can pass data from the handler to the component in a type-safe way.
+`define.*` 辅助函数包含 `define.handler()` 和 `define.page()` 函数，使 TypeScript 能够轻松地在两者之间建立关系。这样你就可以用类型安全的方式将数据从处理器传递到组件。
 
 ```tsx routes/index.tsx
 export const handler = define.handlers({
@@ -62,7 +58,7 @@ export const handler = define.handlers({
   },
 });
 
-// When you type `props.data.*` you'll get autocompletion
+// 当你输入 `props.data.*` 时会获得自动补全
 export default define.page<typeof handler>((props) => {
   return (
     <div>
@@ -72,7 +68,7 @@ export default define.page<typeof handler>((props) => {
 });
 ```
 
-There is also a `define.layout()` helper for [layouts](/docs/concepts/layouts):
+还有用于[布局](/docs/concepts/layouts)的 `define.layout()` 辅助函数：
 
 ```tsx
 export default define.layout((props) => {

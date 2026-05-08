@@ -1,44 +1,36 @@
 ---
-description: "Create a production build of your app"
+description: "创建应用的生产构建"
 ---
 
-When shipping an app to production, we can run a build step that optimizes
-assets for consumption in the browser. First, make sure dependencies are
-installed:
+将应用部署到生产环境时，我们可以运行一个构建步骤来优化资源以供浏览器使用。首先，确保依赖项已安装：
 
 ```sh Terminal
 deno install --allow-scripts
 ```
 
-Then run the build:
+然后运行构建：
 
 ```sh Terminal
 deno task build
 ```
 
-> [info]: This runs [vite](/docs/advanced/vite) build under the hood. If you're
-> migrating from Fresh 1.x and still have a `dev.ts` file, see the
-> [migration guide](/docs/migration-guide) for updating your tasks.
+> [info]：这会在后台运行 [vite](/docs/advanced/vite) 构建。如果你是从 Fresh 1.x 迁移而来，并且仍然有 `dev.ts` 文件，请参阅[迁移指南](/docs/migration-guide) 来更新你的任务。
 
-Once completed, it will have created a `_fresh` folder in the project directory
-which contains the optimized assets.
+完成后，它会在项目目录中创建一个 `_fresh` 文件夹，其中包含优化后的资源。
 
-> [info]: The `_fresh` folder should not be committed to git. Exclude it via
-> `.gitignore`.
+> [info]：不应将 `_fresh` 文件夹提交到 git。通过 `.gitignore` 将其排除。
 >
 > ```gitignore .gitignore
-> # Ignore fresh build directory
+> # 忽略 fresh 构建目录
 > _fresh/
 > ```
 
-## Running a production build
+## 运行生产构建
 
-To run Fresh in production mode, run the `start` task:
+要以生产模式运行 Fresh，请运行 `start` 任务：
 
 ```sh Terminal
 deno task start
 ```
 
-This runs `deno serve -A _fresh/server.js`, which serves the built assets
-directly. Fresh will automatically pick up the optimized assets in the `_fresh`
-directory.
+这将运行 `deno serve -A _fresh/server.js`，直接服务构建后的资源。Fresh 会自动拾取 `_fresh` 目录中的优化资源。

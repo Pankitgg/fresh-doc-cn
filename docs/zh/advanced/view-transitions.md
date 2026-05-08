@@ -1,20 +1,14 @@
 ---
-description: Animate page navigations with the View Transitions API
+description: 使用视图过渡 API 为页面导航添加动画效果
 ---
 
-Fresh integrates the browser's native
-[View Transitions API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API)
-into its [partials](/docs/advanced/partials) system. When enabled, DOM updates
-during client-side navigation are wrapped in `document.startViewTransition()`,
-giving you smooth animated transitions between pages with zero JavaScript
-animation code.
+Fresh 将浏览器的原生[视图过渡 API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) 集成到其 [partials](/docs/advanced/partials) 系统中。启用后，客户端导航期间的 DOM 更新会被包装在 `document.startViewTransition()` 中，让你在零 JavaScript 动画代码的情况下获得页面之间的平滑过渡动画。
 
-This is progressive enhancement -- if the browser doesn't support the View
-Transitions API, partials work exactly as before with no animation.
+这是渐进增强——如果浏览器不支持视图过渡 API，partials 的工作方式与以前完全相同，不会有动画。
 
-## Enabling view transitions
+## 启用视图过渡
 
-Add the `f-view-transition` attribute alongside `f-client-nav`:
+将 `f-view-transition` 属性与 `f-client-nav` 一起添加：
 
 ```tsx routes/_app.tsx
 export default function App({ Component }: PageProps) {
@@ -31,13 +25,11 @@ export default function App({ Component }: PageProps) {
 }
 ```
 
-All partial navigations (link clicks, form submissions, back/forward) will now
-be animated.
+现在所有 partial 导航（链接点击、表单提交、前进/后退）都会有动画效果。
 
-## Customizing animations
+## 自定义动画
 
-The default view transition is a cross-fade. Customize it with standard CSS
-using the `::view-transition-old` and `::view-transition-new` pseudo-elements:
+默认的视图过渡是交叉淡入淡出。使用标准的 `::view-transition-old` 和 `::view-transition-new` 伪元素用 CSS 自定义它：
 
 ```css static/styles.css
 ::view-transition-old(root) {
@@ -48,10 +40,9 @@ using the `::view-transition-old` and `::view-transition-new` pseudo-elements:
 }
 ```
 
-### Per-element transitions
+### 按元素过渡
 
-Assign a `view-transition-name` in CSS to animate specific elements
-independently from the rest of the page:
+在 CSS 中分配 `view-transition-name` 以独立于页面其余部分地动画特定元素：
 
 ```css static/styles.css
 .sidebar {
@@ -62,16 +53,16 @@ independently from the rest of the page:
 }
 ```
 
-Then target those named transitions:
+然后定位那些命名过渡：
 
 ```css static/styles.css
-/* Sidebar stays in place */
+/* 侧边栏保持不动 */
 ::view-transition-old(sidebar),
 ::view-transition-new(sidebar) {
   animation: none;
 }
 
-/* Content slides */
+/* 内容滑动 */
 ::view-transition-old(content) {
   animation: slide-out-left 0.3s ease-in;
 }
@@ -80,26 +71,20 @@ Then target those named transitions:
 }
 ```
 
-This is useful for keeping persistent UI (navigation bars, sidebars) stable
-while animating the main content area.
+这对于在动画主内容区域时保持持久 UI（导航栏、侧边栏）稳定很有用。
 
-### Direction-aware animations
+### 方向感知动画
 
-Since Fresh tracks navigation history, you can use CSS custom properties or
-classes to apply different animations for forward vs. backward navigation. The
-View Transitions API captures the old and new states automatically -- combine
-this with `::view-transition-group` to create directional slide effects.
+由于 Fresh 追踪导航历史，你可以使用 CSS 自定义属性或类来为前进和后退导航应用不同的动画。视图过渡 API 自动捕获旧状态和新状态——将其与 `::view-transition-group` 结合使用可创建方向滑动效果。
 
-## Disabling view transitions
+## 禁用视图过渡
 
-Disable view transitions on a subtree by setting `f-view-transition={false}`:
+通过设置 `f-view-transition={false}` 在子树中禁用视图过渡：
 
 ```tsx
 <body f-client-nav f-view-transition={false}>
 ```
 
-## Browser support
+## 浏览器支持
 
-View Transitions are supported in Chrome 111+, Edge 111+, and Safari 18+.
-Firefox support is in development. On unsupported browsers, navigations work
-normally without animation -- no polyfill needed.
+视图过渡在 Chrome 111+、Edge 111+ 和 Safari 18+ 中受支持。Firefox 支持正在开发中。在不受支持的浏览器上，导航正常工作，不会有动画——无需 polyfill。

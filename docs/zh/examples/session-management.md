@@ -3,24 +3,19 @@ description: |
   How to manage a session using cookies.
 ---
 
-A _session_ allows you to keep track of per-user state such as authentication or
-shopping cart contents. Cookies are the most common mechanism for session
-management. Since [Deno](https://deno.com) uses standard web APIs like `Request`
-and `Response`, working with cookies is straightforward.
+_会话_ 允许你跟踪每个用户的状态，例如身份验证或购物车内容。Cookie 是最常见的会话管理机制。由于 [Deno](https://deno.com) 使用标准的 Web API（如 `Request` 和 `Response`），使用 Cookie 非常简单。
 
-## Setup
+## 设置
 
-Add the `@std/http` package from the standard library:
+添加标准库中的 `@std/http` 包：
 
 ```sh
 deno add jsr:@std/http
 ```
 
-## Solution
+## 解决方案
 
-Use a middleware to assign each visitor a session ID stored in a cookie. The
-middleware reads the existing cookie from the request, or generates a new one,
-and makes it available to downstream routes via `ctx.state`.
+使用中间件为每个访问者分配一个存储在 Cookie 中的会话 ID。中间件从请求中读取现有 Cookie，或生成一个新的，并通过 `ctx.state` 使其对下游路由可用。
 
 ```ts main.ts
 import { getCookies, setCookie } from "@std/http";
@@ -55,9 +50,6 @@ app.get("/", (ctx: Context<SessionState>) => {
 });
 ```
 
-> [info]: This is a basic implementation. In production you would typically
-> store session data in a database keyed by the session ID, and add a
-> `secure: true` attribute when serving over HTTPS.
+> [info]：这是一个基本实现。在生产环境中，你通常会将会话数据存储在以会话 ID 为键的数据库中，并在通过 HTTPS 提供服务时添加 `secure: true` 属性。
 
-For more background, see the
-[MDN guide on HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies).
+更多背景信息，请参阅 [MDN HTTP Cookie 指南](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Cookies)。

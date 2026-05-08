@@ -1,50 +1,42 @@
 ---
 description: |
-  Wrap pages in shared UI using _layout.tsx files. Layouts nest automatically, support async data loading, and can be skipped per route.
+  使用 _layout.tsx 文件将页面包裹在共享 UI 中。布局会自动嵌套，支持异步数据加载，并且可以按路由跳过。
 ---
 
-This page covers **file-based layouts** using `_layout.tsx` files. If you're
-defining routes programmatically with `new App()`, see
-[Layouts (programmatic)](/docs/advanced/layouts) instead.
+本页面介绍使用 `_layout.tsx` 文件的**基于文件的布局**。如果您是通过 `new App()` 以编程方式定义路由，请参阅[布局（编程式）](/docs/advanced/layouts)。
 
-Layouts let you wrap groups of pages in shared UI - navigation bars, sidebars,
-footers, or any common structure. They are defined in `_layout.tsx` files and
-nest automatically based on the directory tree.
+布局允许您将一组页面包裹在共享的 UI 中——导航栏、侧边栏、页脚或任何通用结构。它们在 `_layout.tsx` 文件中定义，并基于目录树自动嵌套。
 
-## How layouts work
+## 布局的工作原理
 
-Place a `_layout.tsx` file in any directory under `routes/`. It wraps every page
-in that directory and its subdirectories. You can have one layout per directory.
+在 `routes/` 下的任何目录中放置一个 `_layout.tsx` 文件。它会包裹该目录及其子目录中的每个页面。每个目录可以有一个布局。
 
-```txt-files Project structure
+```txt-files 项目结构
 <project root>
 └── routes
-    ├── _app.tsx           # App wrapper (outermost HTML shell)
-    ├── _layout.tsx        # Root layout - wraps all pages
+    ├── _app.tsx           # App 包装器（最外层的 HTML shell）
+    ├── _layout.tsx        # 根布局 - 包裹所有页面
     ├── index.tsx
     ├── about.tsx
     ├── blog
-    │   ├── _layout.tsx    # Blog layout - wraps blog pages
+    │   ├── _layout.tsx    # 博客布局 - 包裹博客页面
     │   ├── index.tsx
     │   └── [slug].tsx
     └── admin
-        ├── _layout.tsx    # Admin layout - wraps admin pages
+        ├── _layout.tsx    # 管理后台布局 - 包裹管理后台页面
         └── dashboard.tsx
 ```
 
-When a user visits `/blog/my-post`, Fresh renders these components from the
-outside in:
+当用户访问 `/blog/my-post` 时，Fresh 会从外向内渲染这些组件：
 
-1. `_app.tsx` - the outer `<html>`/`<head>`/`<body>` shell
-2. `routes/_layout.tsx` - root layout (e.g. site header and footer)
-3. `routes/blog/_layout.tsx` - blog layout (e.g. blog sidebar)
-4. `routes/blog/[slug].tsx` - the page itself
+1. `_app.tsx` - 最外层的 `<html>`/`<head>`/`<body>` shell
+2. `routes/_layout.tsx` - 根布局（例如：网站页眉和页脚）
+3. `routes/blog/_layout.tsx` - 博客布局（例如：博客侧边栏）
+4. `routes/blog/[slug].tsx` - 页面本身
 
-## Basic layout
+## 基本布局
 
-A layout receives `Component` (the child to wrap) and other props like `state`
-and `url`. Any state set by [middleware](/docs/concepts/middleware) is available
-via `props.state`.
+布局接收 `Component`（要包裹的子组件）和其他属性，如 `state` 和 `url`。通过[中间件](/docs/concepts/middleware)设置的任何状态都可以通过 `props.state` 获取。
 
 ```tsx routes/_layout.tsx
 import { define } from "../utils.ts";
@@ -66,9 +58,9 @@ export default define.layout(({ Component, state, url }) => {
 });
 ```
 
-## Async layouts
+## 异步布局
 
-Layouts can be async to fetch data before rendering:
+布局可以是异步的，以便在渲染之前获取数据：
 
 ```tsx routes/blog/_layout.tsx
 import { define } from "../../utils.ts";
@@ -96,11 +88,9 @@ export default define.layout(async (ctx) => {
 });
 ```
 
-## Opting out of layout inheritance
+## 退出布局继承
 
-Sometimes a route needs completely different chrome - a login page, a
-full-screen dashboard, or a print view. Use `skipInheritedLayouts` in the route
-config to skip all layouts inherited from parent directories:
+有时路由需要完全不同的外壳——登录页面、全屏仪表板或打印视图。在路由配置中使用 `skipInheritedLayouts` 可以跳过从父目录继承的所有布局：
 
 ```tsx routes/login.tsx
 import { type RouteConfig } from "fresh";
@@ -124,8 +114,7 @@ export default define.page(() => {
 });
 ```
 
-You can also skip inherited layouts from within a layout file itself. This is
-useful when a section of your site needs a completely different shell:
+您也可以从布局文件本身跳过继承的布局。当网站的某个部分需要完全不同的外壳时，这很有用：
 
 ```tsx routes/admin/_layout.tsx
 import { type LayoutConfig } from "fresh";
@@ -150,12 +139,9 @@ export default define.layout(({ Component, state }) => {
 });
 ```
 
-## Layout vs app wrapper
+## 布局与 App 包装器的区别
 
-The [app wrapper](/docs/concepts/app) (`_app.tsx`) and layouts serve different
-purposes:
+[App 包装器](/docs/concepts/app)（`_app.tsx`）和布局有不同的用途：
 
-- **App wrapper** - the outermost `<html>`/`<head>`/`<body>` structure. There is
-  only one, and it wraps everything.
-- **Layouts** - reusable UI shells that nest based on directory structure. There
-  can be many, and they sit between the app wrapper and the page component.
+- **App 包装器** - 最外层的 `<html>`/`<head>`/`<body>` 结构。只有一个，它包裹所有内容。
+- **布局** - 基于目录结构嵌套的可复用 UI 外壳。可以有多个，它们位于 App 包装器和页面组件之间。
