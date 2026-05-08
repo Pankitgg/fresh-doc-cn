@@ -1,5 +1,4 @@
 # fresh-doc-cn
-fresh 中文文档
 
 地址： [中文文档](https://fresh.ai-nous.com/)
 

@@ -1,44 +1,73 @@
 ---
 layout: home
+title: Fresh
 hero:
   name: Fresh
-  text: Fresh 文档
-  tagline: 一个现代化的 Deno 全栈框架
+  text: 现代化的 Deno 全栈框架
+  tagline: 无需配置文件，无需构建步骤，无需 node_modules。只需一个文件，你就拥有一个支持路由、JSX 和岛屿的服务器。
   actions:
     - theme: brand
-      text: 中文文档
-      link: /zh/latest/
+      text: 开始使用
+      link: /zh/getting-started/
     - theme: alt
       text: English Documentation
-      link: /en/latest/
-    - theme: alt
-      text: 在 GitHub 上查看
-      link: https://github.com/Pankitgg/fresh-doc-cn
+      link: /en/getting-started/
 features:
-  - title: 即时渲染
-    details: 选择在服务端或客户端渲染，灵活配置。
-  - title: 岛屿架构
-    details: 在主要静态的 HTML 页面上实现交互式 JavaScript 岛屿。
-  - title: 无需构建
-    details: 直接部署代码，无需任何构建或打包。
+  - title: 零配置
+    details: Fresh 开箱即用，无需复杂的配置文件。
+  - title: 快速开发
+    details: 借助 Deno 的快速启动和热模块替换，开发体验流畅。
+  - title: 生产就绪
+    details: 内置性能优化和最佳实践，直接部署到生产环境。
 ---
 
-Fresh 是一个下一代 Web 框架。它是为 Deno 从头构建的，使用 Preact 进行渲染，使用 Twind 进行样式设计。Fresh 支持服务器端的即时（JIT）渲染，以实现最佳性能和最小化客户端 JavaScript。
+<script setup>
+import { onMounted } from 'vue'
 
-## 文档语言
+onMounted(() => {
+  const banner = document.querySelector('.announcement-bar')
+  if (banner) {
+    banner.addEventListener('click', () => {
+      window.location.href = '/zh/getting-started/'
+    })
+  }
+})
+</script>
 
-请选择您偏好的语言版本：
+<style>
+:root {
+  --vp-home-hero-name-color: #111827;
+  --vp-home-hero-tagline-color: #4b5563;
+}
 
-- [中文文档](/zh/latest/)
-- [English Documentation](/en/latest/)
+body {
+  background: linear-gradient(135deg, #a8e0e8 0%, #d8f5a2 50%, #fef9c3 100%);
+  min-height: 100vh;
+}
 
-## 功能特点
+.VPNavBar {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
 
-### 零配置
-Fresh 开箱即用，无需复杂的配置文件。
+.announcement-bar {
+  background: linear-gradient(90deg, #a8d8ea, #f4f18d);
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
 
-### 快速开发
-借助 Deno 的快速启动和热模块替换，开发体验流畅。
+.announcement-bar:hover {
+  opacity: 0.9;
+}
 
-### 生产就绪
-内置性能优化和最佳实践，直接部署到生产环境。
+.announcement-bar span {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+</style>
+
+<div class="announcement-bar">
+  <span>Fresh 2.3 已发布！—— WebSockets、View Transitions、Temporal API 等新功能 →</span>
+</div>
