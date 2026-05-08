@@ -208,6 +208,7 @@ export default defineConfig({
     logo: '/logo-fresh.svg',
     nav: [
       { text: '首页', link: '/zh/' },
+      { text: 'English', link: '/en/' },
     ],
     sidebar: {
       '/zh/': zhSidebar,
@@ -216,16 +217,5 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Pankitgg/fresh-doc-cn' },
     ],
-  },
-
-  locales: {
-    root: {
-      label: '简体中文',
-      lang: 'zh-CN',
-    },
-    en: {
-      label: 'English',
-      lang: 'en',
-    }
   },
 })
