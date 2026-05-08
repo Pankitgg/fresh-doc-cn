@@ -3,98 +3,98 @@ import { defineConfig } from 'vitepress'
 const zhSidebar = [
   {
     text: '介绍',
-    link: '/zh/introduction/'
+    link: '/introduction/'
   },
   {
     text: '快速开始',
-    link: '/zh/getting-started/'
+    link: '/getting-started/'
   },
   {
     text: '核心概念',
     collapsed: false,
     items: [
-      { text: '架构', link: '/zh/concepts/architecture' },
-      { text: '岛屿', link: '/zh/concepts/islands' },
-      { text: '路由', link: '/zh/concepts/routing' },
-      { text: 'App 类', link: '/zh/concepts/app' },
-      { text: 'Context 对象', link: '/zh/concepts/context' },
-      { text: '数据获取', link: '/zh/concepts/data-fetching' },
-      { text: '中间件', link: '/zh/concepts/middleware' },
-      { text: '布局', link: '/zh/concepts/layouts' },
-      { text: 'Signals', link: '/zh/concepts/signals' },
-      { text: '静态文件', link: '/zh/concepts/static-files' },
-      { text: '文件路由', link: '/zh/concepts/file-routing' },
+      { text: '架构', link: '/concepts/architecture' },
+      { text: '岛屿', link: '/concepts/islands' },
+      { text: '路由', link: '/concepts/routing' },
+      { text: 'App 类', link: '/concepts/app' },
+      { text: 'Context 对象', link: '/concepts/context' },
+      { text: '数据获取', link: '/concepts/data-fetching' },
+      { text: '中间件', link: '/concepts/middleware' },
+      { text: '布局', link: '/concepts/layouts' },
+      { text: 'Signals', link: '/concepts/signals' },
+      { text: '静态文件', link: '/concepts/static-files' },
+      { text: '文件路由', link: '/concepts/file-routing' },
     ]
   },
   {
     text: '高级',
     collapsed: false,
     items: [
-      { text: '应用包装器', link: '/zh/advanced/app-wrapper' },
-      { text: '错误处理', link: '/zh/advanced/error-handling' },
-      { text: 'Partials', link: '/zh/advanced/partials' },
-      { text: '视图过渡', link: '/zh/advanced/view-transitions' },
-      { text: '表单', link: '/zh/advanced/forms' },
-      { text: 'Define 辅助函数', link: '/zh/advanced/define' },
-      { text: '序列化', link: '/zh/advanced/serialization' },
-      { text: '环境变量', link: '/zh/advanced/environment-variables' },
-      { text: 'head 元素', link: '/zh/advanced/head' },
-      { text: 'Vite 配置', link: '/zh/advanced/vite' },
-      { text: 'WebSockets', link: '/zh/advanced/websockets' },
-      { text: 'OpenTelemetry', link: '/zh/advanced/opentelemetry' },
-      { text: 'API 参考', link: '/zh/advanced/api-reference' },
-      { text: '故障排除', link: '/zh/advanced/troubleshooting' },
-      { text: 'Builder', link: '/zh/advanced/builder' },
+      { text: '应用包装器', link: '/advanced/app-wrapper' },
+      { text: '错误处理', link: '/advanced/error-handling' },
+      { text: 'Partials', link: '/advanced/partials' },
+      { text: '视图过渡', link: '/advanced/view-transitions' },
+      { text: '表单', link: '/advanced/forms' },
+      { text: 'Define 辅助函数', link: '/advanced/define' },
+      { text: '序列化', link: '/advanced/serialization' },
+      { text: '环境变量', link: '/advanced/environment-variables' },
+      { text: 'head 元素', link: '/advanced/head' },
+      { text: 'Vite 配置', link: '/advanced/vite' },
+      { text: 'WebSockets', link: '/advanced/websockets' },
+      { text: 'OpenTelemetry', link: '/advanced/opentelemetry' },
+      { text: 'API 参考', link: '/advanced/api-reference' },
+      { text: '故障排除', link: '/advanced/troubleshooting' },
+      { text: 'Builder', link: '/advanced/builder' },
     ]
   },
   {
     text: '部署',
     collapsed: false,
     items: [
-      { text: '概述', link: '/zh/deployment/index' },
-      { text: 'Deno Deploy', link: '/zh/deployment/deno-deploy' },
-      { text: 'deno compile', link: '/zh/deployment/deno-compile' },
-      { text: 'Docker', link: '/zh/deployment/docker' },
-      { text: 'Cloudflare Workers', link: '/zh/deployment/cloudflare-workers' },
+      { text: '概述', link: '/deployment/index' },
+      { text: 'Deno Deploy', link: '/deployment/deno-deploy' },
+      { text: 'deno compile', link: '/deployment/deno-compile' },
+      { text: 'Docker', link: '/deployment/docker' },
+      { text: 'Cloudflare Workers', link: '/deployment/cloudflare-workers' },
     ]
   },
   {
     text: '示例',
     collapsed: false,
     items: [
-      { text: 'API 路由', link: '/zh/examples/api-routes' },
-      { text: 'daisyUI', link: '/zh/examples/daisyui' },
-      { text: '渲染 Markdown', link: '/zh/examples/markdown' },
-      { text: '渲染原始 HTML', link: '/zh/examples/rendering-raw-html' },
-      { text: '岛屿间共享状态', link: '/zh/examples/sharing-state-between-islands' },
-      { text: '活动链接', link: '/zh/examples/active-links' },
-      { text: '会话管理', link: '/zh/examples/session-management' },
-      { text: '常见模式', link: '/zh/examples/common-patterns' },
+      { text: 'API 路由', link: '/examples/api-routes' },
+      { text: 'daisyUI', link: '/examples/daisyui' },
+      { text: '渲染 Markdown', link: '/examples/markdown' },
+      { text: '渲染原始 HTML', link: '/examples/rendering-raw-html' },
+      { text: '岛屿间共享状态', link: '/examples/sharing-state-between-islands' },
+      { text: '活动链接', link: '/examples/active-links' },
+      { text: '会话管理', link: '/examples/session-management' },
+      { text: '常见模式', link: '/examples/common-patterns' },
     ]
   },
   {
     text: '插件',
     collapsed: false,
     items: [
-      { text: '概述', link: '/zh/plugins/' },
-      { text: 'CORS', link: '/zh/plugins/cors' },
-      { text: 'CSRF', link: '/zh/plugins/csrf' },
-      { text: 'CSP', link: '/zh/plugins/csp' },
-      { text: 'IP 过滤', link: '/zh/plugins/ip-filter' },
-      { text: '尾部斜杠', link: '/zh/plugins/trailing-slashes' },
+      { text: '概述', link: '/plugins/' },
+      { text: 'CORS', link: '/plugins/cors' },
+      { text: 'CSRF', link: '/plugins/csrf' },
+      { text: 'CSP', link: '/plugins/csp' },
+      { text: 'IP 过滤', link: '/plugins/ip-filter' },
+      { text: '尾部斜杠', link: '/plugins/trailing-slashes' },
     ]
   },
   {
     text: '测试',
-    link: '/zh/testing/'
+    link: '/testing/'
   },
   {
     text: '迁移指南',
-    link: '/zh/migration-guide/'
+    link: '/migration-guide/'
   },
   {
     text: '贡献指南',
-    link: '/zh/contributing/'
+    link: '/contributing/'
   },
 ]
 
@@ -205,29 +205,13 @@ export default defineConfig({
   ],
 
   locales: {
-    root: {
+    '/': {
       label: '简体中文',
       lang: 'zh-CN',
-      link: '/',
-      themeConfig: {
-        logo: '/logo-fresh.svg',
-        sidebar: zhSidebar,
-        socialLinks: [
-          { icon: 'github', link: 'https://github.com/Pankitgg/fresh-doc-cn' },
-        ],
-      },
     },
-    en: {
+    '/en/': {
       label: 'English',
       lang: 'en',
-      link: '/en/',
-      themeConfig: {
-        logo: '/logo-fresh.svg',
-        sidebar: enSidebar,
-        socialLinks: [
-          { icon: 'github', link: 'https://github.com/Pankitgg/fresh-doc-cn' },
-        ],
-      },
     }
   },
 
@@ -235,8 +219,11 @@ export default defineConfig({
     logo: '/logo-fresh.svg',
     nav: [
       { text: '首页', link: '/' },
-      { text: 'GitHub', link: 'https://github.com/Pankitgg/fresh-doc-cn' }
     ],
+    sidebar: {
+      '/': zhSidebar,
+      '/en/': enSidebar,
+    },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Pankitgg/fresh-doc-cn' },
     ],
