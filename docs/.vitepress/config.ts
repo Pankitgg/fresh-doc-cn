@@ -204,17 +204,6 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/favicon-fresh.ico' }]
   ],
 
-  locales: {
-    '/': {
-      label: '简体中文',
-      lang: 'zh-CN',
-    },
-    '/en/': {
-      label: 'English',
-      lang: 'en',
-    }
-  },
-
   themeConfig: {
     logo: '/logo-fresh.svg',
     nav: [
@@ -227,5 +216,18 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Pankitgg/fresh-doc-cn' },
     ],
+  },
+
+  locales: {
+    root: {
+      label: '简体中文',
+      lang: 'zh-CN',
+      link: '/',
+    },
+    en: {
+      label: 'English',
+      lang: 'en',
+      link: '/en/',
+    }
   },
 })
