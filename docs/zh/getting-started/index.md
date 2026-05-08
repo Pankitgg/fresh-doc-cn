@@ -123,6 +123,6 @@ deno deploy kv --prod
 
 ## 下一步
 
-- [架构概览](/zh/latest/concepts/architecture) - 了解 Fresh 的工作原理
-- [岛屿](/zh/latest/concepts/islands) - 深入了解岛屿架构
-- [路由](/zh/latest/concepts/routing) - 了解更多路由选项
+- [架构概览](/zh/concepts/architecture) - 了解 Fresh 的工作原理
+- [岛屿](/zh/concepts/islands) - 深入了解岛屿架构
+- [路由](/zh/concepts/routing) - 了解更多路由选项

@@ -81,7 +81,7 @@ $ deno task build
 $ deno compile --include static --include _fresh --include deno.json -A main.ts
 ```
 
-[aws-container-registry]: https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image.html#create-container-image-push-ecr
+[aws-container-registry]: https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image#create-container-image-push-ecr
 [gcp-container-registry]: https://cloud.google.com/container-registry/docs/pushing-and-pulling
 [deno-deploy]: https://deno.com/deploy
 [deploy-to-production]: /docs/1.x/getting-started/deploy-to-production

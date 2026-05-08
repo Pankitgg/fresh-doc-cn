@@ -53,5 +53,5 @@ $ docker run -t -i -p 80:8000 my-fresh-app
 To deploy to a cloud provider, push it to a container registry and follow their
 documentation.
 
-- [Amazon Web Services](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image.html#create-container-image-push-ecr)
+- [Amazon Web Services](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image#create-container-image-push-ecr)
 - [Google Cloud](https://cloud.google.com/container-registry/docs/pushing-and-pulling)

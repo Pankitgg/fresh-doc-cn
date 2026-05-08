@@ -40,10 +40,10 @@ Fresh 使用 TypeScript 开发，提供完整的类型检查和智能提示。
 
 ## 开始使用
 
-要创建您的第一个 Fresh 项目，请查看 [快速开始指南](/zh/latest/getting-started/)。
+要创建您的第一个 Fresh 项目，请查看 [快速开始指南](/zh/getting-started/)。
 
 ## 下一步
 
-- [核心概念](/zh/latest/concepts/architecture) - 了解 Fresh 的工作原理
-- [岛屿](/zh/latest/concepts/islands) - 学习如何创建交互式组件
-- [路由](/zh/latest/concepts/routing) - 了解如何处理不同的 URL
+- [核心概念](/zh/concepts/architecture) - 了解 Fresh 的工作原理
+- [岛屿](/zh/concepts/islands) - 学习如何创建交互式组件
+- [路由](/zh/concepts/routing) - 了解如何处理不同的 URL

@@ -41,5 +41,5 @@ $ docker run -t -i -p 80:8000 my-fresh-app
 
 要部署到云提供商，请将其推送到容器注册表并按照其文档操作。
 
-- [亚马逊网络服务](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image.html#create-container-image-push-ecr)
+- [亚马逊网络服务](https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image#create-container-image-push-ecr)
 - [谷歌云](https://cloud.google.com/container-registry/docs/pushing-and-pulling)
