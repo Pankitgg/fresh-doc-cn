@@ -17,6 +17,12 @@ onMounted(() => {
 </script>
 
 <style>
+body {
+  background: linear-gradient(135deg, #a8e0e8 0%, #d8f5a2 50%, #fef9c3 100%);
+  min-height: 100vh;
+  margin: 0;
+}
+
 .announcement-bar {
   background: linear-gradient(90deg, #a8d8ea, #f4f18d);
   padding: 12px;
