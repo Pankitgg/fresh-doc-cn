@@ -177,16 +177,7 @@ onMounted(() => {
     </div>
   </div>
   <div class="hero-logo">
-    <svg class="fresh-logo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="100" cy="115" rx="60" ry="55" fill="#FBBF24"/>
-      <ellipse cx="85" cy="105" rx="45" ry="42" fill="#FEF3C7"/>
-      <path d="M100 60 L100 95" stroke="#92400E" stroke-width="3" stroke-linecap="round"/>
-      <path d="M85 70 L100 85 L115 70" stroke="#92400E" stroke-width="2" fill="none"/>
-      <path d="M80 85 L100 100 L120 85" stroke="#92400E" stroke-width="2" fill="none"/>
-      <circle cx="100" cy="55" r="8" fill="#FEF3C7"/>
-      <path d="M100 50 L100 60 M95 55 L105 55" stroke="#92400E" stroke-width="2"/>
-      <text x="100" y="185" text-anchor="middle" font-size="28" font-weight="bold" fill="#1F2937">FRESH</text>
-    </svg>
+    <img class="fresh-logo" src="/logo-fresh.svg" alt="Fresh Logo" />
   </div>
 </div>
 
