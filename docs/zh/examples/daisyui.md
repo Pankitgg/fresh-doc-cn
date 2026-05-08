@@ -45,7 +45,7 @@ export function Button(props: ButtonProps) {
 
 ### 展示效果
 
-![DaisyUI Showcase](/docs/fresh-daisyui-showcase.jpg)
+![DaisyUI Showcase](/fresh-daisyui-showcase.jpg)
 
 ### daisyUI 类名参考
 
