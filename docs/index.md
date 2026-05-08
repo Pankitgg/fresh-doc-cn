@@ -1,38 +1,198 @@
 ---
 layout: home
-hero:
-  name: Fresh
-  text: Fresh 文档
-  tagline: 一个现代化的 Deno 全栈框架
-  actions:
-    - theme: brand
-      text: 中文文档
-      link: /zh/getting-started/
-    - theme: alt
-      text: English Documentation
-      link: /en/getting-started/
-    - theme: alt
-      text: 在 GitHub 上查看
-      link: https://github.com/Pankitgg/fresh-doc-cn
-features:
-  - title: 即时渲染
-    details: 选择在服务端或客户端渲染，灵活配置。
-  - title: 岛屿架构
-    details: 在主要静态的 HTML 页面上实现交互式 JavaScript 岛屿。
-  - title: 无需构建
-    details: 直接部署代码，无需任何构建或打包。
+title: Fresh
 ---
 
-Fresh 是一个下一代 Web 框架。它是为 Deno 从头构建的，使用 Preact 进行渲染，使用 Twind 进行样式设计。Fresh 支持服务器端的即时（JIT）渲染，以实现最佳性能和最小化客户端 JavaScript。
+<script setup>
+import { onMounted } from 'vue'
 
-## 文档语言
+onMounted(() => {
+  const banner = document.querySelector('.announcement-bar')
+  if (banner) {
+    banner.addEventListener('click', () => {
+      banner.classList.add('hide')
+    })
+  }
+})
+</script>
 
-请选择您偏好的语言版本：
+<style>
+.announcement-bar {
+  background: linear-gradient(90deg, #a8d8ea, #f4f18d);
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity 0.3s, transform 0.3s;
+}
 
-- [中文文档](/zh/getting-started/)
-- [English Documentation](/en/getting-started/)
+.announcement-bar.hide {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.announcement-bar span {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.hero-subtitle {
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.hero-description {
+  font-size: 18px;
+  color: #4b5563;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.action-btn.primary {
+  background-color: #fbbf24;
+  color: #1a1a1a;
+}
+
+.action-btn.primary:hover {
+  background-color: #f59e0b;
+}
+
+.action-btn.secondary {
+  background-color: #1f2937;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.action-btn.secondary:hover {
+  background-color: #374151;
+}
+
+.copy-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.7;
+}
+
+.hero-logo {
+  flex-shrink: 0;
+  margin-left: 48px;
+}
+
+.fresh-logo {
+  width: 200px;
+  height: 200px;
+}
+
+@media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 24px;
+  }
+  
+  .hero-title {
+    font-size: 36px;
+  }
+  
+  .hero-logo {
+    margin-left: 0;
+    margin-top: 48px;
+  }
+  
+  .hero-actions {
+    justify-content: center;
+  }
+}
+</style>
+
+<div class="announcement-bar">
+  <span>Fresh 2.3 已发布！—— WebSockets、View Transitions、Temporal API 等新功能 →</span>
+</div>
+
+<div class="hero-container">
+  <div class="hero-content">
+    <div class="hero-subtitle">Fresh 简介：</div>
+    <h1 class="hero-title">
+      这个框架如此简单，<br>你一看就会用。
+    </h1>
+    <p class="hero-description">
+      无需配置文件，无需构建步骤，无需 node_modules。
+      只需一个文件，你就拥有一个支持路由、JSX 和岛屿的服务器。
+    </p>
+    <div class="hero-actions">
+      <a href="/zh/getting-started/" class="action-btn primary">
+        开始使用 →
+      </a>
+      <a href="#" class="action-btn secondary" onclick="navigator.clipboard.writeText('deno run -Ar jsr:@fresh/init'); return false;">
+        <code>deno run -Ar jsr:@fresh/init</code>
+        <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-logo">
+    <svg class="fresh-logo" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="100" cy="115" rx="60" ry="55" fill="#FBBF24"/>
+      <ellipse cx="85" cy="105" rx="45" ry="42" fill="#FEF3C7"/>
+      <path d="M100 60 L100 95" stroke="#92400E" stroke-width="3" stroke-linecap="round"/>
+      <path d="M85 70 L100 85 L115 70" stroke="#92400E" stroke-width="2" fill="none"/>
+      <path d="M80 85 L100 100 L120 85" stroke="#92400E" stroke-width="2" fill="none"/>
+      <circle cx="100" cy="55" r="8" fill="#FEF3C7"/>
+      <path d="M100 50 L100 60 M95 55 L105 55" stroke="#92400E" stroke-width="2"/>
+      <text x="100" y="185" text-anchor="middle" font-size="28" font-weight="bold" fill="#1F2937">FRESH</text>
+    </svg>
+  </div>
+</div>
 
 ## 功能特点
+
+Fresh 是一个下一代 Web 框架，为 Deno 从头构建。
 
 ### 零配置
 Fresh 开箱即用，无需复杂的配置文件。
@@ -42,3 +202,10 @@ Fresh 开箱即用，无需复杂的配置文件。
 
 ### 生产就绪
 内置性能优化和最佳实践，直接部署到生产环境。
+
+## 文档语言
+
+请选择您偏好的语言版本：
+
+- [中文文档](/zh/getting-started/)
+- [English Documentation](/en/getting-started/)

@@ -1,11 +1,15 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  title: 'Fresh 文档',
+  title: 'Fresh',
   description: 'Fresh 中文文档',
   ignoreDeadLinks: true,
+  head: [
+    ['link', { rel: 'icon', href: '/favicon-fresh.ico' }]
+  ],
 
   themeConfig: {
+    logo: '/logo-fresh.svg',
     sidebar: [
       {
         text: '介绍',
