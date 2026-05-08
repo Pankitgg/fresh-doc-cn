@@ -1,95 +1,76 @@
 ---
 description: |
-  How Fresh processes requests: the flow from incoming request through middleware, routing, handlers, layouts, and island hydration.
+  Fresh 如何处理请求：请求从传入、经过中间件、路由、处理器、布局，到达岛屿 hydration 的完整流程。
 ---
 
-Fresh is a server-first web framework. Pages are rendered on the server and only
-the interactive parts ([islands](/docs/concepts/islands)) ship JavaScript to the
-browser. This page explains how a request flows through the framework.
+Fresh 是一个服务端优先的 Web 框架。页面在服务端渲染，只有交互部分（[岛屿](/docs/concepts/islands)）才会将 JavaScript 发送到浏览器。本页面将解释请求如何在框架中流动。
 
-## Request lifecycle
+## 请求生命周期
 
-![Request lifecycle flow diagram](/docs/architecture-flow-v2.svg)
+![请求生命周期流程图](/docs/architecture-flow-v2.svg)
 
-## Key concepts
+## 核心概念
 
-### Server-first rendering
+### 服务端优先渲染
 
-Every page is fully rendered to HTML on the server before being sent to the
-browser. This means:
+每个页面在发送到浏览器之前都会在服务端完全渲染为 HTML。这意味着：
 
-- Pages are visible immediately - no blank loading screens
-- Search engines see complete content
-- Pages work without JavaScript enabled
+- 页面立即可见 - 没有空白加载屏幕
+- 搜索引擎能看到完整内容
+- 页面在禁用 JavaScript 时也能工作
 
-### Islands architecture
+### 岛屿架构
 
-Fresh uses the
-[islands architecture](https://jasonformat.com/islands-architecture/). Only
-components in the `islands/` directory are [hydrated](/docs/concepts/islands) in
-the browser. Everything else is static HTML that never runs JavaScript on the
-client.
+Fresh 使用 [岛屿架构](https://jasonformat.com/islands-architecture/)。只有 `islands/` 目录中的组件才会在浏览器中进行 [hydration](/docs/concepts/islands)。其他所有内容都是静态 HTML，永远不会在客户端运行 JavaScript。
 
-This means a page with a single interactive button only ships the JavaScript for
-that button - not for the entire page.
+这意味着一个只有一个交互式按钮的页面只需要发送该按钮的 JavaScript，而不是整个页面的 JavaScript。
 
-### Middleware chain
+### 中间件链
 
-Middlewares execute in registration order, wrapping the handler. Each middleware
-calls `ctx.next()` to pass control to the next middleware (or handler). This
-creates an onion-like pattern where middlewares can act on both the request
-(before `ctx.next()`) and the response (after `ctx.next()`):
+中间件按注册顺序执行，包装处理器。每个中间件调用 `ctx.next()` 将控制权传递给下一个中间件（或处理器）。这创建了一个洋葱模式，中间件可以在请求上（`ctx.next()` 之前）和响应上（`ctx.next()` 之后）执行操作：
 
 ```ts
 app.use(async (ctx) => {
-  // Before: runs on the way in
-  console.log("Request:", ctx.url.pathname);
+  // 之前：在进入时运行
+  console.log("请求:", ctx.url.pathname);
 
   const response = await ctx.next();
 
-  // After: runs on the way out
-  console.log("Status:", response.status);
+  // 之后：在出去时运行
+  console.log("状态:", response.status);
   return response;
 });
 ```
 
-Scoped middleware runs only for requests that match a specific path prefix. Pass
-a path pattern as the first argument to `app.use()`:
+作用域中间件只对匹配特定路径前缀的请求运行。将路径模式作为第一个参数传递给 `app.use()`：
 
 ```ts
 app.use("/admin/*", async (ctx) => {
-  // Only runs for /admin/* routes
+  // 只对 /admin/* 路由运行
   const user = ctx.state.user;
-  if (!user?.isAdmin) return new Response("Forbidden", { status: 403 });
+  if (!user?.isAdmin) return new Response("禁止访问", { status: 403 });
   return ctx.next();
 });
 ```
 
-Global middleware runs on every request; scoped middleware lets you apply logic
-like authentication or logging to a subset of routes.
+全局中间件对每个请求都运行；作用域中间件让你可以将认证或日志等逻辑应用到部分路由。
 
-### Layout inheritance
+### 布局继承
 
-[Layouts](/docs/concepts/layouts) wrap page components and are inherited from
-parent directories. A page at `routes/blog/post.tsx` inherits layouts from:
+[布局](/docs/concepts/layouts) 包装页面组件，并从父目录继承。`routes/blog/post.tsx` 的页面会从以下布局继承：
 
-1. `routes/_layout.tsx` (root layout)
-2. `routes/blog/_layout.tsx` (section layout)
+1. `routes/_layout.tsx`（根布局）
+2. `routes/blog/_layout.tsx`（章节布局）
 
-Layouts nest from the outside in: the root layout is outermost, each deeper
-layout wraps closer to the page, and the innermost layout directly wraps the
-page component. The [app wrapper](/docs/concepts/app) (`_app.tsx`) wraps
-everything.
+布局从外向内嵌套：根布局在最外层，每个更深的布局更接近页面，最内层布局直接包装页面组件。[应用包装器](/docs/concepts/app)（`_app.tsx`）包装所有内容。
 
-### Build and deploy
+### 构建和部署
 
-Fresh uses [Vite](https://vite.dev/) to bundle island JavaScript for production.
-The `deno task build` command:
+Fresh 使用 [Vite](https://vite.dev/) 来打包生产环境的岛屿 JavaScript。`deno task build` 命令：
 
-1. Discovers all islands and their dependencies
-2. Bundles client-side JavaScript with code splitting
-3. Generates a server entry point (`_fresh/server.js`)
-4. Hashes assets for cache busting
+1. 发现所有岛屿及其依赖
+2. 使用代码分割打包客户端 JavaScript
+3. 生成服务端入口点（`_fresh/server.js`）
+4. 对资源进行哈希处理以实现缓存破坏
 
-In production, `_fresh/server.js` serves the pre-built assets. In development,
-Vite provides Hot Module Replacement for instant feedback.
+在生产环境中，`_fresh/server.js` 提供预构建的资源。在开发环境中，Vite 提供热模块替换以获得即时反馈。
