@@ -50,12 +50,21 @@ body {
   backdrop-filter: none !important;
 }
 
+.VPNav {
+  background: transparent !important;
+}
+
+.VPHome {
+  padding-top: 0 !important;
+}
+
 .announcement-bar {
   background: linear-gradient(90deg, #a8d8ea, #f4f18d);
   padding: 12px;
   text-align: center;
   cursor: pointer;
   transition: opacity 0.3s;
+  margin-bottom: 0;
 }
 
 .announcement-bar:hover {
