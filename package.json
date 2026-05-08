@@ -10,7 +10,7 @@
   },
   "type": "module",
   "devDependencies": {
-    "vitepress": "^1.6.3"
+    "vitepress": "^1.6.4"
   },
   "dependencies": {
     "simple-git": "^3.36.0"
