@@ -1,0 +1,18 @@
+{
+  "name": "fresh-docs-cn",
+  "version": "1.0.0",
+  "description": "Fresh framework documentation in Chinese",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "sync:docs": "node scripts/sync-docs.js"
+  },
+  "type": "module",
+  "devDependencies": {
+    "vitepress": "^1.6.3"
+  },
+  "dependencies": {
+    "simple-git": "^3.36.0"
+  }
+}
