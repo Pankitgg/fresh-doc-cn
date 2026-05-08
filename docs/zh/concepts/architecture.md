@@ -7,7 +7,7 @@ Fresh 是一个服务端优先的 Web 框架。页面在服务端渲染，只有
 
 ## 请求生命周期
 
-![请求生命周期流程图](/docs/architecture-flow-v2.svg)
+![请求生命周期流程图](/architecture-flow-v2.svg)
 
 ## 核心概念
 
