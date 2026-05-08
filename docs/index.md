@@ -7,10 +7,10 @@ hero:
   actions:
     - theme: brand
       text: 中文文档
-      link: /zh/latest/
+      link: /zh/
     - theme: alt
       text: English Documentation
-      link: /en/latest/
+      link: /en/
     - theme: alt
       text: 在 GitHub 上查看
       link: https://github.com/Pankitgg/fresh-doc-cn
@@ -29,8 +29,8 @@ Fresh 是一个下一代 Web 框架。它是为 Deno 从头构建的，使用 Pr
 
 请选择您偏好的语言版本：
 
-- [中文文档](/zh/latest/)
-- [English Documentation](/en/latest/)
+- [中文文档](/zh/)
+- [English Documentation](/en/)
 
 ## 功能特点
 
