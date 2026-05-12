@@ -12,4 +12,6 @@
 
 我的
 
-博客：[pankitgg的博客](https://blog.ai-nous.com/)  主要更新我的碎碎念以及一些技术探索
+博客：[pankitgg的博客](https://blog.ai-nous.com/)  
+
+[fresh2快速入门一](https://blog.ai-nous.com/posts/fresh2%E5%BC%80%E5%8F%91%E5%8F%8A%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/)
