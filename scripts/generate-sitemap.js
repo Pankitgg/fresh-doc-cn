@@ -5,6 +5,12 @@ const siteUrl = 'https://fresh-doc-cn.deno.dev'
 const docsPath = resolve(process.cwd(), 'docs')
 const sitemapPath = resolve(process.cwd(), 'docs/public/sitemap.xml')
 
+const externalLinks = [
+  { loc: 'https://blog.ai-nous.com/', priority: '0.9', changefreq: 'daily' },
+  { loc: 'https://ai-nous.com/', priority: '0.9', changefreq: 'daily' },
+  { loc: 'https://studio.ai-nous.com/', priority: '0.9', changefreq: 'daily' },
+]
+
 function walkDir(dir, lang, basePath = '') {
   const files = readdirSync(dir, { withFileTypes: true })
   const urls = []
@@ -38,6 +44,15 @@ function generateSitemap() {
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
   
+  externalLinks.forEach(link => {
+    xml += '  <url>\n'
+    xml += `    <loc>${link.loc}</loc>\n`
+    xml += `    <lastmod>${now}</lastmod>\n`
+    xml += `    <changefreq>${link.changefreq}</changefreq>\n`
+    xml += `    <priority>${link.priority}</priority>\n`
+    xml += '  </url>\n'
+  })
+  
   uniqueUrls.forEach(url => {
     xml += '  <url>\n'
     xml += `    <loc>${siteUrl}${url}</loc>\n`
@@ -51,7 +66,8 @@ function generateSitemap() {
   
   writeFileSync(sitemapPath, xml, 'utf-8')
   console.log(`Sitemap generated: ${sitemapPath}`)
-  console.log(`Total URLs: ${uniqueUrls.length}`)
+  console.log(`Total URLs: ${uniqueUrls.length + externalLinks.length}`)
+  console.log(`External links: ${externalLinks.length}`)
 }
 
 generateSitemap()

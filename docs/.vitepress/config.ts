@@ -228,6 +228,9 @@ export default defineConfig({
     logo: '/logo-fresh.svg',
     nav: [
       { text: '首页', link: '/zh/' },
+      { text: '博客', link: 'https://blog.ai-nous.com/', icon: 'book' },
+      { text: '资讯', link: 'https://ai-nous.com/', icon: 'info' },
+      { text: '工作台', link: 'https://studio.ai-nous.com/', icon: 'compass' },
     ],
     sidebar: {
       '/zh/': zhSidebar,
@@ -236,6 +239,7 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Pankitgg/fresh-doc-cn' },
     ],
+    appearance: false,
   },
 
 })
