@@ -22,6 +22,19 @@ features:
 ---
 
 <script setup>
+import { ref, onMounted } from 'vue'
+
+const buildTime = ref('')
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/version.json')
+    const data = await response.json()
+    buildTime.value = data.buildTimeFormatted
+  } catch (e) {
+    console.error('Failed to load version data:', e)
+  }
+})
 </script>
 
 <style>
@@ -57,4 +70,16 @@ body {
 .VPHome {
   padding-top: 0 !important;
 }
+
+.translation-time {
+  text-align: center;
+  margin-top: 40px;
+  padding: 12px;
+  color: #6b7280;
+  font-size: 14px;
+}
 </style>
+
+<div class="translation-time">
+  翻译校准时间：{{ buildTime }}
+</div>
