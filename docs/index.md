@@ -94,6 +94,17 @@ body {
 .sitemap-link a:hover {
   text-decoration: underline;
 }
+
+.VPNavBarAppearance,
+.VPNavBarAppearance *,
+.VPNavBar .VPNavBarAppearance {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.VPNavBarHamburger {
+  display: none !important;
+}
 </style>
 
 <div class="translation-time">
