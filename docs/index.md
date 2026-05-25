@@ -54,6 +54,16 @@ body {
   background: transparent !important;
 }
 
+.VPNavBar .content-body {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.VPNavBar .container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 .VPHome {
   padding-top: 0 !important;
 }
