@@ -74,7 +74,7 @@ deno task dev
 
 Go to the URL printed in the terminal to view your app.
 
-![Screenshot of the newly initialized Fresh app showing a counter](/docs/getting-started-1-init.jpg)
+![Screenshot of the newly initialized Fresh app showing a counter](/getting-started-1-init.jpg)
 
 > [info]: If you encounter any problems during setup or development, check the
 > [troubleshooting guide](/docs/latest/advanced/troubleshooting) for common
@@ -100,7 +100,7 @@ export default define.page(() => {
 
 If we navigate to `/about` in the browser we'll see our newly created page.
 
-![Screenshot of the /about route](/docs/getting-started-2-about.png)
+![Screenshot of the /about route](/getting-started-2-about.png)
 
 ## Create an island
 
@@ -155,7 +155,7 @@ export default define.page(() => {
 
 Now, we can see our countdown in action:
 
-![Screenshot of the countdown component](/docs/getting-started-3-countdown.png)
+![Screenshot of the countdown component](/getting-started-3-countdown.png)
 
 ## Next steps
 

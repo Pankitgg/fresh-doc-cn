@@ -50,7 +50,7 @@ export function Button(props: ButtonProps) {
 
 ### Display Effect
 
-![DaisyUI Showcase](/docs/fresh-daisyui-showcase.jpg)
+![DaisyUI Showcase](/fresh-daisyui-showcase.jpg)
 
 ### daisyUI Class Name Reference
 
