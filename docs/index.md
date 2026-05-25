@@ -22,16 +22,6 @@ features:
 ---
 
 <script setup>
-import { onMounted } from 'vue'
-
-onMounted(() => {
-  const banner = document.querySelector('.announcement-bar')
-  if (banner) {
-    banner.addEventListener('click', () => {
-      window.location.href = '/zh/getting-started/'
-    })
-  }
-})
 </script>
 
 <style>
@@ -67,26 +57,4 @@ body {
 .VPHome {
   padding-top: 0 !important;
 }
-
-.announcement-bar {
-  background: linear-gradient(90deg, #a8d8ea, #f4f18d);
-  padding: 12px;
-  text-align: center;
-  cursor: pointer;
-  transition: opacity 0.3s;
-  margin-bottom: 0;
-}
-
-.announcement-bar:hover {
-  opacity: 0.9;
-}
-
-.announcement-bar span {
-  font-weight: 600;
-  color: #1a1a1a;
-}
 </style>
-
-<div class="announcement-bar">
-  <span>Fresh 2.3 已发布！—— WebSockets、View Transitions、Temporal API 等新功能 →</span>
-</div>
