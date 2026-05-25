@@ -77,7 +77,7 @@ export default define.page(async (ctx) => {
 
 ## 从中间件传递状态
 
-[中间件](/docs/concepts/middleware) 可以在 `ctx.state` 上设置值，这些值可供所有下游处理器和组件使用：
+[中间件](/zh/concepts/middleware) 可以在 `ctx.state` 上设置值，这些值可供所有下游处理器和组件使用：
 
 ```ts routes/_middleware.ts
 import { define } from "@/utils.ts";

@@ -3,7 +3,7 @@ description: |
   使用 _layout.tsx 文件将页面包裹在共享 UI 中。布局会自动嵌套，支持异步数据加载，并且可以按路由跳过。
 ---
 
-本页面介绍使用 `_layout.tsx` 文件的**基于文件的布局**。如果您是通过 `new App()` 以编程方式定义路由，请参阅[布局（编程式）](/docs/advanced/layouts)。
+本页面介绍使用 `_layout.tsx` 文件的**基于文件的布局**。如果您是通过 `new App()` 以编程方式定义路由，请参阅[布局（编程式）](/zh/advanced/layouts)。
 
 布局允许您将一组页面包裹在共享的 UI 中——导航栏、侧边栏、页脚或任何通用结构。它们在 `_layout.tsx` 文件中定义，并基于目录树自动嵌套。
 
@@ -36,7 +36,7 @@ description: |
 
 ## 基本布局
 
-布局接收 `Component`（要包裹的子组件）和其他属性，如 `state` 和 `url`。通过[中间件](/docs/concepts/middleware)设置的任何状态都可以通过 `props.state` 获取。
+布局接收 `Component`（要包裹的子组件）和其他属性，如 `state` 和 `url`。通过[中间件](/zh/concepts/middleware)设置的任何状态都可以通过 `props.state` 获取。
 
 ```tsx routes/_layout.tsx
 import { define } from "../utils.ts";
@@ -141,7 +141,7 @@ export default define.layout(({ Component, state }) => {
 
 ## 布局与 App 包装器的区别
 
-[App 包装器](/docs/concepts/app)（`_app.tsx`）和布局有不同的用途：
+[App 包装器](/zh/concepts/app)（`_app.tsx`）和布局有不同的用途：
 
 - **App 包装器** - 最外层的 `<html>`/`<head>`/`<body>` 结构。只有一个，它包裹所有内容。
 - **布局** - 基于目录结构嵌套的可复用 UI 外壳。可以有多个，它们位于 App 包装器和页面组件之间。

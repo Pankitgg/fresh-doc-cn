@@ -29,7 +29,7 @@ deno install --allow-scripts
 
 ## 不要使用 esm.sh
 
-Fresh 1.x 严重依赖 [esm.sh](https://esm.sh/) 以便能够将 npm 包与 Fresh 一起使用。这种情况在 Fresh 2 的早期 alpha 版本中继续存在。随着迁移到 [`vite`](/docs/advanced/vite)，这不再是必要的，你应该直接使用 npm 中的相关 npm 包。
+Fresh 1.x 严重依赖 [esm.sh](https://esm.sh/) 以便能够将 npm 包与 Fresh 一起使用。这种情况在 Fresh 2 的早期 alpha 版本中继续存在。随着迁移到 [`vite`](/zh/advanced/vite)，这不再是必要的，你应该直接使用 npm 中的相关 npm 包。
 
 ```diff deno.json
   {

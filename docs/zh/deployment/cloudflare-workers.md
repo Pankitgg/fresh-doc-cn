@@ -5,7 +5,7 @@ description: "在 Cloudflare Workers 上部署 Fresh"
 按照以下说明将 Fresh 部署到 Cloudflare Workers：
 
 1. 运行 `deno install --allow-scripts npm:@cloudflare/vite-plugin npm:wrangler`
-2. 在你的 [vite](/docs/advanced/vite) 配置文件中添加 cloudflare 插件：
+2. 在你的 [vite](/zh/advanced/vite) 配置文件中添加 cloudflare 插件：
 
 ```diff vite.config.ts
   import { defineConfig } from "vite";

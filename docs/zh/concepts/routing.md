@@ -90,4 +90,4 @@ export const handlers = define.handlers((ctx) => {
 });
 ```
 
-有关基于文件的路由约定的更多信息，请参阅[文件路由](/docs/concepts/file-routing)。
+有关基于文件的路由约定的更多信息，请参阅[文件路由](/zh/concepts/file-routing)。

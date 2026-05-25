@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Fresh framework documentation in Chinese",
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
+    "docs:dev": "node scripts/generate-version.js && node scripts/generate-sitemap.js && vitepress dev docs",
+    "docs:build": "node scripts/generate-version.js && node scripts/generate-sitemap.js && vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "sync:docs": "node scripts/sync-docs.js",
     "sync:images": "node scripts/sync-images.js"

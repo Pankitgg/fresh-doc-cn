@@ -14,7 +14,7 @@ const app = new App()
 
 ## 导入的资源与静态文件
 
-当使用 Fresh 与 [Vite](/docs/advanced/vite)（现在是默认配置）时，**在 JavaScript/TypeScript 代码中导入的文件不应放置在 `static/` 文件夹中**。这可以防止构建过程中的文件重复。
+当使用 Fresh 与 [Vite](/zh/advanced/vite)（现在是默认配置）时，**在 JavaScript/TypeScript 代码中导入的文件不应放置在 `static/` 文件夹中**。这可以防止构建过程中的文件重复。
 
 ```tsx
 // 不要从 static/ 导入
@@ -52,7 +52,7 @@ export default defineConfig({
 
 当你有一个构建步骤将资源生成到单独的目录中，并且希望将它们与手写的静态文件分开时，这很有用。
 
-> [info]：如果你使用的是 [Builder](/docs/advanced/builder) API 而不是 Vite，相同的 `staticDir` 选项接受一个字符串或字符串数组。
+> [info]：如果你使用的是 [Builder](/zh/advanced/builder) API 而不是 Vite，相同的 `staticDir` 选项接受一个字符串或字符串数组。
 
 ## 缓存标头
 

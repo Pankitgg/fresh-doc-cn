@@ -3,7 +3,7 @@ description: |
   路由是 Fresh 应用程序的基本构建块。它们用于定义应用程序在请求给定路径时的行为。
 ---
 
-在 [`App`](/docs/concepts/app) 实例上使用 `.fsRoutes()` 辅助方法来指定文件路由的插入位置。它会根据项目中 `routes/` 文件夹的结构添加路由（或者在实例化 [`fresh()` vite 插件](/docs/advanced/vite)时指定的任何其他文件夹）。当你在那里添加新文件时，它会自动注册一个新的路由。
+在 [`App`](/zh/concepts/app) 实例上使用 `.fsRoutes()` 辅助方法来指定文件路由的插入位置。它会根据项目中 `routes/` 文件夹的结构添加路由（或者在实例化 [`fresh()` vite 插件](/zh/advanced/vite)时指定的任何其他文件夹）。当你在那里添加新文件时，它会自动注册一个新的路由。
 
 ```ts main.ts
 import { App, staticFiles } from "fresh";
@@ -13,7 +13,7 @@ const app = new App({ basePath: "/foo" })
   .fsRoutes(); // 这会将所有文件路由插入到此处
 ```
 
-> [info]：使用文件路由时需要 `staticFiles()` 中间件。否则，[岛屿](/docs/concepts/islands) 所需的 JavaScript 文件将不会提供给浏览器。
+> [info]：使用文件路由时需要 `staticFiles()` 中间件。否则，[岛屿](/zh/concepts/islands) 所需的 JavaScript 文件将不会提供给浏览器。
 
 示例项目结构：
 
@@ -41,7 +41,7 @@ const app = new App({ basePath: "/foo" })
 
 **`routes/` 中的特殊目录：**
 
-- **`(_islands)`** - 此目录中的文件被视为[岛屿](/docs/concepts/islands)，与顶层 `islands/` 文件夹中的文件相同。这允许你将岛屿与使用它们的路由放在一起。
+- **`(_islands)`** - 此目录中的文件被视为[岛屿](/zh/concepts/islands)，与顶层 `islands/` 文件夹中的文件相同。这允许你将岛屿与使用它们的路由放在一起。
 - **`(_components)`** - 一个用于仅由附近路由使用的非岛屿组件的约定目录。Fresh 不会特别处理这些文件——括号只是为了防止它们成为路由。
 
 文件名映射到路由模式的规则如下：
@@ -85,7 +85,7 @@ export const css = ["./assets/dashboard.css"];
 
 ## 路由分组
 
-在使用[布局](/docs/advanced/layouts)或[中间件](/docs/concepts/middleware)时，你有时会遇到这样的情况：希望你的路由继承自除 URL 段建议之外的另一个布局。
+在使用[布局](/zh/advanced/layouts)或[中间件](/zh/concepts/middleware)时，你有时会遇到这样的情况：希望你的路由继承自除 URL 段建议之外的另一个布局。
 
 让我们用示例来说明：
 

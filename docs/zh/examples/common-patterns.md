@@ -7,7 +7,7 @@ description: |
 
 ## 受保护的路由
 
-使用[中间件](/docs/concepts/middleware)检查身份验证并重定向未认证的用户：
+使用[中间件](/zh/concepts/middleware)检查身份验证并重定向未认证的用户：
 
 ```ts routes/dashboard/_middleware.ts
 import { define } from "@/utils.ts";
@@ -99,7 +99,7 @@ export default define.middleware(async (ctx) => {
 });
 ```
 
-请参阅[会话管理](/docs/examples/session-management)以获取完整的会话示例。
+请参阅[会话管理](/zh/examples/session-management)以获取完整的会话示例。
 
 ## 读取查询参数
 
@@ -171,7 +171,7 @@ export const handler = define.handlers({
 
 ## WebSocket
 
-Fresh 通过 `ctx.upgrade()` 提供一流的 WebSocket 支持。请参阅完整的 [WebSocket 指南](/docs/advanced/websockets)以了解所有选项。
+Fresh 通过 `ctx.upgrade()` 提供一流的 WebSocket 支持。请参阅完整的 [WebSocket 指南](/zh/advanced/websockets)以了解所有选项。
 
 ## 子域路由
 

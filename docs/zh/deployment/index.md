@@ -14,7 +14,7 @@ deno install --allow-scripts
 deno task build
 ```
 
-> [info]：这会在后台运行 [vite](/docs/advanced/vite) 构建。如果你是从 Fresh 1.x 迁移而来，并且仍然有 `dev.ts` 文件，请参阅[迁移指南](/docs/migration-guide) 来更新你的任务。
+> [info]：这会在后台运行 [vite](/zh/advanced/vite) 构建。如果你是从 Fresh 1.x 迁移而来，并且仍然有 `dev.ts` 文件，请参阅[迁移指南](/docs/migration-guide) 来更新你的任务。
 
 完成后，它会在项目目录中创建一个 `_fresh` 文件夹，其中包含优化后的资源。
 

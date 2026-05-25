@@ -2,7 +2,7 @@
 description: "在 Deno Deploy 上部署 Fresh"
 ---
 
-部署 Fresh 的推荐方式是使用 [Deno Deploy](https://deno.com/deploy)。它会自动为拉取请求创建分支预览、收集请求和 HTTP 指标，以及开箱即用地收集[跟踪数据](/docs/advanced/opentelemetry)。
+部署 Fresh 的推荐方式是使用 [Deno Deploy](https://deno.com/deploy)。它会自动为拉取请求创建分支预览、收集请求和 HTTP 指标，以及开箱即用地收集[跟踪数据](/zh/advanced/opentelemetry)。
 
 ## 设置
 
@@ -30,7 +30,7 @@ description: "在 Deno Deploy 上部署 Fresh"
 
 你可以在 Deno Deploy 仪表板的**设置 > 环境变量**部分设置环境变量。这些可以通过 `Deno.env.get()` 在运行时访问。
 
-对于需要在[岛屿](/docs/concepts/islands)代码（客户端）中使用的变量，请使用 `FRESH_PUBLIC_` 前缀——请参阅[环境变量](/docs/advanced/environment-variables)。
+对于需要在[岛屿](/zh/concepts/islands)代码（客户端）中使用的变量，请使用 `FRESH_PUBLIC_` 前缀——请参阅[环境变量](/zh/advanced/environment-variables)。
 
 ## 自定义域名
 

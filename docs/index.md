@@ -22,14 +22,17 @@ features:
 ---
 
 <script setup>
-import { onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 
-onMounted(() => {
-  const banner = document.querySelector('.announcement-bar')
-  if (banner) {
-    banner.addEventListener('click', () => {
-      window.location.href = '/zh/getting-started/'
-    })
+const buildTime = ref('')
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/version.json')
+    const data = await response.json()
+    buildTime.value = data.buildTimeFormatted
+  } catch (e) {
+    console.error('Failed to load version data:', e)
   }
 })
 </script>
@@ -54,29 +57,63 @@ body {
   background: transparent !important;
 }
 
+.VPNavBar .content-body {
+  background-color: transparent !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.VPNavBar .container {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
 .VPHome {
   padding-top: 0 !important;
 }
 
-.announcement-bar {
-  background: linear-gradient(90deg, #a8d8ea, #f4f18d);
-  padding: 12px;
+.translation-time {
   text-align: center;
-  cursor: pointer;
-  transition: opacity 0.3s;
-  margin-bottom: 0;
+  margin-top: 40px;
+  padding: 12px;
+  color: #6b7280;
+  font-size: 14px;
 }
 
-.announcement-bar:hover {
-  opacity: 0.9;
+.sitemap-link {
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 40px;
 }
 
-.announcement-bar span {
-  font-weight: 600;
-  color: #1a1a1a;
+.sitemap-link a {
+  color: #059669;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.sitemap-link a:hover {
+  text-decoration: underline;
+}
+
+.VPNavBarAppearance,
+.VPNavBarAppearance *,
+.VPNavBar .VPNavBarAppearance {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.VPNavBarHamburger {
+  display: none !important;
 }
 </style>
 
-<div class="announcement-bar">
-  <span>Fresh 2.3 已发布！—— WebSockets、View Transitions、Temporal API 等新功能 →</span>
+<div class="translation-time">
+  翻译校准时间：{{ buildTime }}
+</div>
+
+<div class="sitemap-link">
+  <a href="/sitemap.xml" target="_blank" rel="noopener">
+    📄 查看站点地图
+  </a>
 </div>

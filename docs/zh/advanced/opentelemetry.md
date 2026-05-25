@@ -9,10 +9,10 @@ Fresh 自动用 [OpenTelemetry](https://opentelemetry.io/) span 检测关键操�
 
 Fresh 为以下内容创建 span：
 
-- **[中间件](/docs/concepts/middleware) 执行**——链中的每个中间件
+- **[中间件](/zh/concepts/middleware) 执行**——链中的每个中间件
 - **路由处理器执行**——处理器函数调用
 - **渲染**——服务器端页面渲染，包括异步组件
-- **[静态文件](/docs/concepts/static-files) 服务**——文件查找、缓存和响应
+- **[静态文件](/zh/concepts/static-files) 服务**——文件查找、缓存和响应
 - **延迟路由加载**——首次访问时动态导入的路由模块
 
 所有 span 都在 `fresh` 追踪器下创建（以当前 Fresh 版本命名）。每个请求的根 span 包含 `http.route`，其中有匹配的路由模式（例如 `GET /blog/:slug`），便于按路由对追踪进行分组。
@@ -41,7 +41,7 @@ deno task start
 
 ### 使用 Deno Deploy
 
-[Deno Deploy](/docs/deployment/deno-deploy) 在使用 Fresh 预设时会自动收集 Fresh 追踪——无需配置。追踪会出现在 Deno Deploy 仪表板中。
+[Deno Deploy](/zh/deployment/deno-deploy) 在使用 Fresh 预设时会自动收集 Fresh 追踪——无需配置。追踪会出现在 Deno Deploy 仪表板中。
 
 ### 使用自定义导出器
 

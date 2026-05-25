@@ -3,7 +3,7 @@ description: |
   App 类是 Fresh 的核心，用于定义路由、中间件、布局等。
 ---
 
-`App` 类是 Fresh 的核心，将传入的请求路由到正确的[中间件](/docs/concepts/middleware)。路由、中间件、[布局](/docs/concepts/layouts)等都在这里定义。
+`App` 类是 Fresh 的核心，将传入的请求路由到正确的[中间件](/zh/concepts/middleware)。路由、中间件、[布局](/zh/concepts/layouts)等都在这里定义。
 
 ```ts main.ts
 const app = new App()
@@ -60,7 +60,7 @@ const app = new App()
 
 ## `.use()`
 
-添加一个或多个[中间件](/docs/concepts/middleware)。中间件从左到右匹配。
+添加一个或多个[中间件](/zh/concepts/middleware)。中间件从左到右匹配。
 
 ```ts
 // Add a middleware at the root
@@ -261,7 +261,7 @@ app.all("/api/foo", async () => {
 
 ## `.fsRoute()`
 
-将所有[基于文件的路由](/docs/concepts/file-routing)、中间件、布局和[错误页面](/docs/advanced/error-handling)注入到应用实例中。
+将所有[基于文件的路由](/zh/concepts/file-routing)、中间件、布局和[错误页面](/zh/advanced/error-handling)注入到应用实例中。
 
 ```ts
 app.fsRoutes();
@@ -292,11 +292,11 @@ app.route("/about", {
 
 ## `.appWrapper()`
 
-设置[应用包装器](/docs/advanced/app-wrapper)组件。这是渲染外部 HTML（通常直到 `<body>` 标签之前）的地方。
+设置[应用包装器](/zh/advanced/app-wrapper)组件。这是渲染外部 HTML（通常直到 `<body>` 标签之前）的地方。
 
 ## `.layout()`
 
-在指定路径设置一个[布局](/docs/advanced/layouts)组件。应用包装器组件和先前的布局默认会被继承，除非选择退出。
+在指定路径设置一个[布局](/zh/advanced/layouts)组件。应用包装器组件和先前的布局默认会被继承，除非选择退出。
 
 ## `.onError()`
 

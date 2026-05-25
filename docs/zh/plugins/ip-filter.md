@@ -79,4 +79,4 @@ const app = new App()
 
 - `remote.addr` -- 客户端的 IP 地址
 - `remote.type` -- `"IPv4"` 或 `"IPv6"`
-- `ctx` -- 请求[上下文](/docs/concepts/context)
+- `ctx` -- 请求[上下文](/zh/concepts/context)

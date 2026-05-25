@@ -11,7 +11,7 @@ delete) API here. Additionally, we'll briefly mention CORS requests and how
 
 Using HTTP methods is a common way to create a REST API. Fresh supports common
 HTTP methods in handlers out of the box. Async HTTP requests are also supported.
-Read more about custom handlers [here](/docs/getting-started/custom-handlers).
+Read more about custom handlers [here](/zh/getting-started/custom-handlers).
 
 In this example we'll be creating a small API that uses
 [Deno KV](https://deno.com/kv) to store users in a database.

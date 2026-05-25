@@ -15,7 +15,7 @@ App wrapper 是 Fresh 渲染层级中最外层的组件。它定义了每个页�
 - 设置全局 `<body>` 类或数据属性
 - 提供一致的 HTML 骨架，而无需在每个布局中重复
 
-如果你使用[基于文件的路由](/docs/concepts/file-routing)，请创建 `routes/_app.tsx` 文件。否则，请使用 `app.appWrapper()` 以编程方式注册。
+如果你使用[基于文件的路由](/zh/concepts/file-routing)，请创建 `routes/_app.tsx` 文件。否则，请使用 `app.appWrapper()` 以编程方式注册。
 
 ## 基本示例
 
@@ -61,14 +61,14 @@ function AppWrapper({ Component }) {
 app.appWrapper(AppWrapper);
 ```
 
-每个 [`App`](/docs/concepts/app) 实例只支持一个 App Wrapper。
+每个 [`App`](/zh/concepts/app) 实例只支持一个 App Wrapper。
 
 ## 它在渲染层级中的位置
 
 当 Fresh 渲染页面时，组件的嵌套结构如下：
 
 1. **App Wrapper**（`_app.tsx`）——最外层，提供 `<html>`/`<head>`/`<body>`
-2. **[布局](/docs/concepts/layouts)**（`_layout.tsx`）——共享的页面外壳（导航栏、侧边栏、页脚）
+2. **[布局](/zh/concepts/layouts)**（`_layout.tsx`）——共享的页面外壳（导航栏、侧边栏、页脚）
 3. **页面组件**——路由本身
 
 App Wrapper 包裹所有内容。布局位于其内部，并包裹页面。

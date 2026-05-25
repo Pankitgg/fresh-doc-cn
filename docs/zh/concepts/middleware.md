@@ -3,7 +3,7 @@ description: |
   Add middleware routes to intercept requests or responses for analytics purposes, access control, or anything else.
 ---
 
-中间件是一个函数，它接收一个包含[`请求`](https://developer.mozilla.org/en-US/docs/Web/API/Request)的[`上下文`](/docs/concepts/context)对象，并返回一个[`响应`](https://developer.mozilla.org/en-US/docs/Web/API/Response)。中间件通常用于设置 HTTP 标头、测量响应时间或获取数据并将其传递给另一个中间件。
+中间件是一个函数，它接收一个包含[`请求`](https://developer.mozilla.org/en-US/docs/Web/API/Request)的[`上下文`](/zh/concepts/context)对象，并返回一个[`响应`](https://developer.mozilla.org/en-US/docs/Web/API/Response)。中间件通常用于设置 HTTP 标头、测量响应时间或获取数据并将其传递给另一个中间件。
 
 ```tsx main.ts
 const app = new App<{ greeting: string }>()
@@ -44,14 +44,14 @@ const middleware = define.middleware(async (ctx) => {
 
 Fresh 自带以下内置中间件：
 
-- [cors()](/docs/plugins/cors) - 设置 CORS HTTP 标头
-- [csrf()](/docs/plugins/csrf) - CSRF 保护
-- [csp()](/docs/plugins/csp) - 内容安全策略标头
-- [trailingSlashes()](/docs/plugins/trailing-slashes) - 强制尾部斜杠
+- [cors()](/zh/plugins/cors) - 设置 CORS HTTP 标头
+- [csrf()](/zh/plugins/csrf) - CSRF 保护
+- [csp()](/zh/plugins/csp) - 内容安全策略标头
+- [trailingSlashes()](/zh/plugins/trailing-slashes) - 强制尾部斜杠
 
 ## 基于文件系统路由的中间件
 
-通过[基于文件系统路由](/docs/concepts/file-routing)，您可以在 `routes/` 文件夹或其任何子文件夹中的 `_middleware.ts` 文件中定义中间件。
+通过[基于文件系统路由](/zh/concepts/file-routing)，您可以在 `routes/` 文件夹或其任何子文件夹中的 `_middleware.ts` 文件中定义中间件。
 
 ```ts routes/_middleware.ts
 import { define } from "../utils.ts";

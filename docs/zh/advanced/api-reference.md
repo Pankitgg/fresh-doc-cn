@@ -18,15 +18,15 @@ import { App, createDefine, HttpError, page, staticFiles } from "fresh";
 
 | 导出                                                                | 类型     | 描述                                                                                        |
 | --------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------------ |
-| [`App`](https://jsr.io/@fresh/core/doc/~/App)                         | 类       | 主应用程序类。参见 [App](/docs/concepts/app)。                                             |
-| [`staticFiles`](https://jsr.io/@fresh/core/doc/~/staticFiles)         | 函数     | 用于提供静态文件的中间件。参见 [静态文件](/docs/concepts/static-files)。                     |
-| [`createDefine`](https://jsr.io/@fresh/core/doc/~/createDefine)       | 函数     | 创建类型安全的 `define.*` 辅助函数。参见 [Define 辅助函数](/docs/advanced/define)。          |
-| [`page`](https://jsr.io/@fresh/core/doc/~/page)                       | 函数     | 将数据从处理器返回到页面组件。参见 [数据获取](/docs/concepts/data-fetching)。               |
-| [`HttpError`](https://jsr.io/@fresh/core/doc/~/HttpError)             | 类       | 抛出带有状态码的 HTTP 错误。参见 [错误处理](/docs/advanced/error-handling)。                 |
-| [`cors`](https://jsr.io/@fresh/core/doc/~/cors)                       | 函数     | CORS 中间件。参见 [cors](/docs/plugins/cors)。                                             |
-| [`csrf`](https://jsr.io/@fresh/core/doc/~/csrf)                       | 函数     | CSRF 保护中间件。参见 [csrf](/docs/plugins/csrf)。                                         |
-| [`csp`](https://jsr.io/@fresh/core/doc/~/csp)                         | 函数     | 内容安全策略中间件。参见 [csp](/docs/plugins/csp)。                                         |
-| [`trailingSlashes`](https://jsr.io/@fresh/core/doc/~/trailingSlashes) | 函数     | 尾部斜杠强制中间件。参见 [trailingSlashes](/docs/plugins/trailing-slashes)。                |
+| [`App`](https://jsr.io/@fresh/core/doc/~/App)                         | 类       | 主应用程序类。参见 [App](/zh/concepts/app)。                                             |
+| [`staticFiles`](https://jsr.io/@fresh/core/doc/~/staticFiles)         | 函数     | 用于提供静态文件的中间件。参见 [静态文件](/zh/concepts/static-files)。                     |
+| [`createDefine`](https://jsr.io/@fresh/core/doc/~/createDefine)       | 函数     | 创建类型安全的 `define.*` 辅助函数。参见 [Define 辅助函数](/zh/advanced/define)。          |
+| [`page`](https://jsr.io/@fresh/core/doc/~/page)                       | 函数     | 将数据从处理器返回到页面组件。参见 [数据获取](/zh/concepts/data-fetching)。               |
+| [`HttpError`](https://jsr.io/@fresh/core/doc/~/HttpError)             | 类       | 抛出带有状态码的 HTTP 错误。参见 [错误处理](/zh/advanced/error-handling)。                 |
+| [`cors`](https://jsr.io/@fresh/core/doc/~/cors)                       | 函数     | CORS 中间件。参见 [cors](/zh/plugins/cors)。                                             |
+| [`csrf`](https://jsr.io/@fresh/core/doc/~/csrf)                       | 函数     | CSRF 保护中间件。参见 [csrf](/zh/plugins/csrf)。                                         |
+| [`csp`](https://jsr.io/@fresh/core/doc/~/csp)                         | 函数     | 内容安全策略中间件。参见 [csp](/zh/plugins/csp)。                                         |
+| [`trailingSlashes`](https://jsr.io/@fresh/core/doc/~/trailingSlashes) | 函数     | 尾部斜杠强制中间件。参见 [trailingSlashes](/zh/plugins/trailing-slashes)。                |
 
 **类型：**
 
@@ -54,7 +54,7 @@ import { App, createDefine, HttpError, page, staticFiles } from "fresh";
 
 ## `fresh/runtime`
 
-服务器和客户端代码共享的运行时工具。可以安全地在 [islands](/docs/concepts/islands) 中导入。
+服务器和客户端代码共享的运行时工具。可以安全地在 [islands](/zh/concepts/islands) 中导入。
 
 ```ts
 import {
@@ -70,10 +70,10 @@ import {
 | 导出                                                                | 类型      | 描述                                                                                    |
 | --------------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------- |
 | [`IS_BROWSER`](https://jsr.io/@fresh/core/doc/runtime/~/IS_BROWSER)   | 常量      | 在浏览器中为 `true`，在服务器上为 `false`。用于保护仅浏览器的代码。                     |
-| [`asset`](https://jsr.io/@fresh/core/doc/runtime/~/asset)             | 函数      | 向资产 URL 添加缓存破坏查询参数。参见 [静态文件](/docs/concepts/static-files)。         |
+| [`asset`](https://jsr.io/@fresh/core/doc/runtime/~/asset)             | 函数      | 向资产 URL 添加缓存破坏查询参数。参见 [静态文件](/zh/concepts/static-files)。         |
 | [`assetSrcSet`](https://jsr.io/@fresh/core/doc/runtime/~/assetSrcSet) | 函数      | 对 `srcset` 字符串中的所有 URL 应用 `asset()`。                                         |
-| [`Partial`](https://jsr.io/@fresh/core/doc/runtime/~/Partial)         | 组件      | 标记 partial 更新的区域。参见 [Partials](/docs/advanced/partials)。                     |
-| [`Head`](https://jsr.io/@fresh/core/doc/runtime/~/Head)               | 组件      | 向文档 `<head>` 添加元素。参见 [<head> 元素](/docs/advanced/head)。                     |
+| [`Partial`](https://jsr.io/@fresh/core/doc/runtime/~/Partial)         | 组件      | 标记 partial 更新的区域。参见 [Partials](/zh/advanced/partials)。                     |
+| [`Head`](https://jsr.io/@fresh/core/doc/runtime/~/Head)               | 组件      | 向文档 `<head>` 添加元素。参见 [<head> 元素](/zh/advanced/head)。                     |
 | [`HttpError`](https://jsr.io/@fresh/core/doc/runtime/~/HttpError)     | 类        | HTTP 错误类（从 `fresh` 重新导出）。                                                     |
 
 ## `fresh/dev`
@@ -86,7 +86,7 @@ import { Builder } from "fresh/dev";
 
 | 导出                                                    | 类型  | 描述                                                           |
 | --------------------------------------------------------- | ----- | ------------------------------------------------------------- |
-| [`Builder`](https://jsr.io/@fresh/core/doc/dev/~/Builder) | 类    | Vite 之前的构建系统（旧版）。参见 [Builder](/docs/advanced/builder)。 |
+| [`Builder`](https://jsr.io/@fresh/core/doc/dev/~/Builder) | 类    | Vite 之前的构建系统（旧版）。参见 [Builder](/zh/advanced/builder)。 |
 
 **类型：**
 

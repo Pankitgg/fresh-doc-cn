@@ -3,7 +3,7 @@ description: |
   Fresh 如何处理请求：请求从传入、经过中间件、路由、处理器、布局，到达岛屿 hydration 的完整流程。
 ---
 
-Fresh 是一个服务端优先的 Web 框架。页面在服务端渲染，只有交互部分（[岛屿](/docs/concepts/islands)）才会将 JavaScript 发送到浏览器。本页面将解释请求如何在框架中流动。
+Fresh 是一个服务端优先的 Web 框架。页面在服务端渲染，只有交互部分（[岛屿](/zh/concepts/islands)）才会将 JavaScript 发送到浏览器。本页面将解释请求如何在框架中流动。
 
 ## 请求生命周期
 
@@ -21,7 +21,7 @@ Fresh 是一个服务端优先的 Web 框架。页面在服务端渲染，只有
 
 ### 岛屿架构
 
-Fresh 使用 [岛屿架构](https://jasonformat.com/islands-architecture/)。只有 `islands/` 目录中的组件才会在浏览器中进行 [hydration](/docs/concepts/islands)。其他所有内容都是静态 HTML，永远不会在客户端运行 JavaScript。
+Fresh 使用 [岛屿架构](https://jasonformat.com/islands-architecture/)。只有 `islands/` 目录中的组件才会在浏览器中进行 [hydration](/zh/concepts/islands)。其他所有内容都是静态 HTML，永远不会在客户端运行 JavaScript。
 
 这意味着一个只有一个交互式按钮的页面只需要发送该按钮的 JavaScript，而不是整个页面的 JavaScript。
 
@@ -57,12 +57,12 @@ app.use("/admin/*", async (ctx) => {
 
 ### 布局继承
 
-[布局](/docs/concepts/layouts) 包装页面组件，并从父目录继承。`routes/blog/post.tsx` 的页面会从以下布局继承：
+[布局](/zh/concepts/layouts) 包装页面组件，并从父目录继承。`routes/blog/post.tsx` 的页面会从以下布局继承：
 
 1. `routes/_layout.tsx`（根布局）
 2. `routes/blog/_layout.tsx`（章节布局）
 
-布局从外向内嵌套：根布局在最外层，每个更深的布局更接近页面，最内层布局直接包装页面组件。[应用包装器](/docs/concepts/app)（`_app.tsx`）包装所有内容。
+布局从外向内嵌套：根布局在最外层，每个更深的布局更接近页面，最内层布局直接包装页面组件。[应用包装器](/zh/concepts/app)（`_app.tsx`）包装所有内容。
 
 ### 构建和部署
 

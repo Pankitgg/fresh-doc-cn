@@ -35,7 +35,7 @@ const app = new App()
 
 ## 向岛屿传递 props
 
-支持向岛屿传递 props，但前提是 props 必须是[可序列化的](/docs/advanced/serialization)。Fresh 可以序列化以下类型的值：
+支持向岛屿传递 props，但前提是 props 必须是[可序列化的](/zh/advanced/serialization)。Fresh 可以序列化以下类型的值：
 
 - 原始类型 `string`、`number`、`boolean`、`bigint`、`undefined` 和 `null`
 - `Infinity`、`-Infinity`、`-0` 和 `NaN`
@@ -48,7 +48,7 @@ const app = new App()
 - `Temporal` 对象（`Instant`、`ZonedDateTime`、`PlainDate`、`PlainTime`、`PlainDateTime`、`PlainYearMonth`、`PlainMonthDay`、`Duration`）
 - 具有字符串键和可序列化值的普通对象
 - 包含可序列化值的数组
-- Preact [Signals](/docs/concepts/signals)（如果内部值可序列化）
+- Preact [Signals](/zh/concepts/signals)（如果内部值可序列化）
 
 支持循环引用。如果一个对象或信号被多次引用，它只会被序列化一次，并在反序列化时恢复引用。
 

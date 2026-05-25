@@ -184,7 +184,7 @@ export default define.page(function CartPage() {
 });
 ```
 
-`cart` signal 是在每次渲染时创建的（不是在模块级别），因此每个请求都有自己独立的购物车。Fresh 会[序列化](/docs/advanced/serialization)这个 signal 并将其传递给两个岛屿，使它们在客户端保持同步。
+`cart` signal 是在每次渲染时创建的（不是在模块级别），因此每个请求都有自己独立的购物车。Fresh 会[序列化](/zh/advanced/serialization)这个 signal 并将其传递给两个岛屿，使它们在客户端保持同步。
 
 > [!CAUTION]
 > 避免在模块级别创建 signal（例如在工具文件中写 `export const cart = signal([])`）。模块级别的状态在服务器上会在所有请求之间共享，这意味着不同用户会看到相同的购物车。请始终在组件或处理器内部创建 signal。
