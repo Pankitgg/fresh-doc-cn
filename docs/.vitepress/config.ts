@@ -199,21 +199,21 @@ const enSidebar = [
 export default defineConfig({
   title: 'Fresh',
   titleTemplate: '%s | Fresh 中文文档',
-  description: 'Fresh 是一个现代化的 Deno 全栈框架，无需配置文件，无需构建步骤，无需 node_modules。',
+  description: 'Fresh中文网站提供Fresh框架的中文教程和完整文档。Fresh是一个现代化的Deno全栈框架，无需配置文件，无需构建步骤，无需node_modules。',
   lang: 'zh-CN',
   ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', href: '/favicon-fresh.ico' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
-    ['meta', { name: 'keywords', content: 'Fresh, Deno, 中文文档, 全栈框架, Preact' }],
+    ['meta', { name: 'keywords', content: 'Fresh, Fresh中文, Fresh中文网站, Fresh中文教程, Fresh文档, Fresh框架, Deno, Deno框架, 全栈框架, Preact, JavaScript框架, TypeScript, Web开发, 前端框架, 后端框架, Fresh教程, Fresh文档中文' }],
     ['meta', { name: 'author', content: 'Fresh 中文文档社区' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'Fresh 中文文档' }],
-    ['meta', { property: 'og:description', content: 'Fresh 是一个现代化的 Deno 全栈框架，无需配置文件，无需构建步骤，无需 node_modules。' }],
-    ['meta', { property: 'og:site_name', content: 'Fresh 中文文档' }],
+    ['meta', { property: 'og:description', content: 'Fresh中文网站提供Fresh框架的中文教程和完整文档。Fresh是一个现代化的Deno全栈框架，无需配置文件，无需构建步骤。' }],
+    ['meta', { property: 'og:site_name', content: 'Fresh中文网站' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
-    ['meta', { name: 'twitter:title', content: 'Fresh 中文文档' }],
-    ['meta', { name: 'twitter:description', content: 'Fresh 是一个现代化的 Deno 全栈框架，无需配置文件，无需构建步骤，无需 node_modules。' }],
+    ['meta', { name: 'twitter:title', content: 'Fresh中文网站 - Fresh框架中文教程' }],
+    ['meta', { name: 'twitter:description', content: 'Fresh中文网站提供Fresh框架的中文教程和完整文档。Fresh是一个现代化的Deno全栈框架。' }],
     ['link', { rel: 'sitemap', type: 'application/xml', href: '/sitemap.xml' }],
     ['script', { type: 'text/javascript' }, `
       (function(c,l,a,r,i,t,y){
