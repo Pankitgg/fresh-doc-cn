@@ -48,23 +48,32 @@ body {
   min-height: 100vh;
 }
 
+.VPNav {
+  background: transparent !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 20px !important;
+}
+
 .VPNavBar {
   background: transparent !important;
   backdrop-filter: none !important;
-}
-
-.VPNav {
-  background: transparent !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
 }
 
 .VPNavBar .content-body {
   width: 100% !important;
   max-width: 100% !important;
+  padding: 0 20px !important;
 }
 
 .VPNavBar .container {
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: 1440px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
 }
 
 .VPHome {
