@@ -58,6 +58,7 @@ body {
 }
 
 .VPNavBar .content-body {
+  background-color: transparent !important;
   width: 100% !important;
   max-width: 100% !important;
 }
