@@ -3,7 +3,7 @@ description: |
   哪些类型可以作为 island props 传递，Fresh 如何在服务器和客户端之间序列化数据，以及常见的陷阱。
 ---
 
-当 Fresh 在服务器上渲染页面时，[island](/docs/concepts/islands) props 必须序列化为 JSON 并发送到浏览器进行水合。Fresh 使用自定义序列化系统，支持比标准 `JSON.stringify` 更多的类型。
+当 Fresh 在服务器上渲染页面时，[island](/zh/concepts/islands) props 必须序列化为 JSON 并发送到浏览器进行水合。Fresh 使用自定义序列化系统，支持比标准 `JSON.stringify` 更多的类型。
 
 ## 支持的类型
 
@@ -23,7 +23,7 @@ description: |
 | `Set`                                | 值必须是可序列化的                                                                                                |
 | `Map`                                | 键和值必须是可序列化的                                                                                            |
 | `Uint8Array`                         | 二进制数据                                                                                                        |
-| `Signal`                             | 来自 `@preact/signals`——参见 [Signals](/docs/concepts/signals)                                                   |
+| `Signal`                             | 来自 `@preact/signals`——参见 [Signals](/zh/concepts/signals)                                                   |
 | `Computed Signal`                    | 只读信号                                                                                                          |
 | `Temporal.*`                         | `Instant`、`ZonedDateTime`、`PlainDate`、`PlainTime`、`PlainDateTime`、`PlainYearMonth`、`PlainMonthDay`、`Duration` |
 | JSX 元素                              | 传递给 islands 的服务器渲染 JSX                                                                                   |

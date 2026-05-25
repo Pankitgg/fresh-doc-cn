@@ -15,7 +15,7 @@ Fresh 支持两种错误页面：
 
 ## 通用错误页面
 
-要添加错误页面，请使用 [`app.onError()`](/docs/concepts/app#onerror)。
+要添加错误页面，请使用 [`app.onError()`](/zh/concepts/app#onerror)。
 
 ```ts main.ts
 import { App } from "fresh";
@@ -61,7 +61,7 @@ const app = new App()
   .get("/", () => new Response("foo"));
 ```
 
-访问未知路由（如 `/invalid`）将触发 `notFound`[中间件](/docs/concepts/middleware)。与通用错误页面不同，此处理器不能嵌套。
+访问未知路由（如 `/invalid`）将触发 `notFound`[中间件](/zh/concepts/middleware)。与通用错误页面不同，此处理器不能嵌套。
 
 ## 抛出 HTTP 错误
 
@@ -108,4 +108,4 @@ app.onError("*", (ctx) => {
 });
 ```
 
-`HttpError` 也可以通过 `fresh/runtime` 在浏览器中使用，用于 [island 代码](/docs/concepts/islands)。
+`HttpError` 也可以通过 `fresh/runtime` 在浏览器中使用，用于 [island 代码](/zh/concepts/islands)。

@@ -34,7 +34,7 @@ Fresh 2 非常注意确保仅在开发期间需要的代码与生产代码分离
 
 ### 用 `vite.config.ts` 替换 `dev.ts`
 
-删除 `dev.ts` 并创建 `vite.config.ts` 文件。将您的自定义 Fresh 配置传递给 [Fresh Vite 插件](/docs/advanced/vite)。
+删除 `dev.ts` 并创建 `vite.config.ts` 文件。将您的自定义 Fresh 配置传递给 [Fresh Vite 插件](/zh/advanced/vite)。
 
 ```ts vite.config.ts
 import { defineConfig } from "vite";
@@ -82,7 +82,7 @@ export const app = new App()
 
 ## 合并错误页面
 
-`_500.tsx` 和 `_404.tsx` 模板已统一为单个 `_error.tsx` 模板。详见[错误页面](/docs/advanced/error-handling)。
+`_500.tsx` 和 `_404.tsx` 模板已统一为单个 `_error.tsx` 模板。详见[错误页面](/zh/advanced/error-handling)。
 
 ```diff Project structure
   └── <root>/routes/
@@ -173,7 +173,7 @@ Fresh 2 需要在部署期间构建资源，而不是按需构建。作为部署
 
 ### 统一的中间件签名
 
-[中间件](/docs/concepts/middleware)、处理程序和路由组件的签名已统一，看起来都相同。它们不再接收两个参数，而是接收一个参数。`Request` 对象作为 `ctx.req` 存储在上下文对象上。
+[中间件](/zh/concepts/middleware)、处理程序和路由组件的签名已统一，看起来都相同。它们不再接收两个参数，而是接收一个参数。`Request` 对象作为 `ctx.req` 存储在上下文对象上。
 
 ```diff middleware.ts
 - const middleware = (req, ctx) => new Response("ok");
@@ -205,7 +205,7 @@ Fresh 2 需要在部署期间构建资源，而不是按需构建。作为部署
 
 | Fresh 1.x                                     | Fresh 2.x                           |
 | --------------------------------------------- | ----------------------------------- |
-| `AppContext`、`LayoutContext`、`RouteContext` | [`Context`](/docs/concepts/context) |
+| `AppContext`、`LayoutContext`、`RouteContext` | [`Context`](/zh/concepts/context) |
 
 ### 上下文方法
 
@@ -264,7 +264,7 @@ const app = new App()
 
 ## `deno compile`
 
-如果您正在使用 `deno compile` 从 Fresh 应用程序生成二进制文件，请确保[更新命令](/docs/deployment/deno-compile)来生成二进制文件。
+如果您正在使用 `deno compile` 从 Fresh 应用程序生成二进制文件，请确保[更新命令](/zh/deployment/deno-compile)来生成二进制文件。
 
 ## 获取帮助
 

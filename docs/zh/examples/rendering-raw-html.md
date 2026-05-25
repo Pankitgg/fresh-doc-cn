@@ -3,7 +3,7 @@ description: |
   How to render raw HTML in Fresh.
 ---
 
-Fresh 中的文本内容总是会被转义，无论是服务端渲染还是在[岛屿](/docs/concepts/islands)中渲染。虽然这通常是期望的行为，但在某些情况下可能会造成问题。
+Fresh 中的文本内容总是会被转义，无论是服务端渲染还是在[岛屿](/zh/concepts/islands)中渲染。虽然这通常是期望的行为，但在某些情况下可能会造成问题。
 
 你可以通过 Preact 的 `dangerouslySetInnerHTML` 属性来渲染原始 HTML：
 

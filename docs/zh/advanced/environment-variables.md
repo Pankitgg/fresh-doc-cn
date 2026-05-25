@@ -5,7 +5,7 @@ description: |
 
 Deno 中的环境变量通常通过 `Deno.env.get()` 或 `process.env.*` 调用来读取，或者如果使用了 `--env-file` 标志，则通过 `.env` 文件读取，参见[Deno 中如何使用环境变量](https://docs.deno.com/runtime/reference/env_variables/)。
 
-在此基础上，Fresh 在构建 [islands](/docs/concepts/islands) 时，会自动内联所有名称以 `FRESH_PUBLIC_ 开头的环境变量。
+在此基础上，Fresh 在构建 [islands](/zh/concepts/islands) 时，会自动内联所有名称以 `FRESH_PUBLIC_ 开头的环境变量。
 
 > [info]: 这个内联步骤发生在构建应用时（`deno task build`）。Island 内部的环境变量无法在运行时读取。
 

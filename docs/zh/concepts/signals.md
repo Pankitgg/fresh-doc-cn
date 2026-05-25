@@ -3,7 +3,7 @@ description: |
   Signals 提供使用 @preact/signals 的响应式状态管理。
 ---
 
-[Signals](https://preactjs.com/guide/v10/signals/) 是 Preact 的响应式原语，用于在 [islands](/docs/concepts/islands) 中管理状态。当一个 signal 的值发生变化时，任何读取它的组件都会自动重新渲染——无需使用 `setState` 或手动订阅。
+[Signals](https://preactjs.com/guide/v10/signals/) 是 Preact 的响应式原语，用于在 [islands](/zh/concepts/islands) 中管理状态。当一个 signal 的值发生变化时，任何读取它的组件都会自动重新渲染——无需使用 `setState` 或手动订阅。
 
 ## 创建 Signals
 
@@ -105,14 +105,14 @@ export default function CartCount() {
 }
 ```
 
-由于两个 islands 导入的是同一个模块级别的 signal，它们会自动共享相同的状态。更多模式请参见[在 islands 之间共享状态](/docs/examples/sharing-state-between-islands)。
+由于两个 islands 导入的是同一个模块级别的 signal，它们会自动共享相同的状态。更多模式请参见[在 islands 之间共享状态](/zh/examples/sharing-state-between-islands)。
 
 ## 序列化
 
-当 signals 作为 island props 传递时，Fresh 会自动处理[序列化](/docs/advanced/serialization)：
+当 signals 作为 island props 传递时，Fresh 会自动处理[序列化](/zh/advanced/serialization)：
 
 - Signal 的当前值通过 `.peek()` 在服务器端提取
 - 在客户端，值被重新包装成实时的 `signal()` 或 `computed()`
 - 循环引用和重复的 signal 引用会被保留
 
-Signal 的内部值本身必须是可序列化的（有关支持类型的完整列表，请参见 [Islands - 传递 props](/docs/concepts/islands#passing-props-to-islands)）。
+Signal 的内部值本身必须是可序列化的（有关支持类型的完整列表，请参见 [Islands - 传递 props](/zh/concepts/islands#passing-props-to-islands)）。

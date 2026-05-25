@@ -9,11 +9,11 @@ description: 在 Fresh 中修改文档头部
 - 使用 `<link>` 链接到资源，如样式表
 - 使用 `<script>` 包含 JavaScript 代码
 
-> [info]: 包含 `<head>` 的外部 HTML 结构通常在 [`_app.tsx`](/docs/concepts/app) 中创建。
+> [info]: 包含 `<head>` 的外部 HTML 结构通常在 [`_app.tsx`](/zh/concepts/app) 中创建。
 
 ## 从 `ctx.state` 传递元数据
 
-对于简单的场景，通过从处理器或[中间件](/docs/concepts/middleware)写入 `ctx.state` 来传递元数据通常就足够了。
+对于简单的场景，通过从处理器或[中间件](/zh/concepts/middleware)写入 `ctx.state` 来传递元数据通常就足够了。
 
 ```tsx routes/_app.tsx
 import { define } from "../util.ts";
@@ -35,7 +35,7 @@ export default define.page((ctx) => {
 
 ## 使用 `<Head>` 组件
 
-对于更复杂的场景，或者需要从 [islands](/docs/concepts/islands) 设置页面元数据，Fresh 自带了 `<Head>` 组件。
+对于更复杂的场景，或者需要从 [islands](/zh/concepts/islands) 设置页面元数据，Fresh 自带了 `<Head>` 组件。
 
 ```tsx routes/about.tsx
 import { Head } from "fresh/runtime";
@@ -55,7 +55,7 @@ export default define.page((ctx) => {
 
 ### 从 islands 动态更新头部
 
-`<Head>` 组件也可以在 [islands](/docs/concepts/islands) 中工作。当组件状态改变时，文档头部会自动更新：
+`<Head>` 组件也可以在 [islands](/zh/concepts/islands) 中工作。当组件状态改变时，文档头部会自动更新：
 
 ```tsx islands/MetaUpdater.tsx
 import { useState } from "preact/hooks";

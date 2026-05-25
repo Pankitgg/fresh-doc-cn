@@ -2,7 +2,7 @@
 description: "在路由间创建可复用的布局"
 ---
 
-本页涵盖通过 `app.layout()` 定义的**编程式布局**。如果你使用的是基于文件的路由，请参阅[布局（基于文件）](/docs/concepts/layouts)。
+本页涵盖通过 `app.layout()` 定义的**编程式布局**。如果你使用的是基于文件的路由，请参阅[布局（基于文件）](/zh/concepts/layouts)。
 
 布局是基于匹配模式继承的普通 Preact 组件。当你的网站有一个部分，其中所有页面共享相同的 HTML 结构，只有内容发生变化时，布局是一种很好的抽象方式。布局只在服务器端渲染。传递的 `Component` 值代表该组件的子元素。
 
@@ -58,7 +58,7 @@ const app = new App()
 
 ## 选项
 
-忽略 [app wrapper](/docs/concepts/app) 组件：
+忽略 [app wrapper](/zh/concepts/app) 组件：
 
 ```ts
 app.layout("/foo/bar", MyComponent, { skipAppWrapper: true });

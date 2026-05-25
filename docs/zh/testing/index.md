@@ -7,7 +7,7 @@ description: |
 
 ## 测试中间件
 
-要测试[中间件](/docs/concepts/middleware)，我们创建一个虚拟应用程序，并在自定义的 `/` 处理程序中返回我们想要检查的相关信息。此测试假设 `utils.ts` 中的 `State` 对象具有 `text` 属性。
+要测试[中间件](/zh/concepts/middleware)，我们创建一个虚拟应用程序，并在自定义的 `/` 处理程序中返回我们想要检查的相关信息。此测试假设 `utils.ts` 中的 `State` 对象具有 `text` 属性。
 
 ```ts tests/middleware.test.ts
 import { expect } from "@std/expect";
@@ -38,7 +38,7 @@ Deno.test("My middleware - sets ctx.state.text", async () => {
 
 ## 测试应用包装器或布局
 
-[应用包装器](/docs/advanced/app-wrapper)组件和[布局](/docs/advanced/layouts)都可以用相同的方式进行测试。
+[应用包装器](/zh/advanced/app-wrapper)组件和[布局](/zh/advanced/layouts)都可以用相同的方式进行测试。
 
 ```tsx tests/appWrapper.test.tsx
 import { expect } from "@std/expect";
@@ -105,7 +105,7 @@ Deno.test("MyLayout - renders heading and content", async () => {
 
 ## 测试路由和处理程序
 
-对于测试路由处理程序和业务逻辑，您可以使用上面所示的相同 [`App`](/docs/concepts/app) 模式。Fresh 使测试单个路由变得容易，无需完整的构建过程，只要它们导出一个处理程序：
+对于测试路由处理程序和业务逻辑，您可以使用上面所示的相同 [`App`](/zh/concepts/app) 模式。Fresh 使测试单个路由变得容易，无需完整的构建过程，只要它们导出一个处理程序：
 
 ```ts tests/routes.test.ts
 import { expect } from "@std/expect";
@@ -133,7 +133,7 @@ Deno.test("API route returns name", async () => {
 
 ### 岛屿的服务端渲染
 
-您可以使用相同的 [`App`](/docs/concepts/app) 模式来测试岛屿在服务器上是否正确渲染。注意：这需要 `.tsx` 文件扩展名才能使用 JSX：
+您可以使用相同的 [`App`](/zh/concepts/app) 模式来测试岛屿在服务器上是否正确渲染。注意：这需要 `.tsx` 文件扩展名才能使用 JSX：
 
 ```tsx tests/island-ssr.test.tsx
 import { expect } from "@std/expect";

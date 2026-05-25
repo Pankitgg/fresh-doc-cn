@@ -67,7 +67,7 @@ export const handlers = define.handlers((ctx) => {
 
 ## 以编程方式定义 API 路由
 
-API 路由也可以直接在应用上定义，而不使用[文件路由](/docs/concepts/file-routing)：
+API 路由也可以直接在应用上定义，而不使用[文件路由](/zh/concepts/file-routing)：
 
 ```ts main.ts
 const app = new App()

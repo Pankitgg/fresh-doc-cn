@@ -168,7 +168,7 @@ export default function LogView() {
 
 ## 视图过渡
 
-可以使用浏览器的[视图过渡 API](/docs/advanced/view-transitions) 为 partial 更新添加动画效果。将 `f-view-transition` 与 `f-client-nav` 结合使用，可以实现页面之间零 JavaScript 动画代码的平滑过渡动画。
+可以使用浏览器的[视图过渡 API](/zh/advanced/view-transitions) 为 partial 更新添加动画效果。将 `f-view-transition` 与 `f-client-nav` 结合使用，可以实现页面之间零 JavaScript 动画代码的平滑过渡动画。
 
 ## 加载指示器
 
