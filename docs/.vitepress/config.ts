@@ -198,10 +198,23 @@ const enSidebar = [
 
 export default defineConfig({
   title: 'Fresh',
-  description: 'Fresh 中文文档',
+  titleTemplate: '%s | Fresh 中文文档',
+  description: 'Fresh 是一个现代化的 Deno 全栈框架，无需配置文件，无需构建步骤，无需 node_modules。',
+  lang: 'zh-CN',
   ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', href: '/favicon-fresh.ico' }],
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+    ['meta', { name: 'keywords', content: 'Fresh, Deno, 中文文档, 全栈框架, Preact' }],
+    ['meta', { name: 'author', content: 'Fresh 中文文档社区' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:title', content: 'Fresh 中文文档' }],
+    ['meta', { property: 'og:description', content: 'Fresh 是一个现代化的 Deno 全栈框架，无需配置文件，无需构建步骤，无需 node_modules。' }],
+    ['meta', { property: 'og:site_name', content: 'Fresh 中文文档' }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { name: 'twitter:title', content: 'Fresh 中文文档' }],
+    ['meta', { name: 'twitter:description', content: 'Fresh 是一个现代化的 Deno 全栈框架，无需配置文件，无需构建步骤，无需 node_modules。' }],
+    ['link', { rel: 'sitemap', type: 'application/xml', href: '/sitemap.xml' }],
     ['script', { type: 'text/javascript' }, `
       (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

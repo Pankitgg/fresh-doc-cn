@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fresh-doc-cn.deno.dev/sitemap.xml

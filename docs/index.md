@@ -78,8 +78,30 @@ body {
   color: #6b7280;
   font-size: 14px;
 }
+
+.sitemap-link {
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 40px;
+}
+
+.sitemap-link a {
+  color: #059669;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.sitemap-link a:hover {
+  text-decoration: underline;
+}
 </style>
 
 <div class="translation-time">
   翻译校准时间：{{ buildTime }}
+</div>
+
+<div class="sitemap-link">
+  <a href="/sitemap.xml" target="_blank" rel="noopener">
+    📄 查看站点地图
+  </a>
 </div>
