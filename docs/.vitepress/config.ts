@@ -204,7 +204,7 @@ export default defineConfig({
   ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', href: '/favicon-fresh.ico' }],
-    ['link', { rel: 'canonical', href: 'https://fresh-doc-cn.deno.dev' }],
+    ['link', { rel: 'canonical', href: 'https://fresh.ai-nous.com/' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     ['meta', { name: 'robots', content: 'index, follow' }],
     ['meta', { name: 'googlebot', content: 'index, follow' }],
@@ -216,7 +216,7 @@ export default defineConfig({
     ['meta', { property: 'og:title', content: 'Fresh 中文文档' }],
     ['meta', { property: 'og:description', content: 'Fresh中文网站提供Fresh框架的中文教程和完整文档。Fresh是一个现代化的Deno全栈框架，无需配置文件，无需构建步骤。' }],
     ['meta', { property: 'og:site_name', content: 'Fresh中文网站' }],
-    ['meta', { property: 'og:url', content: 'https://fresh-doc-cn.deno.dev' }],
+    ['meta', { property: 'og:url', content: 'https://fresh.ai-nous.com/' }],
     ['meta', { property: 'og:locale', content: 'zh_CN' }],
     ['meta', { property: 'og:locale:alternate', content: 'en_US' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],

@@ -1,7 +1,7 @@
 import { writeFileSync, readdirSync } from 'fs'
 import { resolve, join } from 'path'
 
-const siteUrl = process.env.SITE_URL || 'https://fresh-doc-cn.deno.dev'
+const siteUrl = process.env.SITE_URL || 'https://fresh.ai-nous.com'
 const docsPath = resolve(process.cwd(), 'docs')
 const sitemapPath = resolve(process.cwd(), 'docs/public/sitemap.xml')
 
