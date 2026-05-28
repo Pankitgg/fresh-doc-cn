@@ -198,7 +198,7 @@ const enSidebar = [
 
 export default defineConfig({
   title: 'Fresh',
-  titleTemplate: '%s | Fresh 中文文档',
+  titleTemplate: ':title | Fresh 中文文档',
   description: 'Fresh中文网站提供Fresh框架的中文教程和完整文档。Fresh是一个现代化的Deno全栈框架，无需配置文件，无需构建步骤，无需node_modules。',
   lang: 'zh-CN',
   ignoreDeadLinks: true,
