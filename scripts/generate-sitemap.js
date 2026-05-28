@@ -1,7 +1,7 @@
 import { writeFileSync, readdirSync } from 'fs'
 import { resolve, join } from 'path'
 
-const siteUrl = 'https://fresh-doc-cn.deno.dev'
+const siteUrl = process.env.SITE_URL || 'https://fresh.ai-nous.com'
 const docsPath = resolve(process.cwd(), 'docs')
 const sitemapPath = resolve(process.cwd(), 'docs/public/sitemap.xml')
 
@@ -11,6 +11,8 @@ const externalLinks = [
   { loc: 'https://studio.ai-nous.com/', priority: '0.9', changefreq: 'daily' },
 ]
 
+const excludeDirs = ['1.x', 'canary', 'check_images_test.ts', 'toc.ts']
+
 function walkDir(dir, lang, basePath = '') {
   const files = readdirSync(dir, { withFileTypes: true })
   const urls = []
@@ -19,14 +21,24 @@ function walkDir(dir, lang, basePath = '') {
     const filePath = join(dir, file.name)
     const relativePath = join(basePath, file.name)
     
+    if (excludeDirs.includes(file.name)) {
+      continue
+    }
+    
     if (file.isDirectory()) {
       urls.push(...walkDir(filePath, lang, relativePath))
     } else if (file.name.endsWith('.md') && !file.name.startsWith('.')) {
       let url = relativePath.replace(/\.md$/, '')
       if (url.endsWith('/index')) {
         url = url.slice(0, -6)
+        if (url === '') {
+          urls.push(`/${lang}/`)
+        } else {
+          urls.push(`/${lang}/${url}/`)
+        }
+      } else {
+        urls.push(`/${lang}/${url}.html`)
       }
-      urls.push(`/${lang}/${url}`)
     }
   }
   
