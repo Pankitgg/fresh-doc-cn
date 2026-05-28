@@ -48,9 +48,8 @@ function walkDir(dir, lang, basePath = '') {
 function generateSitemap() {
   const now = new Date().toISOString()
   const zhUrls = walkDir(join(docsPath, 'zh'), 'zh')
-  const enUrls = walkDir(join(docsPath, 'en'), 'en')
   
-  const allUrls = ['/zh/', '/en/', ...zhUrls, ...enUrls]
+  const allUrls = ['/zh/', ...zhUrls]
   const uniqueUrls = [...new Set(allUrls)]
   
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
