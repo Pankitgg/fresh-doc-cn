@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Fresh 中文文档
+title: Fresh
 hero:
   name: Fresh
   text: 现代化的 Deno 全栈框架
