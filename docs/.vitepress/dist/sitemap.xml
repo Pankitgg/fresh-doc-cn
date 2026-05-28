@@ -2,685 +2,685 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://blog.ai-nous.com/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ai-nous.com/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://studio.ai-nous.com/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/api-reference.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/app-wrapper.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/builder.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/define.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/environment-variables.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/error-handling.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/forms.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/head.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/layouts.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/opentelemetry.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/partials.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/serialization.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/troubleshooting.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/view-transitions.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/vite.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/advanced/websockets.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/app.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/architecture.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/context.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/data-fetching.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/file-routing.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/islands.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/layouts.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/middleware.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/routing.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/signals.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/concepts/static-files.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/contributing/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/deployment/cloudflare-workers.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/deployment/deno-compile.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/deployment/deno-deploy.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/deployment/docker.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/deployment/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/examples/active-links.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/examples/api-routes.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/examples/common-patterns.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/examples/daisyui.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/examples/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/examples/markdown.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/examples/rendering-raw-html.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/examples/session-management.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/examples/sharing-state-between-islands.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/getting-started/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/introduction/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/getting-started/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/introduction/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/api-reference.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/app-wrapper.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/builder.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/define.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/environment-variables.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/error-handling.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/forms.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/head.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/layouts.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/opentelemetry.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/partials.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/serialization.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/troubleshooting.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/view-transitions.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/vite.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/advanced/websockets.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/app.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/architecture.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/context.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/data-fetching.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/file-routing.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/islands.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/layouts.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/middleware.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/routing.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/signals.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/concepts/static-files.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/contributing/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/deployment/cloudflare-workers.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/deployment/deno-compile.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/deployment/deno-deploy.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/deployment/docker.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/deployment/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/examples/active-links.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/examples/api-routes.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/examples/common-patterns.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/examples/daisyui.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/examples/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/examples/markdown.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/examples/rendering-raw-html.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/examples/session-management.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/examples/sharing-state-between-islands.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/getting-started/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/introduction/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/migration-guide/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/plugins/cors.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/plugins/csp.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/plugins/csrf.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/plugins/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/plugins/ip-filter.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/plugins/trailing-slashes.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/latest/latest/testing/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/migration-guide/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/plugins/cors.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/plugins/csp.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/plugins/csrf.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/plugins/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/plugins/ip-filter.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/plugins/trailing-slashes.html</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fresh.ai-nous.com/zh/testing/</loc>
-    <lastmod>2026-05-28T07:33:03.353Z</lastmod>
+    <lastmod>2026-05-28T07:36:38.007Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
