@@ -31,8 +31,14 @@ function walkDir(dir, lang, basePath = '') {
       let url = relativePath.replace(/\.md$/, '')
       if (url.endsWith('/index')) {
         url = url.slice(0, -6)
+        if (url === '') {
+          urls.push(`/${lang}/`)
+        } else {
+          urls.push(`/${lang}/${url}/`)
+        }
+      } else {
+        urls.push(`/${lang}/${url}.html`)
       }
-      urls.push(`/${lang}/${url}`)
     }
   }
   
