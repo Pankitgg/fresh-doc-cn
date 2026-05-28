@@ -11,6 +11,8 @@ const externalLinks = [
   { loc: 'https://studio.ai-nous.com/', priority: '0.9', changefreq: 'daily' },
 ]
 
+const excludeDirs = ['1.x', 'canary', 'check_images_test.ts', 'toc.ts']
+
 function walkDir(dir, lang, basePath = '') {
   const files = readdirSync(dir, { withFileTypes: true })
   const urls = []
@@ -18,6 +20,10 @@ function walkDir(dir, lang, basePath = '') {
   for (const file of files) {
     const filePath = join(dir, file.name)
     const relativePath = join(basePath, file.name)
+    
+    if (excludeDirs.includes(file.name)) {
+      continue
+    }
     
     if (file.isDirectory()) {
       urls.push(...walkDir(filePath, lang, relativePath))
