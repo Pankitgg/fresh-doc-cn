@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
 
+# SEO优化配置
+Disallow: /_cache/
+Disallow: /_assets/
+Disallow: /_vite/
+
+# Sitemap位置
 Sitemap: https://fresh-doc-cn.deno.dev/sitemap.xml
+
+# 主机信息
+Host: https://fresh-doc-cn.deno.dev
+
+# 语言版本
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8

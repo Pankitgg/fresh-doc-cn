@@ -204,17 +204,27 @@ export default defineConfig({
   ignoreDeadLinks: true,
   head: [
     ['link', { rel: 'icon', href: '/favicon-fresh.ico' }],
+    ['link', { rel: 'canonical', href: 'https://fresh-doc-cn.deno.dev' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
-    ['meta', { name: 'keywords', content: 'Fresh, Fresh中文, Fresh中文网站, Fresh中文教程, Fresh文档, Fresh框架, Deno, Deno框架, 全栈框架, Preact, JavaScript框架, TypeScript, Web开发, 前端框架, 后端框架, Fresh教程, Fresh文档中文' }],
+    ['meta', { name: 'robots', content: 'index, follow' }],
+    ['meta', { name: 'googlebot', content: 'index, follow' }],
+    ['meta', { name: 'keywords', content: 'Fresh, Fresh中文, Fresh中文网站, Fresh中文教程, Fresh文档, Fresh框架, Deno, Deno框架, 全栈框架, Preact, JavaScript框架, TypeScript, Web开发, 前端框架, 后端框架, Fresh教程, Fresh文档中文, Fresh入门, Fresh框架教程, Deno教程' }],
     ['meta', { name: 'author', content: 'Fresh 中文文档社区' }],
+    ['meta', { name: 'revisit-after', content: '7 days' }],
+    ['meta', { name: 'language', content: 'Chinese' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:title', content: 'Fresh 中文文档' }],
     ['meta', { property: 'og:description', content: 'Fresh中文网站提供Fresh框架的中文教程和完整文档。Fresh是一个现代化的Deno全栈框架，无需配置文件，无需构建步骤。' }],
     ['meta', { property: 'og:site_name', content: 'Fresh中文网站' }],
+    ['meta', { property: 'og:url', content: 'https://fresh-doc-cn.deno.dev' }],
+    ['meta', { property: 'og:locale', content: 'zh_CN' }],
+    ['meta', { property: 'og:locale:alternate', content: 'en_US' }],
     ['meta', { name: 'twitter:card', content: 'summary' }],
     ['meta', { name: 'twitter:title', content: 'Fresh中文网站 - Fresh框架中文教程' }],
     ['meta', { name: 'twitter:description', content: 'Fresh中文网站提供Fresh框架的中文教程和完整文档。Fresh是一个现代化的Deno全栈框架。' }],
+    ['meta', { name: 'twitter:site', content: '@fresh_framework' }],
     ['link', { rel: 'sitemap', type: 'application/xml', href: '/sitemap.xml' }],
+    ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'Fresh中文文档 RSS', href: '/sitemap.xml' }],
     ['script', { type: 'text/javascript' }, `
       (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
