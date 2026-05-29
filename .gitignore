@@ -39,3 +39,4 @@ docs/public/sitemap.xml
 .cache/
 .parcel-cache/
 .eslintcache
+fresh-doc

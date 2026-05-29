@@ -208,7 +208,7 @@ export default defineConfig({
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     ['meta', { name: 'robots', content: 'index, follow' }],
     ['meta', { name: 'googlebot', content: 'index, follow' }],
-    ['meta', { name: 'keywords', content: 'Fresh, Fresh中文, Fresh中文网站, Fresh中文教程, Fresh文档, Fresh框架, Deno, Deno框架, 全栈框架, Preact, JavaScript框架, TypeScript, Web开发, 前端框架, 后端框架, Fresh教程, Fresh文档中文, Fresh入门, Fresh框架教程, Deno教程' }],
+    ['meta', { name: 'keywords', content: 'Fresh, Fresh中文, Fresh中文网站, Fresh中文教程, Fresh文档, Fresh框架, Deno, Deno框架, 全栈框架, Preact, JavaScript框架, TypeScript, Web开发, 前端框架, 后端框架, Fresh教程, Fresh文档中文, Fresh入门, Fresh框架教程, Deno教程,fresh.js' }],
     ['meta', { name: 'author', content: 'Fresh 中文文档社区' }],
     ['meta', { name: 'revisit-after', content: '7 days' }],
     ['meta', { name: 'language', content: 'Chinese' }],
@@ -237,7 +237,7 @@ export default defineConfig({
   themeConfig: {
     logo: '/logo-fresh.svg',
     nav: [
-      { text: '首页', link: '/zh/' },
+      { text: '首页', link: '/' },
       { text: '博客', link: 'https://blog.ai-nous.com/', icon: 'book' },
       { text: '资讯', link: 'https://ai-nous.com/', icon: 'info' },
       { text: '工作台', link: 'https://studio.ai-nous.com/', icon: 'compass' },
