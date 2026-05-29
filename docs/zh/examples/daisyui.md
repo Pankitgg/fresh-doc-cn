@@ -3,6 +3,8 @@ title: Install daisyUI for Deno Fresh
 desc: How to install Tailwind CSS and daisyUI in a Deno Fresh project
 ---
 
+# daisyUI
+
 [daisyUI](https://daisyui.com/) 是一个为 [Tailwind CSS](https://tailwindcss.com/) 提供语义化类名的组件库，涵盖了按钮、卡片、模态框等常见 UI 组件。它能在保持完全兼容 Tailwind CSS 的同时，更快速地构建美观的界面。
 
 ## 安装

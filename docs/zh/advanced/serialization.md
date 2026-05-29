@@ -3,6 +3,8 @@ description: |
   哪些类型可以作为 island props 传递，Fresh 如何在服务器和客户端之间序列化数据，以及常见的陷阱。
 ---
 
+# 序列化
+
 当 Fresh 在服务器上渲染页面时，[island](/zh/concepts/islands) props 必须序列化为 JSON 并发送到浏览器进行水合。Fresh 使用自定义序列化系统，支持比标准 `JSON.stringify` 更多的类型。
 
 ## 支持的类型

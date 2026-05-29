@@ -3,6 +3,8 @@ description: |
   Builder 类用于生成优化的生产环境资源。
 ---
 
+# Builder
+
 > [warn]: `Builder` 类在 Fresh 2 的 alpha 阶段使用，后来 Fresh Vite 插件发布后就不再需要了。如果你正在使用 Vite，可以跳过此页面。
 
 `Builder` 类用于生成应用的生产资源。你通常会在项目的 `dev.ts` 文件中找到它的创建。

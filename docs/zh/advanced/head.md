@@ -2,6 +2,8 @@
 description: 在 Fresh 中修改文档头部
 ---
 
+# head 元素
+
 [`<head>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/head) 元素是 HTML 中为页面设置元数据的关键元素。它允许你：
 
 - 使用 `<title>` 设置文档标题

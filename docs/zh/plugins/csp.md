@@ -2,6 +2,8 @@
 description: "使用 csp 中间件设置内容安全策略（CSP）HTTP 头"
 ---
 
+# CSP
+
 `csp()` 中间件可用于向 HTTP 请求添加[内容安全策略头](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP)。这些头用于限制文档允许加载的资源。
 
 ```ts main.ts

@@ -2,6 +2,8 @@
 description: "使用 ipFilter 中间件按 IP 地址限制访问"
 ---
 
+# IP 过滤
+
 `ipFilter()` 中间件可根据客户端的 IP 地址限制访问。它支持黑名单、白名单和 CIDR 子网匹配。黑名单规则始终优先于白名单规则。
 
 ```ts main.ts

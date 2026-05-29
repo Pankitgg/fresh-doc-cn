@@ -3,6 +3,8 @@ description: |
   Define 辅助函数是一种更简洁的 TypeScript 方式来声明[中间件](/zh/concepts/middleware)、路由和[布局](/zh/concepts/layouts)
 ---
 
+# Define 辅助函数
+
 Define 辅助函数可用于减少你需要在代码中手动输入的类型。它们完全是可选的，因为有些开发者喜欢类型的明确性，而有些开发者喜欢 `define.*` 辅助函数带来的便利。
 
 不使用 Define 辅助函数：

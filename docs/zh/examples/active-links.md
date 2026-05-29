@@ -3,6 +3,8 @@ description: |
   Style active links with ease in Fresh
 ---
 
+# 活动链接
+
 Fresh 会自动增强 `<a>` 元素的辅助功能，在渲染与当前 URL 匹配的链接时添加 aria-current 属性。这个属性可以被辅助技术识别，并清楚地指示当前页面在一组页面中的位置。
 
 - `aria-current="page"` - 添加到精确路径匹配的链接，通过向辅助技术指示当前页面来增强可访问性。

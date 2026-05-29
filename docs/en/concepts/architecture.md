@@ -3,6 +3,8 @@ description: |
   How Fresh processes requests: the flow from incoming request through middleware, routing, handlers, layouts, and island hydration.
 ---
 
+# Architecture
+
 Fresh is a server-first web framework. Pages are rendered on the server and only
 the interactive parts ([islands](/docs/concepts/islands)) ship JavaScript to the
 browser. This page explains how a request flows through the framework.

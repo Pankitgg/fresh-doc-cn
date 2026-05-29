@@ -2,6 +2,8 @@
 description: "在 Deno Deploy 上部署 Fresh"
 ---
 
+# Deno Deploy
+
 部署 Fresh 的推荐方式是使用 [Deno Deploy](https://deno.com/deploy)。它会自动为拉取请求创建分支预览、收集请求和 HTTP 指标，以及开箱即用地收集[跟踪数据](/zh/advanced/opentelemetry)。
 
 ## 设置

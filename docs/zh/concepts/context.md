@@ -2,6 +2,8 @@
 description: The Context object is shared across all middlewares and provides access to the request, URL, params, state, and response helpers.
 ---
 
+# Context 对象
+
 `Context` 对象在 Fresh 的所有[中间件](/zh/concepts/middleware)中共享。使用它可以响应 HTML、触发重定向、访问传入的[`请求`](https://developer.mozilla.org/en-US/docs/Web/API/Request) 或读取其他元数据。
 
 ## `.config`

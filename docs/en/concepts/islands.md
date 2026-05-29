@@ -3,6 +3,8 @@ description: |
   Islands enable client side interactivity in Fresh. They are hydrated on the client in addition to being rendered on the server.
 ---
 
+# Islands
+
 Islands enable client side interactivity in Fresh and they are rendered both on
 the server and in the client.
 

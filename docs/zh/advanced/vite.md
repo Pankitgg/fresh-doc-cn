@@ -3,6 +3,8 @@ description: |
   配置 Fresh Vite 插件，添加其他 Vite 插件，以及了解 Fresh 如何与 Vite 集成。
 ---
 
+# Vite 配置
+
 Fresh 2 使用 [Vite](https://vite.dev/) 进行开发和生产构建。Fresh Vite 插件处理 JSX 配置、热模块替换（HMR）、[island](/zh/concepts/islands) 发现、客户端/服务器代码拆分以及 React 到 Preact 的别名。
 
 ## 配置

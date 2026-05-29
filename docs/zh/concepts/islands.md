@@ -3,6 +3,8 @@ description: |
   岛屿在 Fresh 中实现客户端交互功能。它们不仅在服务器端渲染，还会在客户端进行 hydration。
 ---
 
+# 岛屿
+
 岛屿在 Fresh 中实现客户端交互功能，它们既在服务器端渲染，也在客户端渲染。
 
 岛屿通过在 `islands/` 文件夹或 `routes/` 目录中的 `(_islands)` 文件夹内创建文件来定义。该文件的名称必须是岛屿的 PascalCase 或 kebab-case 名称。

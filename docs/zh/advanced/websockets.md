@@ -3,6 +3,8 @@ description: |
   使用 ctx.upgrade() 或 app.ws() 为 Fresh 应用添加实时 WebSocket 端点。
 ---
 
+# WebSockets
+
 Fresh 提供了内置辅助函数，用于将 HTTP 连接升级到 WebSocket。根据你的用例，有两种主要方法。
 
 ## 使用 `app.ws()` 快速开始

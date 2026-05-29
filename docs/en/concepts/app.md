@@ -3,6 +3,8 @@ description: |
   The App class is the heart of Fresh, used to define routes, middlewares, layouts and more.
 ---
 
+# App
+
 The `App` class is the heart of Fresh and routes incoming requests to the
 correct [middlewares](/docs/concepts/middleware). This is where routes,
 middlewares, [layouts](/docs/concepts/layouts) and more are defined.

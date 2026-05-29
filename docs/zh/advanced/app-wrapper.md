@@ -3,6 +3,8 @@ description: |
   App wrapper 定义了所有页面共享的最外层 HTML 结构——包括 <html>、<head> 和 <body> 标签。
 ---
 
+# 应用包装器
+
 App wrapper 是 Fresh 渲染层级中最外层的组件。它定义了每个页面共享的 `<html>`、`<head>` 和 `<body>` 标签。它只在服务器端渲染。
 
 ## 何时使用 App Wrapper

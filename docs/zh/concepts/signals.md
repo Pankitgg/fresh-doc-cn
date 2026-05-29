@@ -3,6 +3,8 @@ description: |
   Signals 提供使用 @preact/signals 的响应式状态管理。
 ---
 
+# Signals
+
 [Signals](https://preactjs.com/guide/v10/signals/) 是 Preact 的响应式原语，用于在 [islands](/zh/concepts/islands) 中管理状态。当一个 signal 的值发生变化时，任何读取它的组件都会自动重新渲染——无需使用 `setState` 或手动订阅。
 
 ## 创建 Signals

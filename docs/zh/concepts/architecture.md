@@ -3,6 +3,8 @@ description: |
   Fresh 如何处理请求：请求从传入、经过中间件、路由、处理器、布局，到达岛屿 hydration 的完整流程。
 ---
 
+# 架构
+
 Fresh 是一个服务端优先的 Web 框架。页面在服务端渲染，只有交互部分（[岛屿](/zh/concepts/islands)）才会将 JavaScript 发送到浏览器。本页面将解释请求如何在框架中流动。
 
 ## 请求生命周期

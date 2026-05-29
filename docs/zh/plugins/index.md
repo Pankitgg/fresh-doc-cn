@@ -2,6 +2,8 @@
 description: "使用插件扩展 Fresh"
 ---
 
+# 插件概述
+
 Fresh 可以通过 [`App`](/zh/concepts/app) 类或 `Builder` 类上提供的方法进行扩展。Fresh 本身的大部分功能都是使用这些 API 构建的。
 
 ## 自定义中间件

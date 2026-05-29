@@ -3,6 +3,8 @@ description: |
   Load data on the server in handlers and pass it to page components with full type safety.
 ---
 
+# 数据获取
+
 Fresh 中的数据获取发生在服务器端。处理器加载数据并通过 `page()` 辅助函数将其传递给页面组件。这样可以将 API 密钥、数据库连接和敏感逻辑排除在浏览器之外。
 
 ## 处理器与页面组件

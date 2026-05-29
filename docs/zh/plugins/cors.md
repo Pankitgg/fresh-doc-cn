@@ -2,6 +2,8 @@
 description: "使用 cors 中间件设置 CORS HTTP 头"
 ---
 
+# CORS
+
 `cors()` 中间件可用于向 HTTP 请求添加[跨域资源共享头](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)。这些头用于指示服务器允许除自身以外的其他来源（域名、协议或端口）加载资源。
 
 ```ts main.ts

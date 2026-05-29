@@ -3,6 +3,8 @@ description: |
   Add middleware routes to intercept requests or responses for analytics purposes, access control, or anything else.
 ---
 
+# 中间件
+
 中间件是一个函数，它接收一个包含[`请求`](https://developer.mozilla.org/en-US/docs/Web/API/Request)的[`上下文`](/zh/concepts/context)对象，并返回一个[`响应`](https://developer.mozilla.org/en-US/docs/Web/API/Response)。中间件通常用于设置 HTTP 标头、测量响应时间或获取数据并将其传递给另一个中间件。
 
 ```tsx main.ts

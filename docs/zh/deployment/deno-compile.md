@@ -2,6 +2,8 @@
 description: "使用 deno compile 生成自包含可执行文件。"
 ---
 
+# deno compile
+
 你可以使用 [`deno compile` 命令](https://docs.deno.com/runtime/reference/cli/compile/) 将应用创建为自包含的可执行文件。它会包含所有资源和依赖项。这个可执行文件可以在任何平台上运行，无需安装 Deno。
 
 ## 构建可执行文件

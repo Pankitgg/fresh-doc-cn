@@ -3,6 +3,8 @@ description: |
   Create JSON API endpoints by defining handler-only routes without a page component.
 ---
 
+# API 路由
+
 只导出 `handlers`（没有默认组件导出）的路由会变成 API 端点——它直接返回响应而不是渲染 HTML。
 
 ## 基本的 JSON API

@@ -3,6 +3,8 @@ description: |
   Fresh 内置支持提供静态文件服务。这对于提供图片、CSS 和其他静态资源非常有用。
 ---
 
+# 静态文件
+
 放置在 `static/` 目录中的静态资源通过 `staticFiles()` 中间件在 Web 服务器的根目录下提供。它们直接从磁盘流式传输，以实现最佳性能，并带有 [`ETag`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/ETag) 标头。
 
 ```ts main.ts

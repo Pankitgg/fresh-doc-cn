@@ -3,6 +3,8 @@ description: |
   When you need to have state shared between islands, this page provides a few recipes.
 ---
 
+# 岛屿间共享状态
+
 ## 多个具有独立状态的兄弟岛屿
 
 假设我们有一个这样的 `Counter.tsx`：

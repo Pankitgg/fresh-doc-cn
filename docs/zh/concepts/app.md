@@ -3,6 +3,8 @@ description: |
   App 类是 Fresh 的核心，用于定义路由、中间件、布局等。
 ---
 
+# App 类
+
 `App` 类是 Fresh 的核心，将传入的请求路由到正确的[中间件](/zh/concepts/middleware)。路由、中间件、[布局](/zh/concepts/layouts)等都在这里定义。
 
 ```ts main.ts

@@ -3,6 +3,8 @@ description: |
   In this chapter of the Fresh documentation, you can find examples of features that you may like in your Fresh project.
 ---
 
+# 示例
+
 In this chapter of the Fresh documentation, you can find examples of features
 that you may like in your Fresh project.
 

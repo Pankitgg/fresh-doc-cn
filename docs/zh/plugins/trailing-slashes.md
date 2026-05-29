@@ -2,6 +2,8 @@
 description: "确保 URL 始终以或不以尾部斜杠结尾"
 ---
 
+# 尾部斜杠
+
 `trailingSlashes()` 中间件可用于确保 URL 路径始终以斜杠字符结尾或始终不以斜杠结尾。它会相应地重定向用户的请求。
 
 ```ts main.ts

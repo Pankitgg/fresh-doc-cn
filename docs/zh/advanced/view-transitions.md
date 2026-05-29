@@ -2,6 +2,8 @@
 description: 使用视图过渡 API 为页面导航添加动画效果
 ---
 
+# 视图过渡
+
 Fresh 将浏览器的原生[视图过渡 API](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API) 集成到其 [partials](/zh/advanced/partials) 系统中。启用后，客户端导航期间的 DOM 更新会被包装在 `document.startViewTransition()` 中，让你在零 JavaScript 动画代码的情况下获得页面之间的平滑过渡动画。
 
 这是渐进增强——如果浏览器不支持视图过渡 API，partials 的工作方式与以前完全相同，不会有动画。

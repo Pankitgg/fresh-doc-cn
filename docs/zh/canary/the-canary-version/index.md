@@ -3,6 +3,8 @@ description: |
   Learn more about Fresh canary releases
 ---
 
+# Canary 版本
+
 The canary version represents the current development state of Fresh. It's
 intended for testing work in progress features before it lands in a stable
 release. Whenever new code is merged into the `main` branch on

@@ -3,6 +3,8 @@ description: |
   How routing works in Fresh, including route patterns, matching priority, method-specific handlers, and URLPattern support.
 ---
 
+# Routing
+
 Routing defines which middlewares and routes should respond to a particular
 request.
 

@@ -2,6 +2,8 @@
 description: "使用 Docker 部署 Fresh"
 ---
 
+# Docker
+
 你可以将 Fresh 部署到任何可以运行 Docker 容器的平台。Docker 是一个用于容器化项目并可在任何支持的平台上便携运行它们的工具。
 
 在为 Docker 打包 Fresh 应用时，重要的是在容器中设置 `DENO_DEPLOYMENT_ID` [环境变量](/zh/advanced/environment-variables)。这个变量需要设置为一个不透明的字符串 ID，用于表示当前正在运行的应用版本。这可以是 Git 提交哈希，或者项目所有文件的哈希值。对于 Fresh 的正常运行来说，当项目中的**任何**文件发生变化时，这个 ID 必须发生变化——如果没有，错误的缓存**将**导致项目无法正常工作。

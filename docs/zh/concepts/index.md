@@ -3,6 +3,8 @@ description: |
   This chapter goes over some fundamental concepts of Fresh.
 ---
 
+# 核心概念
+
 The way Fresh works is that it receives a
 [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request), passes it
 through one or more middlewares until one of them responds. This can be an HTML

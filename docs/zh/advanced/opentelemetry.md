@@ -3,6 +3,8 @@ description: |
   Fresh 内置了 OpenTelemetry 工具，用于追踪请求通过中间件、处理器和渲染的过程。
 ---
 
+# OpenTelemetry
+
 Fresh 自动用 [OpenTelemetry](https://opentelemetry.io/) span 检测关键操作，让你了解请求如何流经你的应用程序。无需代码更改——只需配置一个导出器。
 
 ## 检测内容

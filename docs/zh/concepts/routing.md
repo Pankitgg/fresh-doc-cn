@@ -3,6 +3,8 @@ description: |
   How routing works in Fresh, including route patterns, matching priority, method-specific handlers, and URLPattern support.
 ---
 
+# 路由
+
 路由定义了哪些中间件和路由应该响应特定请求。
 
 ```ts main.ts

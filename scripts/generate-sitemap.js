@@ -19,7 +19,8 @@ function walkDir(dir, lang, basePath = '') {
   
   for (const file of files) {
     const filePath = join(dir, file.name)
-    const relativePath = join(basePath, file.name)
+    // 使用正斜杠拼接路径，避免 Windows 系统使用反斜杠
+    const relativePath = basePath ? `${basePath}/${file.name}` : file.name
     
     if (excludeDirs.includes(file.name)) {
       continue

@@ -3,6 +3,8 @@ description: |
   Common patterns and recipes for Fresh applications: authentication, redirects, content negotiation, cookies, and more.
 ---
 
+# 常见模式
+
 本页面收集了构建 Fresh 应用时会遇到的常见模式。
 
 ## 受保护的路由

@@ -3,6 +3,8 @@ description: |
   How to manage a session using cookies.
 ---
 
+# 会话管理
+
 _会话_ 允许你跟踪每个用户的状态，例如身份验证或购物车内容。Cookie 是最常见的会话管理机制。由于 [Deno](https://deno.com) 使用标准的 Web API（如 `Request` 和 `Response`），使用 Cookie 非常简单。
 
 ## 设置

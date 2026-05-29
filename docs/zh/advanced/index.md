@@ -3,6 +3,8 @@ description: |
   This chapter goes over some advanced concepts of Fresh.
 ---
 
+# 高级
+
 This section of the documentation describes advanced functionality of Fresh.
 
 - [App wrapper](/zh/advanced/app-wrapper) - Customize the outer HTML structure
