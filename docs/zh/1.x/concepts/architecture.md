@@ -1,26 +1,14 @@
 ---
 description: |
-  Fresh's architecture is designed to make it easy to build fast, scalable, and reliable applications.
+  Fresh 的架构旨在使其易于构建快速、可扩展和可靠的应用程序。
 ---
 
-Fresh is designed to make it easy to build fast, scalable, and reliable
-applications. To do this, it makes opinionated decisions about how one should
-build web applications. These decisions are backed by strong empirical data
-gathered from experts in the field. Some examples of these principles are:
+Fresh 旨在使其易于构建快速、可扩展和可靠的应用程序。为此，它对如何构建 Web 应用程序做出了有主见的决定。这些决定得到了该领域专家提供的强大经验数据的支持。这些原则的一些示例包括：
 
-- Page load times should be reduced to a minimum.
-- The work performed on the client should be minimized.
-- Errors should have a small blast radius - stuff should gracefully degrade.
+- 页面加载时间应尽可能缩短。
+- 客户端执行的工作应最小化。
+- 错误应具有较小的爆炸半径——内容应优雅降级。
 
-The single biggest architecture decision that Fresh makes is its usage of the
-[islands architecture][islands] pattern. This means that Fresh applications ship
-pure HTML to the client by default. Parts of a server-rendered page can then be
-independently re-hydrated with interactive widgets (islands). This means that
-the client is only responsible for rendering parts of the page that are
-interactive enough to warrant the extra effort. Any content that is purely
-static does not have related client-side JavaScript and is thus very
-lightweight.
-
-<!-- TODO(lucacasonato): elaborate on request handling, form actions, etc. -->
+Fresh 做出的最大架构决定是其使用[岛屿架构][islands]模式。这意味着 Fresh 应用程序默认发送纯 HTML 到客户端。服务端渲染页面的部分可以独立地重新水合为交互式小部件（岛屿）。这意味着客户端只负责渲染那些需要额外努力的交互式部分。任何静态内容都没有相关的客户端 JavaScript，因此非常轻量级。
 
 [islands]: https://www.patterns.dev/posts/islands-architecture/

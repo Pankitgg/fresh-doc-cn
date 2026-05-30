@@ -19,7 +19,7 @@ In this example we'll be creating a small API that uses
 Our project structure will look like this (in addition to the rest of the Fresh
 code from a new project):
 
-```txt-files Project Structure
+```txt Project Structure
 <project root>
 └── routes
     └── api

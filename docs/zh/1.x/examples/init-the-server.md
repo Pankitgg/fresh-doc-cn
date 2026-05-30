@@ -1,11 +1,11 @@
 ---
 description: |
-  For when you have some complicated setup that needs to be performed once.
+  当你有需要执行一次的复杂初始化设置时。
 ---
 
-Let's pretend you've just initialized a new Fresh project. You want to do some
-complicated setup that runs once, before the server is started. This is,
-fortunately, quite easy. Here's how. Modify your `fresh.config.ts` like this:
+# 初始化服务器
+
+假设你刚刚初始化了一个新的 Fresh 项目。你想要执行一些复杂的设置，这些设置需要在服务器启动之前运行一次。幸运的是，这相当简单。以下是具体做法。像这样修改你的 `fresh.config.ts`：
 
 ```diff fresh.config.ts
  import twindConfig from "./twind.config.ts";
@@ -17,7 +17,7 @@ fortunately, quite easy. Here's how. Modify your `fresh.config.ts` like this:
    plugins: [twindPlugin(twindConfig)],
 ```
 
-So your full `fresh.config.ts` should look like this:
+所以你的完整 `fresh.config.ts` 应该看起来像这样：
 
 ```ts fresh.config.ts
 import { defineConfig } from "$fresh/server.ts";
@@ -32,7 +32,7 @@ export default defineConfig({
 });
 ```
 
-But what's going on in this new `_middleware.ts` we've created?
+但是在我们创建的这个新的 `_middleware.ts` 中发生了什么？
 
 ```ts routes/_middleware.ts
 import { FreshContext } from "$fresh/server.ts";
@@ -46,9 +46,9 @@ export class Context {
   private complicatedStartupValue: number;
 
   public constructor() {
-    console.log("i'm logged during initialization, and not during handling!");
-    // presumably this involves connecting to a
-    // database or doing some heavy computation
+    console.log("我在初始化时被调用，而不是在处理请求时！");
+    // 假设这需要连接到数据库
+    // 或执行一些繁重的计算
     this.complicatedStartupValue = 42;
   }
 
@@ -58,7 +58,7 @@ export class Context {
 
   public static instance() {
     if (this.context) return this.context;
-    else throw new Error("Context is not initialized!");
+    else throw new Error("Context 未初始化！");
   }
 }
 
@@ -68,7 +68,7 @@ export async function handler(
 ) {
   ctx.state.context = Context.instance();
   if (ctx.destination === "route") {
-    console.log("i'm logged during a request!");
+    console.log("我在请求时被调用！");
     console.log(ctx.state.context);
   }
   const resp = await ctx.next();
@@ -76,63 +76,60 @@ export async function handler(
 }
 ```
 
-So now in this `handler` (or any other `handler` functions you create) you can
-have access to the complicated initialization step by calling
-`Context.instance()`.
+所以现在在这个 `handler`（或你创建的任何其他 `handler` 函数）中，你可以通过调用 `Context.instance()` 来访问复杂的初始化步骤。
 
-## Proving it out
+## 验证效果
 
-### Dev
+### 开发模式
 
-When you run `deno task start` you should see the following output:
+当你运行 `deno task start` 时，你应该看到以下输出：
 
 ```txt Terminal output
 Task start deno run -A --watch=static/,routes/ dev.ts
 Watcher Process started.
-i'm logged during initialization, and not during handling!
+我在初始化时被调用，而不是在处理请求时！
 The manifest has been generated for 6 routes and 1 islands.
 
  🍋 Fresh ready
     Local: http://localhost:8000/
 ```
 
-Going to `http://localhost:8000/` should produce:
+访问 `http://localhost:8000/` 应该产生：
 
 ```txt Terminal output
-i'm logged during a request!
+我在请求时被调用！
 Context { complicatedStartupValue: 42 }
 ```
 
-### Build
+### 构建模式
 
-When you run `deno task build` you should see:
+当你运行 `deno task build` 时，你应该看到：
 
 ```txt Terminal output
 Task build deno run -A dev.ts build
-i'm logged during initialization, and not during handling!
+我在初始化时被调用，而不是在处理请求时！
 The manifest has been generated for 6 routes and 1 islands.
 Assets written to: /path/to/my/project/_fresh
 ```
 
-There's no handling of routes associated with this, but note that the
-initialization occurred.
+这与路由处理无关，但请注意初始化已经发生。
 
-### Preview
+### 预览模式
 
-Finally when you run `deno task preview` you should see:
+最后，当你运行 `deno task preview` 时，你应该看到：
 
 ```txt Terminal output
 Task preview deno run -A main.ts
-i'm logged during initialization, and not during handling!
+我在初始化时被调用，而不是在处理请求时！
 Using snapshot found at /Users/reed/code/temp/1763/_fresh
 
  🍋 Fresh ready
     Local: http://localhost:8000/
 ```
 
-Going to `http://localhost:8000/` should produce:
+访问 `http://localhost:8000/` 应该产生：
 
 ```txt Terminal output
-i'm logged during a request!
+我在请求时被调用！
 Context { complicatedStartupValue: 42 }
 ```

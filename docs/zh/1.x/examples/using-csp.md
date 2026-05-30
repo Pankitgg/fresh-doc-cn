@@ -1,29 +1,22 @@
 ---
 description: |
-  Change the source directory to effectively manage your project.
+  更改源目录以有效管理你的项目。
 ---
 
-As per the
-[MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP):
+# 使用 CSP
 
-> Content Security Policy (CSP) is an added layer of security that helps to
-> detect and mitigate certain types of attacks, including Cross-Site Scripting
-> (XSS) and data injection attacks. These attacks are used for everything from
-> data theft, to site defacement, to malware distribution.
+根据 [MDN 文档](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)：
+
+> 内容安全策略（CSP）是一个额外的安全层，有助于检测和缓解某些类型的攻击，包括跨站脚本（XSS）和数据注入攻击。这些攻击被用于从数据盗窃到网站篡改，再到恶意软件分发的一切。
 >
-> To enable CSP, you need to configure your web server to return the
-> Content-Security-Policy HTTP header. (Sometimes you may see mentions of the
-> X-Content-Security-Policy header, but that's an older version and you don't
-> need to specify it anymore.)
+> 要启用 CSP，你需要配置你的 Web 服务器以返回 Content-Security-Policy HTTP 头部。（有时你可能会看到 X-Content-Security-Policy 头部的提及，但这是一个较旧的版本，你不再需要指定它。）
 
-Fortunately Fresh has built in support for CSP. We don't need to worry about
-setting headers ourselves. We just have to configure our routes correctly. Let's
-dive into a few examples to see how this works.
+幸运的是，Fresh 内置了对 CSP 的支持。我们不需要担心自己设置头部信息。我们只需要正确配置我们的路由即可。让我们深入一些示例来看看它是如何工作的。
 
-Fresh's CSP implementation supports the following
+Fresh 的 CSP 实现支持以下
 
 <details>
-<summary>directives</summary>
+<summary>指令</summary>
 
 ```ts fresh 🍋
 export interface ContentSecurityPolicyDirectives {
@@ -54,10 +47,6 @@ export interface ContentSecurityPolicyDirectives {
    * Specifies valid sources of images and favicons.
    */
   imgSrc?: string[];
-  /**
-   * Specifies valid sources of application manifest files.
-   */
-  manifestSrc?: string[];
   /**
    * Specifies valid sources for loading media using the <audio> , <video> and
    * <track> elements.
@@ -140,10 +129,9 @@ export interface ContentSecurityPolicyDirectives {
 
 </details>
 
-For our examples, we'll just be focused on `styleSrc`, but the technique can be
-applied to any of the directives.
+在我们的示例中，我们将只关注 `styleSrc`，但该技术可以应用于任何指令。
 
-We'll start off by having an example stylesheet defined like this:
+我们将从定义一个示例样式表开始：
 
 ```css static/example.css
 h1 {
@@ -154,11 +142,9 @@ h1 {
 }
 ```
 
-## No CSP
+## 不使用 CSP
 
-To kick things off, we'll create the following control route which doesn't do
-anything with CSP. We include a stylesheet to confirm that our sheet correctly
-styles the response.
+为了开始，我们将创建以下控制路由，它不会对 CSP 做任何事情。我们包含一个样式表来确认我们的样式表正确地样式化响应。
 
 ```tsx routes/noCSP.tsx
 import { RouteContext } from "$fresh/server.ts";
@@ -166,25 +152,22 @@ import { RouteContext } from "$fresh/server.ts";
 export default function Home(req: Request, ctx: RouteContext) {
   return (
     <>
-      <h1>This page doesn't use CSP at all. Styles will be applied.</h1>
+      <h1>此页面完全不使用 CSP。样式将被应用。</h1>
       <link rel="stylesheet" type="text/css" href="example.css" />
     </>
   );
 }
 ```
 
-We can hit `http://localhost:8000/noCSP` and we should see the following:
+我们可以访问 `http://localhost:8000/noCSP`，我们应该看到以下内容：
 
 ```txt Response body
-This page doesn't use CSP at all. Styles will be applied.
+此页面完全不使用 CSP。样式将被应用。
 ```
 
-## Incorrect CSP
+## 不正确的 CSP
 
-Let's invoke the `useCSP` hook in our response to try to secure our page. Watch
-closely, we're using the wrong URL! This will cause the browser to reject the
-stylesheet, due to the header that Fresh produces. We get a `(blocked:csp)`
-status when the browser tries to request this resource.
+让我们在响应中调用 `useCSP` hook 来尝试保护我们的页面。仔细观察，我们使用了错误的 URL！这将导致浏览器拒绝样式表，由于 Fresh 产生的头部信息。当浏览器尝试请求此资源时，我们会得到 `(blocked:csp)` 状态。
 
 ```tsx routes/incorrectCSP.tsx
 import { RouteConfig, RouteContext } from "$fresh/server.ts";
@@ -199,7 +182,7 @@ export default function Home(req: Request, ctx: RouteContext) {
   });
   return (
     <>
-      <h1>This page violates our configured CSP. Styles won't be applied.</h1>
+      <h1>此页面违反了我们配置的 CSP。样式不会被应用。</h1>
       <link rel="stylesheet" type="text/css" href="example.css" />
     </>
   );
@@ -210,16 +193,15 @@ export const config: RouteConfig = {
 };
 ```
 
-We can hit `http://localhost:8000/incorrectCSP` and we should see the following:
+我们可以访问 `http://localhost:8000/incorrectCSP`，我们应该看到以下内容：
 
 ```txt Response body
-This page violates our configured CSP. Styles won't be applied.
+此页面违反了我们配置的 CSP。样式不会被应用。
 ```
 
-## Correct CSP
+## 正确的 CSP
 
-Let's fix our simple mistake and use the correct URL. Everything is working
-correctly here.
+让我们修复这个简单的错误并使用正确的 URL。这里一切正常工作。
 
 ```tsx routes/correctCSP.tsx
 import { RouteConfig, RouteContext } from "$fresh/server.ts";
@@ -234,7 +216,7 @@ export default function Home(req: Request, ctx: RouteContext) {
   });
   return (
     <>
-      <h1>This page adheres to our configured CSP. Styles will be applied.</h1>
+      <h1>此页面符合我们配置的 CSP。样式将被应用。</h1>
       <link rel="stylesheet" type="text/css" href="example.css" />
     </>
   );
@@ -245,15 +227,15 @@ export const config: RouteConfig = {
 };
 ```
 
-We can hit `http://localhost:8000/correctCSP` and we should see the following:
+我们可以访问 `http://localhost:8000/correctCSP`，我们应该看到以下内容：
 
 ```txt Response body
-This page adheres to our configured CSP. Styles will be applied.
+此页面符合我们配置的 CSP。样式将被应用。
 ```
 
-## No Route Config
+## 没有 RouteConfig
 
-What happens if we forget to use a `RouteConfig` in our route?
+如果我们忘记在路由中使用 `RouteConfig` 会发生什么？
 
 ```tsx routes/cspNoRouteConfig.tsx
 import { RouteContext } from "$fresh/server.ts";
@@ -269,9 +251,9 @@ export default function Home(req: Request, ctx: RouteContext) {
   return (
     <>
       <h1>
-        This page violates our configured CSP. But we don't have a{" "}
+        此页面违反了我们配置的 CSP。但我们没有启用{" "}
         <code>RouteConfig</code>{" "}
-        enabled, so Fresh doesn't know to use the CSP. Styles will be applied.
+        ，所以 Fresh 不知道使用 CSP。样式将被应用。
       </h1>
       <link rel="stylesheet" type="text/css" href="example.css" />
     </>
@@ -279,20 +261,15 @@ export default function Home(req: Request, ctx: RouteContext) {
 }
 ```
 
-We can hit `http://localhost:8000/cspNoRouteConfig` and we should see the
-following:
+我们可以访问 `http://localhost:8000/cspNoRouteConfig`，我们应该看到以下内容：
 
 ```txt Response body
-This page violates our configured CSP. But we don't have a RouteConfig enabled, so Fresh doesn't know to use the CSP. Styles will be applied.
+此页面违反了我们配置的 CSP。但我们没有启用 RouteConfig，所以 Fresh 不知道使用 CSP。样式将被应用。
 ```
 
-## Reporting
+## 报告
 
-Let's touch on the reporting aspect of CSP. CSP (and Fresh's framework) support
-a `reportOnly` flag and a `reportUri` endpoint. This is a destination that
-should be able to receive `POST` requests. If the `reportOnly` flag is enabled,
-then the browser will ignore the CSP headers and log any issues to the
-`reportUri` destination.
+让我们谈谈 CSP 的报告方面。CSP（和 Fresh 的框架）支持 `reportOnly` 标志和 `reportUri` 端点。这是一个应该能够接收 `POST` 请求的目标。如果启用了 `reportOnly` 标志，那么浏览器将忽略 CSP 头部并将任何问题记录到 `reportUri` 目标。
 
 ```tsx routes/incorrectCSPwithReport.tsx
 import { RouteConfig, RouteContext } from "$fresh/server.ts";
@@ -310,8 +287,7 @@ export default function Home(req: Request, ctx: RouteContext) {
   return (
     <>
       <h1>
-        This page violates our configured CSP. But we're using "reportOnly".
-        Styles will be applied.
+        此页面违反了我们配置的 CSP。但我们使用了 "reportOnly"。样式将被应用。
       </h1>
       <link rel="stylesheet" type="text/css" href="example.css" />
     </>
@@ -339,15 +315,13 @@ export const handler = {
 };
 ```
 
-We can hit `http://localhost:8000/incorrectCSPwithReport` and we should see the
-following:
+我们可以访问 `http://localhost:8000/incorrectCSPwithReport`，我们应该看到以下内容：
 
 ```txt Response body
-This page violates our configured CSP. But we're using "reportOnly". Styles will be applied.
+此页面违反了我们配置的 CSP。但我们使用了 "reportOnly"。样式将被应用。
 ```
 
-We can then check our server and we'll see that `csp-reports.txt` has an entry
-like this:
+然后我们可以检查我们的服务器，我们会看到 `csp-reports.txt` 有一个类似这样的条目：
 
 ```json csp-reports.txt
 {

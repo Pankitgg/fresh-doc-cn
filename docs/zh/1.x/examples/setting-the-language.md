@@ -1,10 +1,9 @@
 ---
 description: |
-  Set the lang attribute in the <html> tag.
+  在 `<html>` 标签中设置 lang 属性。
 ---
 
-When you initialize a project with `deno run -A -r https://fresh.deno.dev`,
-you'll end up with a `main.ts` like the following:
+当你使用 `deno run -A -r https://fresh.deno.dev` 初始化项目时，你会得到一个如下的 `main.ts`：
 
 ```ts main.ts
 /// <reference no-default-lib="true" />
@@ -22,9 +21,7 @@ import twindConfig from "./twind.config.ts";
 await start(manifest, { plugins: [twindPlugin(twindConfig)] });
 ```
 
-This is a great start if your site is in English, but let's say you want to
-change the language, as per the `<html lang=asdf>` tag. Then you'll need to do
-something like this:
+如果你的站点是英文的，这是一个很好的开始，但假设你想更改语言，根据 `<html lang=asdf>` 标签。那么你需要这样做：
 
 ```ts main.ts
 /// <reference no-default-lib="true" />
@@ -48,5 +45,4 @@ await start(manifest, {
 });
 ```
 
-If you're curious how this works, start by checking out `TemplateOptions` in
-`render.ts`.
+如果你好奇这是如何工作的，可以查看 `render.ts` 中的 `TemplateOptions`。

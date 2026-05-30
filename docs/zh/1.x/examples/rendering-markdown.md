@@ -1,18 +1,15 @@
 ---
 description: |
-  How to render markdown on your Fresh site.
+  如何在你的 Fresh 站点上渲染 markdown。
 ---
 
-What if you want to render some markdown on your site? There are a few
-possibilities:
+如果你想在你的站点上渲染一些 markdown 怎么办？有几种可能性：
 
-1. the markdown is coming from a remote source
-2. the markdown is defined in a string
-3. the markdown is on a file
+1. markdown 来自远程源
+2. markdown 定义在字符串中
+3. markdown 在文件上
 
-The following file uses
-[dynamic routing](https://fresh.deno.dev/docs/getting-started/dynamic-routes) to
-handle the three cases. It's assumed this file is called `[slug].tsx`:
+以下文件使用[动态路由](https://fresh.deno.dev/docs/getting-started/dynamic-routes)来处理这三种情况。假设此文件名为 `[slug].tsx`：
 
 ```ts routes/[slug].tsx
 import { Handlers, PageProps } from "$fresh/server.ts";
@@ -38,12 +35,12 @@ export const handler: Handlers<Page> = {
       rawMarkdown = await resp.text();
     } else if (ctx.params.slug === "string") {
       rawMarkdown = `---
-description: test
+description: 测试
 ---
 
-## big text
+## 大文本
 
-Look, it's working. _This is in italics._
+看，它在工作。_这是斜体。_
       
       `;
     } else if (ctx.params.slug === "file") {
@@ -58,7 +55,7 @@ Look, it's working. _This is in italics._
 
 export default function MarkdownPage({ data }: PageProps<Page | null>) {
   if (!data) {
-    return <h1>File not found.</h1>;
+    return <h1>未找到文件。</h1>;
   }
 
   return (
@@ -78,23 +75,22 @@ export default function MarkdownPage({ data }: PageProps<Page | null>) {
 }
 ```
 
-The contents of the `text.md` file are the following:
+`text.md` 文件的内容如下：
 
 ```md text.md
 ---
-description: testFromText
+description: 测试文本
 ---
 
-# Really Big Text
+# 真的很大文本
 
-**bold**
+**粗体**
 ```
 
-You'll also need to import the `Github Flavored Markdown` module:
+你还需要导入 `Github Flavored Markdown` 模块：
 
 ```sh Terminal
 deno add jsr:@deno/gfm
 ```
 
-Andy has a helpful [post](https://deno.com/blog/build-a-blog-with-fresh) on the
-Deno Blog which goes into a slightly more realistic example.
+Andy 在 Deno Blog 上有一篇有用的[文章](https://deno.com/blog/build-a-blog-with-fresh)，介绍了一个稍微更实际的示例。

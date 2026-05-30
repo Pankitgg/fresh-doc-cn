@@ -16,7 +16,7 @@ This will spawn a short wizard that guides you through the setup, like the
 project name, if you want to use tailwindcss and if you're using vscode. Your
 project folder should look like this:
 
-```txt-files Project structure
+```txt Project structure
 <project root>
 ├── components/         # Store other components here. Can be named differently
 │   └── Button.tsx

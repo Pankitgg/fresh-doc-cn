@@ -1,26 +1,19 @@
 ---
 description: |
-  How to render raw HTML in Fresh.
+  如何在 Fresh 中渲染原始 HTML。
 ---
 
-Text content in Fresh is always escaped, whether serverside rendered or rendered
-in islands. While this generally desired, it can create issues in certain
-situations.
+Fresh 中的文本内容总是被转义，无论是服务端渲染还是在岛屿中渲染。虽然这通常是期望的行为，但它可能在某些情况下造成问题。
 
-## Warning
+## 警告
 
-The TL;DR is to use Preact's `dangerouslySetInnerHTML`. As the name implies, it
-should not be used lightly.
+简而言之是使用 Preact 的 `dangerouslySetInnerHTML`。正如名称所示，不应该轻易使用它。
 
-Setting arbitrary HTML can be dangerous. Make sure you trust the source.
-Rendering user-supplied HTML to the DOM makes your site vulnerable to cross-
-site scripting. The markup must first be sanitizied, or better yet, something
-you trust.
+设置任意 HTML 可能是危险的。确保你信任来源。将用户提供的 HTML 渲染到 DOM 会使你的站点容易受到跨站脚本攻击。必须先清理标记，或者更好的是，使用你信任的内容。
 
-## Example: Rendering JSON-LD
+## 示例：渲染 JSON-LD
 
-Suppose we need to add some microdata markup to a page. The following will
-result in **escaped characters, and will not work**:
+假设我们需要向页面添加一些微数据标记。以下将导致**转义字符，并且不会工作**：
 
 ```tsx components/json-ld.tsx
 const json = `
@@ -38,7 +31,7 @@ export default function JsonLd() {
 }
 ```
 
-Instead, we can use `dangerouslySetInnerHTML`:
+相反，我们可以使用 `dangerouslySetInnerHTML`：
 
 ```tsx components/json-ld.tsx
 export default function JsonLd() {
@@ -51,11 +44,9 @@ export default function JsonLd() {
 }
 ```
 
-## Another example: Code highlighting
+## 另一个示例：代码高亮
 
-Syntax highlighters parse strings into HTML tags, allowing them to be
-individually styled with CSS. We can build a simple Preact syntax highlighter
-like so:
+语法高亮器将字符串解析为 HTML 标签，允许它们使用 CSS 单独样式化。我们可以构建一个简单的 Preact 语法高亮器，如下所示：
 
 ```tsx components/code.tsx
 import Prism from "https://esm.sh/prismjs@1.29.0";
@@ -80,4 +71,4 @@ export default function Code({ code, lang }: Props) {
 }
 ```
 
-Of course, we will also have to add some CSS to make this look nice.
+当然，我们还必须添加一些 CSS 来使其看起来美观。

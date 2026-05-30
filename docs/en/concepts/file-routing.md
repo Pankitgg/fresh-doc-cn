@@ -24,7 +24,7 @@ const app = new App({ basePath: "/foo" })
 
 Example project structure:
 
-```txt-files Project structure
+```txt Project structure
 <project root>
 ├── deno.json
 ├── main.ts
@@ -120,7 +120,7 @@ Let's illustrate that with an example:
 Without any way to group routes this is a problem because every route segment
 can only have one `_layout` file.
 
-```txt-files Project structure
+```txt Project structure
 └── <root>/routes
     ├── _layout.tsx  # applies to all routes here :(
     ├── about.tsx
@@ -134,7 +134,7 @@ a name that is wrapped in parentheses. For example `(info)` would be considered
 a route group and so would `(marketing)`. This enables us to group related
 routes in a folder and use a different `_layout` file for each group.
 
-```txt-files Project structure
+```txt Project structure
 └── <root>/routes
     ├── (marketing)
     │   ├── _layout.tsx  # only applies to about.tsx and career.tsx
@@ -150,7 +150,7 @@ routes in a folder and use a different `_layout` file for each group.
 > URL. Such scenarios will lead to ambiguity as to which route file should be
 > picked.
 >
-> ```txt-files Project structure
+> ```txt Project structure
 > └── <root>/routes
 >     ├── (group-1)
 >     │   └── about.tsx  # Bad: Maps to same `/about` url

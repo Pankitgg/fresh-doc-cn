@@ -1,28 +1,15 @@
 ---
 description: |
-  Create a dynamic route in Fresh by adding a dynamic segment to the route name
-  in the routes' file name on disk: `/greet/[name].tsx`.
+  通过在磁盘上路由文件名的路由段中添加动态段来创建 Fresh 中的动态路由：`/greet/[name].tsx`。
 ---
 
-The `/about` route created on the last page is pretty static. It does not matter
-what query or path parameters are passed to the route, it will always render the
-same page. Let's create a `/greet/:name` that will render a page with a greeting
-that contains the name passed in the path.
+上次创建的 `/about` 路由非常静态。无论向路由传递什么查询或路径参数，它总是渲染相同的页面。让我们创建一个 `/greet/:name` 路由，它将渲染一个包含路径中传递的名称的问候页面。
 
-Before diving in, a quick refresher on "dynamic" routes. Dynamic routes don't
-just match a single static path, but rather a whole bunch of different paths
-based on a pattern. For example, the `/greet/:name` route will match the paths
-`/greet/Luca` and `/greet/John`, but not `/greet/Luca/John`.
+在开始之前，快速回顾一下"动态"路由。动态路由不仅仅匹配单个静态路径，而是根据模式匹配一整串不同的路径。例如，`/greet/:name` 路由将匹配 `/greet/Luca` 和 `/greet/John` 路径，但不匹配 `/greet/Luca/John`。
 
-Fresh supports dynamic routes out of the box through file system routing. To
-make any path segment dynamic, just put square brackets around that segment in
-the file name. For example the `/greet/:name` route maps to the file name
-`routes/greet/[name].tsx`.
+Fresh 通过文件系统路由开箱即用地支持动态路由。要使任何路径段成为动态段，只需在文件名中将该段放在方括号中。例如，`/greet/:name` 路由映射到文件名 `routes/greet/[name].tsx`。
 
-Just like the static `/about` route, the dynamic `/greet/:name` route will
-render a page. The module must once again expose a component as a default
-export. This time the component will receive the matched path segment properties
-as arguments in its `props` object though.
+就像静态的 `/about` 路由一样，动态的 `/greet/:name` 路由将渲染一个页面。该模块必须再次暴露一个组件作为默认导出。这次，组件将在其 `props` 对象中接收匹配的路径段属性作为参数。
 
 ```tsx routes/greet/[name].tsx
 import { PageProps } from "$fresh/server.ts";
@@ -31,20 +18,16 @@ export default function GreetPage(props: PageProps) {
   const { name } = props.params;
   return (
     <main>
-      <p>Greetings to you, {name}!</p>
+      <p>向你问好，{name}！</p>
     </main>
   );
 }
 ```
 
-The `PageProps` interface actually contains a bunch of useful properties that
-can be used to customize the rendered output. Next to the matched url pattern
-parameters, the raw `url`, and the `route` name can also be found in here.
+`PageProps` 接口实际上包含许多有用的属性，可用于自定义渲染输出。除了匹配的 URL 模式参数外，原始 `url` 和 `route` 名称也可以在这里找到。
 
-Navigating to `http://localhost:8000/greet/Luca` will now render a page showing
-"Greetings to you, Luca!".
+现在导航到 `http://localhost:8000/greet/Luca` 将渲染一个显示"向你问好，Luca！"的页面。
 
-The [_Concepts: Routing_][concepts-routing] page has more information about
-dynamic routes, especially about how to create more advanced dynamic routes.
+[_概念：路由_][concepts-routing] 页面有更多关于动态路由的信息，特别是关于如何创建更高级的动态路由。
 
 [concepts-routing]: /docs/1.x/concepts/routing

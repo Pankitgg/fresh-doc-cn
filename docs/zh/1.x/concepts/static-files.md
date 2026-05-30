@@ -1,33 +1,19 @@
 ---
 description: |
-  Fresh has built-in support for serving static files. This is useful for serving images, CSS, and other static assets.
+  Fresh 有内置的支持来服务静态文件。这对于服务图像、CSS 和其他静态资产很有用。
 ---
 
-Fresh automatically serves static assets placed in a `static/` directory in the
-project root. These assets are served at the root of the webserver, with a
-higher priority than routes. This means that if a given request matches a file
-in the `static/` folder, it is always served, even if there is a route that
-would also match the request.
+Fresh 自动服务放置在项目根目录 `static/` 目录中的静态资产。这些资产在 Web 服务器的根目录服务，优先级高于路由。这意味着如果请求匹配 `static/` 文件夹中的文件，它总是被服务，即使有一个路由也会匹配该请求。
 
-Static asset responses automatically get a `content-type` header assigned based
-on the file extension of the file on disk. Assets are also automatically
-streamed from disk to the client to improve performance and efficiency for both
-user and server.
+静态资产响应会根据文件的扩展名自动获得 `content-type` 头。资产还会从磁盘流式传输到客户端，以提高用户和服务器的性能和效率。
 
-Fresh also adds an `etag` header to assets automatically and handles the
-`If-None-Match` header for incoming requests.
+Fresh 还会自动向资产添加 `etag` 头，并处理传入请求的 `If-None-Match` 头。
 
-### Caching
+### 缓存
 
-By default, no caching headers are added to assets. This can be disadvantageous
-in many scenarios, so Fresh makes it easy to serve assets with long cache
-lifetimes too.
+默认情况下，资产不会添加缓存头。这在许多场景中可能不利，因此 Fresh 使服务具有长缓存生命周期的资产变得容易。
 
-The first approach to do this is manual. The client runtime exports an `asset`
-function that takes an absolute path to the static asset and returns a "locked"
-version of this path that contains a build ID for cache busting. When the asset
-is requested at this "locked" path, it will be served with a cache lifetime of
-one year.
+做到这一点的第一种方法是手动的。客户端运行时导出一个 `asset` 函数，该函数接受静态资产的绝对路径并返回包含构建 ID 的"锁定"版本路径用于缓存破坏。当资产在此"锁定"路径请求时，它将提供一年的缓存生命周期。
 
 ```tsx routes/page.tsx
 import { asset } from "$fresh/runtime.ts";
@@ -35,21 +21,18 @@ import { asset } from "$fresh/runtime.ts";
 export default function Page() {
   return (
     <p>
-      <a href={asset("/brochure.pdf")}>View brochure</a>
+      <a href={asset("/brochure.pdf")}>查看手册</a>
     </p>
   );
 }
 ```
 
-Fresh also does this automatically for `src` and `srcset` attributes in `<img>`
-and `<source>` HTML tags. These will automatically use "locked" paths if Fresh
-deems it safe to do so. You can always opt out of this behaviour per tag, by
-adding the `data-fresh-disable-lock` attribute.
+Fresh 还会自动为 `<img>` 和 `<source>` HTML 标签中的 `src` 和 `srcset` 属性执行此操作。如果 Fresh 认为安全，这些将自动使用"锁定"路径。你始终可以通过添加 `data-fresh-disable-lock` 属性来退出此行为。
 
 ```tsx routes/user.tsx
-{/* Locked URL source */}
+{/* 锁定 URL 源 */}
 <img src="/user.png" />;
 
-{/* Preserve URL source and disable lock */}
+{/* 保留 URL 源并禁用锁定 */}
 <img src="/user.png" data-fresh-disable-lock />;
 ```

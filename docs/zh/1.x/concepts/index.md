@@ -1,8 +1,6 @@
 ---
 description: |
-  This chapter goes over some fundamental concepts of Fresh.
+  本章介绍 Fresh 的一些基本概念。
 ---
 
-This chapter goes over some fundamental concepts of Fresh. It covers the
-overarching architecture design of Fresh applications, as well as reference
-documentation about the various features of Fresh.
+本章介绍 Fresh 的一些基本概念。它涵盖 Fresh 应用程序的总体架构设计，以及 Fresh 各种功能的参考文档。

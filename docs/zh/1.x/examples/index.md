@@ -1,22 +1,19 @@
 ---
 description: |
-  In this chapter of the Fresh documentation, you can find examples of features that you may like in your Fresh project.
+  在 Fresh 文档的这一章中，你可以找到你可能喜欢的 Fresh 项目功能示例。
 ---
 
-In this chapter of the Fresh documentation, you can find examples of features
-that you may like in your Fresh project. If there's a specific example you'd
-like to see here, please open
-[a GitHub discussion](https://github.com/denoland/fresh/discussions/new?category=ideas).
+在 Fresh 文档的这一章中，你可以找到你可能在你的 Fresh 项目中喜欢的功能示例。如果你想在这里看到特定的示例，请打开 [GitHub 讨论](https://github.com/denoland/fresh/discussions/new?category=ideas)。
 
-- [Modifying the `<head>`](./examples/modifying-the-head)
-- [Setting the language](./examples/setting-the-language)
-- [Writing tests](./examples/writing-tests)
-- [Changing the source directory](./examples/changing-the-src-dir)
-- [Initializing the server](./examples/init-the-server)
-- [Using Fresh canary version](./examples/using-fresh-canary-version)
-- [Dealing with CORS](./examples/dealing-with-cors)
-- [Creating a CRUD API](./examples/creating-a-crud-api)
-- [Handling complex routes](./examples/handling-complex-routes)
-- [Rendering markdown](./examples/rendering-markdown)
-- [Sharing state between islands](./examples/sharing-state-between-islands)
-- [Using CSP](./examples/using-csp)
+- [修改 `<head>`](./examples/modifying-the-head)
+- [设置语言](./examples/setting-the-language)
+- [编写测试](./examples/writing-tests)
+- [更改源目录](./examples/changing-the-src-dir)
+- [初始化服务器](./examples/init-the-server)
+- [使用 Fresh canary 版本](./examples/using-fresh-canary-version)
+- [处理 CORS](./examples/dealing-with-cors)
+- [创建 CRUD API](./examples/creating-a-crud-api)
+- [处理复杂路由](./examples/handling-complex-routes)
+- [渲染 markdown](./examples/rendering-markdown)
+- [在岛屿之间共享状态](./examples/sharing-state-between-islands)
+- [使用 CSP](./examples/using-csp)

@@ -1,33 +1,17 @@
 ---
 description: |
-  Robustly handle user inputs using HTML `<form>` elements client side, and form
-  submission handlers server side.
+  使用客户端 HTML `<form>` 元素和服务端表单提交处理程序来稳健地处理用户输入。
 ---
 
-Forms are a common mechanism for letting users interact with applications. In
-the last few years it has become more and more common for web applications to
-move form submission entirely to the client. This can have useful properties for
-interactivity, but it is much worse for resiliency and user experience as a
-whole. Browsers have great built in systems for form submission, revolving
-around the HTML `<form>` element.
+表单是让用户与应用程序交互的常见机制。在过去几年中，Web 应用程序将表单提交完全移到客户端变得越来越常见。这对于交互性可能有用，但对于弹性和整体用户体验来说要差得多。浏览器有很好的内置系统用于表单提交，围绕 HTML `<form>` 元素。
 
-Fresh builds the core of its form submission infrastructure around the native
-`<form>` element. This page explains how to use `<form>` in Fresh, and the next
-chapter explains how to progressively enhance your forms with client side
-JavaScript to make them more interactive.
+Fresh 围绕原生 `<form>` 元素构建其表单提交基础设施的核心。本页面解释如何在 Fresh 中使用 `<form>`，下一章解释如何使用客户端 JavaScript 渐进式增强你的表单以使其更具交互性。
 
-The way forms work in the browser, is that they perform an HTML navigation
-action when the user submits the form. In most cases this means that when the
-form is submitted, a `GET` or `POST` request is sent to the server with the form
-data, which then responds with a new page to render.
+表单在浏览器中的工作方式是，当用户提交表单时，它们执行 HTML 导航操作。在大多数情况下，这意味着当表单提交时，一个 `GET` 或 `POST` 请求被发送到服务器，其中包含表单数据，然后服务器响应一个新页面进行渲染。
 
-Fresh can handle both `GET` and `POST` requests through the
-[custom handlers][custom-handlers] feature of routes. The handlers can perform
-any necessary processing on the form data, and then pass data to the
-`ctx.render()` call to render a new page.
+Fresh 可以通过路由的[自定义处理程序][custom-handlers]功能处理 `GET` 和 `POST` 请求。处理程序可以对表单数据进行任何必要的处理，然后将数据传递给 `ctx.render()` 调用来渲染新页面。
 
-Here is an example implementing a search form that filters an array of names
-server side:
+这是一个实现搜索表单的示例，它在服务端过滤一个名字数组：
 
 ```tsx routes/search.tsx
 import { Handlers, PageProps } from "$fresh/server.ts";
@@ -55,7 +39,7 @@ export default function Page({ data }: PageProps<Data>) {
       <form>
         <input type="text" name="q" value={query} class="border p-1" />
         <button type="submit" class="ml-1 px-2 py-1 bg-gray-100 border">
-          Search
+          搜索
         </button>
       </form>
       <ul>
@@ -66,14 +50,9 @@ export default function Page({ data }: PageProps<Data>) {
 }
 ```
 
-When the user submits the form, the browser will navigate to `/search` with the
-query set as the `q` query parameter in the URL. The `GET` handler will then
-filter the names array based on the query, and pass it to the page component for
-rendering.
+当用户提交表单时，浏览器将导航到 `/search`，并将查询设置为 URL 中的 `q` 查询参数。然后 `GET` 处理程序将根据查询过滤名字数组，并将其传递给页面组件进行渲染。
 
-[Learn more about using forms in Fresh][concepts-forms].
-
-<!-- TODO(lucacasonato): link to todo app example when that is built again -->
+[了解更多关于在 Fresh 中使用表单的内容][concepts-forms]。
 
 [custom-handlers]: /docs/1.x/getting-started/custom-handlers
 [concepts-forms]: /docs/1.x/concepts/forms

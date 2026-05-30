@@ -1,58 +1,31 @@
 ---
 description: |
-  Create a new route to a Fresh project by creating a new file in the `routes/`
-  folder.
+  通过在 `routes/` 文件夹中创建新文件来为 Fresh 项目添加新路由。
 ---
 
-After getting the project running locally, the next step is to add a new route
-to the project. Routes encapsulate the logic for handling requests to a
-particular path in your project. They can be used to handle API requests or
-render HTML pages. For now we are going to do the latter.
+在让项目本地运行之后，下一步就是向项目添加新路由。路由封装了处理项目中特定路径请求的逻辑。它们可用于处理 API 请求或渲染 HTML 页面。目前我们将做后者。
 
-Routes are defined as files in the `routes` directory. The file name of the
-module is important: it is used to determine the path that the route will
-handle. For example, if the file name is `index.js`, the route will handle
-requests to `/`. If the file name is `about.js`, the route will handle requests
-to `/about`. If the file name is `contact.js` and is placed inside of the
-`routes/about/` folder, the route will handle requests to `/about/contact`. This
-concept is called _File-system routing_. You can learn more about it on the
-[_Concepts: Routing_][concepts-routing] page.
+路由被定义为 `routes` 目录中的文件。文件的名称非常重要：它用于确定路由将处理的路径。例如，如果文件名是 `index.js`，路由将处理对 `/` 的请求。如果文件名是 `about.js`，路由将处理对 `/about` 的请求。如果文件名是 `contact.js` 并放置在 `routes/about/` 文件夹中，路由将处理对 `/about/contact` 的请求。这个概念称为_文件系统路由_。你可以在[_概念：路由_][concepts-routing]页面了解更多关于路由的信息。
 
-Route files that render HTML are JavaScript or TypeScript modules that export a
-JSX component as their default export. This component will be rendered for every
-request to the route's path. The component receives a few properties that can be
-used to customize the rendered output, such as the current route, the url of the
-request, state set by middleware, and handler data (more on the last two later).
+渲染 HTML 的路由文件是 JavaScript 或 TypeScript 模块，将 JSX 组件作为默认导出。该组件将为每次访问路由路径的请求渲染。该组件接收一些可用于自定义渲染输出的属性，例如当前路由、请求的 URL、中间件设置的状态和处理程序数据（稍后会介绍后两者）。
 
-In the demo project we'll create a route to handle the `/about` page. To do
-this, one needs to create a new `routes/about.tsx` file. In this file, we can
-declare a component that should be rendered every time a user visits the page.
-This is done with JSX.
+在演示项目中，我们将创建一个路由来处理 `/about` 页面。要做到这一点，需要创建一个新的 `routes/about.tsx` 文件。在此文件中，我们可以声明一个每次用户访问页面时都应渲染的组件。这是通过 JSX 完成的。
 
-> [info]: To learn more about JSX, you can read [this article][jsx] in the React
-> documentation. Beware that Fresh does not use React, but rather
-> [Preact][preact], a lighter weight virtual dom library that works similar to
-> React.
+> [info]：要了解更多关于 JSX 的信息，你可以阅读 React 文档中的[这篇文章][jsx]。请注意，Fresh 不使用 React，而是使用 [Preact][preact]，一个更轻量级的虚拟 DOM 库，与 React 类似。
 
 ```tsx routes/about.tsx
 export default function AboutPage() {
   return (
     <main>
-      <h1>About</h1>
-      <p>This is the about page.</p>
+      <h1>关于</h1>
+      <p>这是关于页面。</p>
     </main>
   );
 }
 ```
 
-The new page will be visible at `http://localhost:8000/about`.
-
-<!-- You can find more in depth information about routes on the
-[_Concepts: Routes_][concepts-routes] documentation page. The following
-pages in the _Getting Started_ guide will also explain more features of routes. -->
+新页面将在 `http://localhost:8000/about` 可见。
 
 [concepts-routing]: /docs/1.x/concepts/routing
 [jsx]: https://react.dev/learn/writing-markup-with-jsx
 [preact]: https://preactjs.com/
-
-<!-- [concepts-routes]: /docs/1.x/concepts/routes -->

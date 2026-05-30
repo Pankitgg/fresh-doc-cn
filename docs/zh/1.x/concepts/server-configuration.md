@@ -1,22 +1,21 @@
 ---
 description: |
-  The ability to configure the core Fresh server leads to its flexibility.
+  配置核心 Fresh 服务器的能力使其具有灵活性。
 ---
 
-In this page we discuss how the server can be configured during startup.
+# 服务器配置
 
-The signature of the primary method looks like this:
+在本页中，我们讨论服务器在启动期间如何配置。
+
+主要方法的签名如下：
 
 ```ts main.ts
 export async function start(manifest: Manifest, config: FreshConfig = {});
 ```
 
-## Configuration
+## 配置
 
-`Manifest` comes from `fresh.gen.ts`, so nothing to do there. `config` is where
-things get interesting.
-[`FreshConfig`](https://deno.land/x/fresh/server.ts?s=FreshConfig) looks like
-this:
+`Manifest` 来自 `fresh.gen.ts`，所以那里没有什么要做的。`config` 是事情变得有趣的地方。[`FreshConfig`](https://deno.land/x/fresh/server.ts?s=FreshConfig) 看起来像这样：
 
 ```ts fresh 🍋
 export interface FreshConfig {
@@ -42,7 +41,7 @@ export interface FreshConfig {
 }
 ```
 
-And for completeness here are the remaining two types:
+为了完整性，这里是剩余的两个类型：
 
 ```ts fresh 🍋
 export type RenderFunction = (
@@ -74,12 +73,11 @@ export interface RouterOptions {
 }
 ```
 
-## Build
+## 构建
 
 ### outDir
 
-As the comment suggests, this can be used to configure where generated files are
-written:
+正如注释所示，这可以用于配置生成文件的写入位置：
 
 ```tsx dev.ts
 await dev(import.meta.url, "./main.ts", {
@@ -91,7 +89,7 @@ await dev(import.meta.url, "./main.ts", {
 
 ### target
 
-This should be a valid ES Build target.
+这应该是一个有效的 ES Build 目标。
 
 ```tsx dev.ts
 await dev(import.meta.url, "./main.ts", {
@@ -101,10 +99,9 @@ await dev(import.meta.url, "./main.ts", {
 });
 ```
 
-## Plugins
+## 插件
 
-See the [docs](/docs/1.x/concepts/plugins) on this topic for more detail. But as
-a quick example, you can do something like this to load plugins:
+有关此主题的更多详细信息，请参阅[文档](/docs/1.x/concepts/plugins)。但作为一个快速示例，你可以执行类似这样的操作来加载插件：
 
 ```ts main.ts
 await start(manifest, { plugins: [twindPlugin(twindConfig)] });
@@ -112,8 +109,7 @@ await start(manifest, { plugins: [twindPlugin(twindConfig)] });
 
 ## StaticDir
 
-This allows you to specify the location where your site's static assets are
-stored. Here's an example:
+这允许你指定站点的静态资产存储的位置。这是一个示例：
 
 ```ts main.ts
 await start(manifest, { staticDir: "./custom_static" });
@@ -121,16 +117,13 @@ await start(manifest, { staticDir: "./custom_static" });
 
 ## Render
 
-This is by far the most complicated option currently available. It allows you to
-configure how your components get rendered.
+这是目前可用的最复杂的选项。它允许你配置组件的渲染方式。
 
 ## RouterOptions
 
 ### TrailingSlash
 
-By default Fresh uses URLs like `https://www.example.com/about`. If you'd like,
-you can configure this to `https://www.example.com/about/` by using the
-`trailingSlash` setting.
+默认情况下，Fresh 使用类似 `https://www.example.com/about` 的 URL。如果你愿意，你可以通过使用 `trailingSlash` 设置将其配置为 `https://www.example.com/about/`。
 
 ```ts main.ts
 await start(manifest, { router: { trailingSlash: true } });
@@ -138,39 +131,29 @@ await start(manifest, { router: { trailingSlash: true } });
 
 ### ignoreFilePattern
 
-By default Fresh ignores test files which are co-located next routes and
-islands. If you want, you can change the pattern Fresh uses ignore these files
+默认情况下，Fresh 会忽略与路由和岛屿相邻的测试文件。如果你愿意，你可以更改 Fresh 用于忽略这些文件的模式。
 
 ### basePath
 
-This setting allows you to serve a Fresh app from sub-path of a domain. A value
-of `/foo/bar` would serve the app from `http://localhost:8000/foo/bar` instead
-of `http://localhost:8000/` for example.
+此设置允许你从域名的子路径提供 Fresh 应用。例如，`/foo/bar` 的值将从 `http://localhost:8000/foo/bar` 提供应用，而不是 `http://localhost:8000/`。
 
-The `basePath` will be automatically applied to absolute links in your app. For
-example, when the `basePath` is `/foo/bar`, linking to `/about` will
-automatically become `/foo/bar/about`.
+`basePath` 将自动应用于应用中的绝对链接。例如，当 `basePath` 是 `/foo/bar` 时，链接到 `/about` 将自动变为 `/foo/bar/about`。
 
 ```tsx
 <a href="/about">About</a>;
 ```
 
-Rendered HTML:
+渲染的 HTML：
 
 ```html
 <a href="/foo/bar/about">About</a>
 ```
 
-The `basePath` is also applied to the `src` and `srcset` attribute of
-`<img>`-tags, the `href` attribute of `<link>` and the `src` attribute of
-`<script>` tags.
+`basePath` 也应用于 `<img>` 标签的 `src` 和 `srcset` 属性、`<link>` 的 `href` 属性以及 `<script>` 标签的 `src` 属性。
 
-## Server
+## 服务器
 
-Now that Deno has stabilized
-[Deno.serve](https://docs.deno.com/api/deno/~/Deno.serve) and Fresh has switched
-to using this API, all server configuration options are embedded in `server`
-inside the `FreshConfig`. The fully expanded set of parameters looks like this:
+现在 Deno 已经稳定了 [Deno.serve](https://docs.deno.com/api/deno/~/Deno.serve) 并且 Fresh 已经切换到使用此 API，所有服务器配置选项都嵌入在 `FreshConfig` 内的 `server` 中。完全展开的参数集如下所示：
 
 ```ts
 server: {
@@ -209,4 +192,4 @@ server: {
 }
 ```
 
-Use these to configure your server as you see fit.
+使用这些来根据你的需要配置服务器。

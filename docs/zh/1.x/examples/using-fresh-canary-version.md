@@ -1,28 +1,25 @@
 ---
 description: |
-  For cases where the latest release doesn't fit your needs.
+  对于最新版本不适合你需求的情况。
 ---
 
-Pretend you have a use case where you need to modify your project to use a
-canary version of Fresh. Or you want to use a slightly different initialization
-script. This page has you covered.
+假设你有一个用例需要修改项目以使用 canary 版本的 Fresh。或者你想使用稍微不同的初始化脚本。本页面将为你提供指导。
 
-## Canary Fresh in `deno.json`
+## 在 `deno.json` 中使用 canary Fresh
 
-### Latest alpha version
+### 最新 alpha 版本
 
-The easiest way to use Fresh 2 canary is with the update command:
+使用 Fresh 2 canary 最简单的方法是使用更新命令：
 
 ```sh Terminal
 deno run -A -r jsr:@fresh/update@2.0.0-alpha.35 .
 ```
 
-This will automatically update your `deno.json` to use the specified canary
-version.
+这将自动更新你的 `deno.json` 以使用指定的 canary 版本。
 
-### Specific commit
+### 特定提交
 
-If you need a particular commit (for testing specific fixes or features):
+如果你需要特定的提交（用于测试特定的修复或功能）：
 
 ```diff deno.json
    "tasks": {
@@ -36,11 +33,11 @@ If you need a particular commit (for testing specific fixes or features):
    }
 ```
 
-Replace `your-commit-hash` with your desired commit hash.
+将 `your-commit-hash` 替换为你所需的提交哈希。
 
-### Forked Fresh
+### 分叉的 Fresh
 
-For testing your own fork or PR:
+用于测试你自己的分叉或 PR：
 
 ```diff deno.json
    "tasks": {
@@ -54,23 +51,23 @@ For testing your own fork or PR:
    }
 ```
 
-## Creating a new project
+## 创建新项目
 
-### Using JSR
+### 使用 JSR
 
 ```sh Terminal
 deno run -A -r jsr:@fresh/init@2.0.0-alpha.35
 ```
 
-### From local source
+### 从本地源
 
-If you're developing Fresh itself:
+如果你正在开发 Fresh 本身：
 
 ```sh Terminal
 deno run -A -r ./init/src/init.ts
 ```
 
-### Recommended reading
+### 推荐阅读
 
-- [Fresh v2 blog](https://deno.com/blog/fresh-2)
-- [Migration guide](../../migration-guide.md)
+- [Fresh v2 博客](https://deno.com/blog/fresh-2)
+- [迁移指南](../../migration-guide.md)

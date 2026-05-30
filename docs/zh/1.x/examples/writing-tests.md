@@ -1,13 +1,11 @@
 ---
 description: |
-  You can write HTTP tests for your Fresh project by creating an application handler.
+  你可以通过创建应用处理程序为你的 Fresh 项目编写 HTTP 测试。
 ---
 
-You can write tests for your Fresh project by creating an application handler
-through
-[`createHandler()`](https://deno.land/x/fresh/server.ts?doc=&s=createHandler).
+你可以通过 [`createHandler()`](https://deno.land/x/fresh/server.ts?doc=&s=createHandler) 创建应用处理程序来为你的 Fresh 项目编写测试。
 
-## 1. Create your routes
+## 1. 创建你的路由
 
 ```tsx routes/index.tsx
 import { Handlers } from "$fresh/server.ts";
@@ -16,7 +14,7 @@ export const handler: Handlers = {
   async POST(req) {
     const form = await req.formData();
 
-    // Processing something
+    // 处理一些事情
 
     return new Response(null, {
       status: 303,
@@ -36,7 +34,7 @@ export default function FooPage() {
 }
 ```
 
-## 2. Write your tests
+## 2. 编写你的测试
 
 ```ts tests/main_test.ts
 import { createHandler, ServeHandlerInfo } from "$fresh/server.ts";
@@ -48,7 +46,7 @@ const CONN_INFO: ServeHandlerInfo = {
   remoteAddr: { hostname: "127.0.0.1", port: 53496, transport: "tcp" },
 };
 
-Deno.test("HTTP assert test.", async (t) => {
+Deno.test("HTTP 断言测试", async (t) => {
   const handler = await createHandler(manifest, config);
 
   await t.step("#1 GET /", async () => {
@@ -75,23 +73,23 @@ Deno.test("HTTP assert test.", async (t) => {
 });
 ```
 
-## 3. Run the tests
+## 3. 运行测试
 
 ```sh Terminal
 $ deno test --allow-read --allow-env --allow-net
 running 1 test from ./tests/main_test.ts
-HTTP assert test. ...
+HTTP 断言测试 ...
   #1 GET / ... ok (31ms)
   #2 POST / ... ok (35ms)
   #3 GET /foo ... ok (12ms)
-HTTP assert test. ... ok (118ms)
+HTTP 断言测试 ... ok (118ms)
 
 ok | 1 passed (3 steps) | 0 failed (236ms)
 ```
 
-## createHandler in detail
+## createHandler 详解
 
-This function is typed as follows:
+此函数的类型如下：
 
 ```ts fresh 🍋
 export async function createHandler(
@@ -101,11 +99,7 @@ export async function createHandler(
   (req: Request, connInfo?: ServeHandlerInfo) => Promise<Response>
 ```
 
-When you're using it, you'll likely be importing the manifest from your project.
-You can of course import the config (`fresh.config.ts`) as well, but you're also
-free to provide your own bag of options.
-[`FreshConfig`](https://deno.land/x/fresh/server.ts?s=FreshConfig) is declared
-as follows:
+当你使用它时，你很可能会从你的项目中导入清单。当然你也可以导入配置（`fresh.config.ts`），但你也可以自由提供你自己的选项包。[`FreshConfig`](https://deno.land/x/fresh/server.ts?s=FreshConfig) 声明如下：
 
 ```ts fresh 🍋
 export interface FreshConfig {
@@ -121,5 +115,4 @@ export interface FreshConfig {
 }
 ```
 
-For more on how these work, see the page about
-[server configuration](/docs/1.x/concepts/server-configuration).
+有关这些如何工作的更多信息，请参阅有关[服务器配置](/docs/1.x/concepts/server-configuration)的页面。

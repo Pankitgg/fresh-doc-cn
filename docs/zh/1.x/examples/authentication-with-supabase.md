@@ -1,47 +1,28 @@
 ---
 description: |
-  Learn how to implement the PKCE authentication flow using Supabase.
+  了解如何使用 Supabase 实现 PKCE 认证流程。
 ---
 
-Fresh is a great tool for quickly building lightweight, server-side rendered web
-apps and Supabase provides an easy way to add authentication (and/or a
-PostgreSQL database backend) to your app.
+# 使用 Supabase 进行认证
 
-In this example, we'll create a small app that implements the PKCE
-authentication flow using Supabase.
+Fresh 是快速构建轻量级、服务器端渲染 Web 应用程序的绝佳工具，而 Supabase 提供了一种简单的方法来为你的应用添加认证（和/或 PostgreSQL 数据库后端）。
 
-The PKCE authentication flow is designed specifically for applications that
-cannot store a client secret, such as native mobile apps or server-side rendered
-web apps. You can read up on the specifics of PKCE
-[here](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce)
-or have a look at
-[its specification](https://datatracker.ietf.org/doc/html/rfc7636). Our example
-is based on the information you can piece together from the
-[Supabase documentation](https://supabase.com/docs/guides/auth/server-side/oauth-with-pkce-flow-for-ssr)
-on the topic.
+在这个示例中，我们将创建一个使用 Supabase 实现 PKCE 认证流程的小型应用。
 
-The purpose of the example app we're building here is to showcase the basic
-building blocks of an implementation. As such, it is limited in functionality
-and purposefully leaves out things like
-[password resets](https://supabase.com/docs/guides/auth/server-side/email-based-auth-with-pkce-flow-for-ssr),
-[proper error handling](https://fresh.deno.dev/docs/1.x/concepts/error-pages) as
-well as validating input form data. You can find the
-[full code here](https://github.com/morlinbrot/supa-fresh-pkce), where the
-missing functionality is implemented.
+PKCE 认证流程专为无法存储客户端密钥的应用程序设计，例如原生移动应用或服务器端渲染的 Web 应用。你可以在[此处](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow-with-pkce)了解 PKCE 的具体细节，或查看[其规范](https://datatracker.ietf.org/doc/html/rfc7636)。我们的示例基于你可以从 [Supabase 文档](https://supabase.com/docs/guides/auth/server-side/oauth-with-pkce-flow-for-ssr)中拼凑出的信息。
+
+我们在这里构建的示例应用的目的是展示实现的基本构建块。因此，它的功能有限，并且有意忽略了诸如[密码重置](https://supabase.com/docs/guides/auth/server-side/email-based-auth-with-pkce-flow-for-ssr)、[适当的错误处理](https://fresh.deno.dev/docs/1.x/concepts/error-pages)以及验证输入表单数据等内容。你可以在[此处](https://github.com/morlinbrot/supa-fresh-pkce)找到完整代码，其中实现了缺失的功能。
 
 ## Supabase
 
-First of all, we need a Supabase account
-[which can be created for free here](https://supabase.com/). A handy way to
-supply the credentials to our app is via `.env` file (never check in `.env`
-files to version control).
+首先，我们需要一个 Supabase 帐户，[可以在此处免费创建](https://supabase.com/)。通过 `.env` 文件向我们的应用提供凭据是一种便捷的方式（切勿将 `.env` 文件检入版本控制）。
 
 ```txt .env.example
 SUPABASE_URL=https://<projectName>.supabase.co
 SUPABASE_ANON_KEY=<api_key>
 ```
 
-Update the imports section of your `deno.json` file to include the following:
+更新你的 `deno.json` 文件的 imports 部分以包含以下内容：
 
 ```json deno.json
 "imports": {
@@ -50,8 +31,7 @@ Update the imports section of your `deno.json` file to include the following:
 }
 ```
 
-Since Deno 1.38, we reading .env files is built-in and can be enabled with the
-`--env` flag. Here's the complete command to run our app:
+从 Deno 1.38 开始，读取 .env 文件是内置的，可以使用 `--env` 标志启用。以下是运行我们应用的完整命令：
 
 ```shell
 deno run --unstable-kv --allow-env --allow-read --allow-write --allow-run --allow-net --watch=static/,routes/ dev.ts
@@ -59,9 +39,7 @@ deno run --unstable-kv --allow-env --allow-read --allow-write --allow-run --allo
 
 ### `@supabase/ssr`
 
-Supabase provides the `@supabase/ssr` package for working with its API in an SSR
-context. It exposes the `createServerClient` method that we can use on the
-server side. Set it up like so:
+Supabase 提供了 `@supabase/ssr` 包，用于在 SSR 环境中与其 API 配合使用。它暴露了 `createServerClient` 方法，我们可以在服务器端使用它。像这样设置：
 
 ```ts lib/supabase.ts
 import { deleteCookie, getCookies, setCookie } from "$std/http/cookie.ts";
@@ -70,7 +48,7 @@ import { type CookieOptions, createServerClient } from "supabase/ssr";
 
 export function createSupabaseClient(
   req: Request,
-  // Keep this optional parameter in mind, we'll get back to it.
+  // 请记住这个可选参数，我们稍后会回到它。
   resHeaders = new Headers(),
 ) {
   const SUPABASE_URL = Deno.env.get("SUPABASE_URL");
@@ -78,7 +56,7 @@ export function createSupabaseClient(
 
   assert(
     SUPABASE_URL && SUPABASE_ANON_KEY,
-    "SUPABASE URL and SUPABASE_ANON_KEY environment variables must be set.",
+    "SUPABASE URL 和 SUPABASE_ANON_KEY 环境变量必须设置。",
   );
 
   return createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
@@ -102,16 +80,13 @@ export function createSupabaseClient(
 }
 ```
 
-Note: We are specifying the `flowType` to be `pkce` and that we're using
-[`encodeURIComponent()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)
-to serialize and store the session object as a cookie.
+注意：我们指定了 `flowType` 为 `pkce`，并且我们使用 [`encodeURIComponent()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent) 来序列化并将会话对象存储为 cookie。
 
-Crucially, _we need to create a new instance of this client for each request!_
+关键是，**我们需要为每个请求创建一个新的客户端实例！**
 
-## Sign Up
+## 注册
 
-In our endpoints, we can now use this client to talk to the Supabase API. Here's
-the `/api/sign-up` handler:
+现在，我们可以在端点中使用此客户端与 Supabase API 进行通信。以下是 `/api/sign-up` 处理程序：
 
 ```ts routes/api/sign-up.ts
 import { FreshContext, Handlers } from "$fresh/server.ts";
@@ -124,7 +99,7 @@ export const handler: Handlers = {
     const password = form.get("password");
 
     const headers = new Headers();
-    headers.set("location", "/sign-in"); // Redirect to /sign-in on success.
+    headers.set("location", "/sign-in"); // 成功后重定向到 /sign-in。
 
     const supabase = createSupabaseClient(req);
     const { error } = await supabase.auth.signUp({
@@ -132,14 +107,14 @@ export const handler: Handlers = {
       password: String(password),
     });
 
-    if (error) throw error; // Have a look at the full app for proper error handling.
+    if (error) throw error; // 查看完整应用以了解适当的错误处理。
 
     return new Response(null, { status: 303, headers });
   },
 };
 ```
 
-Create a form to call our API endpoint and render it at `/sign-up`:
+创建一个表单来调用我们的 API 端点，并在 `/sign-up` 处渲染它：
 
 ```tsx routes/sign-up.tsx
 export default function SignUpPage() {
@@ -153,10 +128,9 @@ export default function SignUpPage() {
 }
 ```
 
-## Confirmation
+## 确认
 
-To complete the sign-up process, we need a `/confirm` route to intercept
-successful email confirmations:
+要完成注册流程，我们需要一个 `/confirm` 路由来拦截成功的电子邮件确认：
 
 ```ts routes/api/confirm.ts
 import { Handlers } from "$fresh/server.ts";
@@ -175,7 +149,7 @@ export const handler: Handlers = {
     if (token_hash && type) {
       const supabase = createSupabaseClient(req);
       const { error } = await supabase.auth.verifyOtp({ type, token_hash });
-      if (error) throw error; // Have a look at the full app for proper error handling.
+      if (error) throw error; // 查看完整应用以了解适当的错误处理。
     }
 
     redirectTo.searchParams.delete("next");
@@ -184,13 +158,11 @@ export const handler: Handlers = {
 };
 ```
 
-Have a look at the Supabase docs on the
-[details on how to configure email templates and other endpoints](https://supabase.com/docs/guides/auth/server-side/email-based-auth-with-pkce-flow-for-ssr)
-like `/password-reset` you would need for a full implementation.
+查看 Supabase 文档了解[如何配置电子邮件模板和其他端点的详细信息](https://supabase.com/docs/guides/auth/server-side/email-based-auth-with-pkce-flow-for-ssr)，例如完整实现所需的 `/password-reset`。
 
-## Sign In
+## 登录
 
-The `/api/sign-in` route is pretty straight-forward, too:
+`/api/sign-in` 路由也非常直接：
 
 ```ts routes/api/sign-in.ts
 import { Handlers } from "$fresh/server.ts";
@@ -211,22 +183,18 @@ export const handler: Handlers = {
       password,
     });
 
-    if (error) throw error; // Have a look at the full app for proper error handling.
+    if (error) throw error; // 查看完整应用以了解适当的错误处理。
 
     return new Response(null, { status: 303, headers });
   },
 };
 ```
 
-Note: We're passing `headers` this time. The Supabase client will set the
-session as a cookie for us, which we will want to pick up in the middleware that
-we are writing next.
+注意：我们这次传递了 `headers`。Supabase 客户端将会话设置为 cookie，我们将在接下来编写的中间件中获取它。
 
-## Middleware
+## 中间件
 
-We can now write a middleware that will check the auth status of any request,
-guarding any protected routes. You can read up on middlewares and where to put
-them [in the docs](https://fresh.deno.dev/docs/1.x/concepts/middleware).
+我们现在可以编写一个中间件来检查任何请求的认证状态，保护任何受保护的路由。你可以在[文档中](https://fresh.deno.dev/docs/1.x/concepts/middleware)了解中间件以及将它们放在哪里。
 
 ```ts routes/_middleware.ts
 import { FreshContext } from "$fresh/server.ts";
@@ -239,13 +207,13 @@ export const handler = [
     headers.set("location", "/");
 
     const supabase = createSupabaseClient(req, headers);
-    // Note: Always use `getUser` instead of `getSession` as this calls the Supabase API and revalidates the token.
+    // 注意：始终使用 `getUser` 而不是 `getSession`，因为这会调用 Supabase API 并重新验证令牌。
     const { error, data: { user } } = await supabase.auth.getUser();
 
     const isProtectedRoute = url.pathname.includes("secret");
 
-    // Don't mind 401 as it just means no credentials were provided. E.g. There was no session cookie.
-    if (error && error.status !== 401) throw error; // Have a look at the full app for proper error handling.
+    // 不要介意 401，因为它只意味着没有提供凭据。例如：没有会话 cookie。
+    if (error && error.status !== 401) throw error; // 查看完整应用以了解适当的错误处理。
 
     if (isProtectedRoute && !user) {
       return new Response(null, { status: 303, headers });
@@ -258,7 +226,4 @@ export const handler = [
 ];
 ```
 
-That's it! These are the building blocks for implementing the PKCE
-authentication flow in a Fresh app using Supabase. Again, have a look at the
-[full code here](https://github.com/morlinbrot/supa-fresh-pkce) for a fully
-featured version of the app.
+就是这样！这些是在 Fresh 应用中使用 Supabase 实现 PKCE 认证流程的构建块。同样，请在[此处](https://github.com/morlinbrot/supa-fresh-pkce)查看完整代码以获取该应用的完整功能版本。

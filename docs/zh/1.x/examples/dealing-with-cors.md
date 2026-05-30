@@ -1,19 +1,17 @@
 ---
 description: |
-  CORS enabling routes in your Fresh project.
+  在你的 Fresh 项目中为路由启用 CORS。
 ---
 
-So you've encountered some CORS problems and are on the hunt for the solution?
-You're in the right spot.
+# 处理 CORS
 
-Here's a good [resource](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
-talking about CORS in general, in case you don't fully understand what's wrong.
+所以你遇到了一些 CORS 问题并正在寻找解决方案？你来对地方了。
 
-## Simple CORS -- Middleware
+这是一个很好的[资源](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)，详细讲解了 CORS，以防你不完全了解问题所在。
 
-As per the above link, "simple" requests involve `GET`, `HEAD`, or `POST`
-requests. You can CORS enable all the routes affected by some `middleware` by
-doing the following:
+## 简单 CORS -- 中间件
+
+根据上面的链接，"简单"请求涉及 `GET`、`HEAD` 或 `POST` 请求。你可以通过以下方式对所有受某些 `middleware` 影响的路由启用 CORS：
 
 ```ts routes/_middleware.ts
 import { FreshContext } from "$fresh/server.ts";
@@ -38,11 +36,9 @@ export async function handler(req: Request, ctx: FreshContext) {
 }
 ```
 
-## Complex CORS -- Middleware
+## 复杂 CORS -- 中间件
 
-What about for one of the other HTTP methods? Then you'll need to be able to
-deal with "preflight requests". Let's imagine you're trying to support a
-`DELETE` route. Then you'd need to do something like this:
+对于其他 HTTP 方法呢？那么你需要处理"预检请求"。假设你想要支持一个 `DELETE` 路由。那么你需要做类似这样的事情：
 
 ```ts routes/_middleware.ts
 import { FreshContext } from "$fresh/server.ts";
@@ -77,16 +73,13 @@ export async function handler(req: Request, ctx: FreshContext) {
 }
 ```
 
-These complex results require a two step process:
+这些复杂请求需要两步处理：
 
-1. the browser makes an `OPTIONS` request to find out about the allowed methods
-2. the browser makes the actual request
+1. 浏览器发送 `OPTIONS` 请求以了解允许的方法
+2. 浏览器发送实际请求
 
-So you can see the middleware has some special handling to deal with `OPTIONS`
-requests.
+所以你可以看到中间件有一些特殊处理来应对 `OPTIONS` 请求。
 
-## CORS in Routes
+## 路由中的 CORS
 
-Of course there's no reason why you need to use middleware in order to solve
-this. The headers can be set directly in the
-[handler](/docs/1.x/getting-started/custom-handlers) as well.
+当然，你没有理由必须使用中间件来解决这个问题。你也可以直接在[处理程序](/docs/1.x/getting-started/custom-handlers)中设置这些头部信息。

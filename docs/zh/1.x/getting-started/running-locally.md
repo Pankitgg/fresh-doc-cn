@@ -1,12 +1,9 @@
 ---
 description: |
-  To start a Fresh project, just run `deno task start`. This will start the
-  project with default permission flags, in watch mode.
+  要启动 Fresh 项目，只需运行 `deno task start`。这将以默认权限标志和监视模式启动项目。
 ---
 
-The next step after scaffolding out a new project, is to actually start it. To
-do this you can just `deno task start`. Environment variables will be
-automatically read from `.env`.
+搭建新项目后的下一步就是实际启动它。要做到这一点，你可以直接运行 `deno task start`。环境变量将自动从 `.env` 文件中读取。
 
 ```sh Terminal
 $ deno task start
@@ -15,40 +12,28 @@ Watcher Process started.
      Local: http://localhost:8000
 ```
 
-If you want to start manually without Deno task, `deno run` the `main.ts` with
-the appropriate flags. You will need to provide permission flags for:
+如果你想手动启动而不使用 Deno task，请使用适当的标志运行 `deno run` 和 `main.ts`。你需要提供以下权限标志：
 
-- **`--allow-net`**: This is required to start the HTTP server.
-- **`--allow-read`**: This is required to read (static) files from disk.
-- **`--allow-env`**: This is required to read environment variables that can be
-  used to configure your project.
-- **`--allow-run`**: This is required to shell out to `deno` and `esbuild` under
-  the hood during development to do type stripping. In production this is done
-  using a WebAssembly binary.
+- **`--allow-net`**：这是启动 HTTP 服务器所必需的。
+- **`--allow-read`**：这是从磁盘读取（静态）文件所必需的。
+- **`--allow-env`**：这是读取可用于配置你项目的环境变量所必需的。
+- **`--allow-run`**：这是在开发期间在底层调用 `deno` 和 `esbuild` 进行类型剥离所必需的。在生产环境中，这是通过 WebAssembly 二进制文件完成的。
 
-For development, you also want to run with the [`--watch` flag][--watch], so the
-Fresh server will automatically reload whenever you make a change to your code.
-By default `--watch` only watches over files in your module graph. Some project
-files like static files are not part of the module graph, but you probably want
-to restart/reload whenever you make a change to them too. This can be done by
-passing the extra folder as an argument: `--watch=static/`. You should also add
-`routes/` to the watch list, so that the server restarts automatically whenever
-you add a new route.
+对于开发，你还希望使用 [`--watch` 标志][--watch] 运行，这样 Fresh 服务器将在你每次更改代码时自动重新加载。默认情况下 `--watch` 只监视你模块图中的文件。一些项目文件（如静态文件）不属于模块图，但你可能也希望在更改它们时重新启动/重新加载。这可以通过将额外的文件夹作为参数传递来实现：`--watch=static/`。你还应该将 `routes/` 添加到监视列表中，以便在添加新路由时服务器自动重启。
 
-If you want to change the port or host, modify the config bag of the `start()`
-call in `main.ts` to include an explicit port number:
+如果你想更改端口或主机，请修改 `main.ts` 中 `start()` 调用的配置包，以包含显式的端口号：
 
 ```ts main.ts
 await start(manifest, { server: { port: 3000 } });
 ```
 
-You can also change the port by setting the `PORT` environment variable:
+你也可以通过设置 `PORT` 环境变量来更改端口：
 
 ```sh Terminal
 $ PORT=3000 deno task start
 ```
 
-Combining all of this we get the following `deno run` command:
+将所有这些结合起来，我们得到以下 `deno run` 命令：
 
 ```sh Terminal
 $ deno run --allow-net --allow-read --allow-env --allow-run --watch=static/,routes/ main.ts
@@ -57,8 +42,6 @@ Watcher Process started.
      Local: http://localhost:3000
 ```
 
-If you now visit http://localhost:3000, you can see the running project. Try
-change some of the text in `routes/index.tsx` and see how the page updates
-automatically when you save the file.
+如果你现在访问 http://localhost:3000，你可以看到正在运行的项目。尝试更改 `routes/index.tsx` 中的一些文本，看看页面在你保存文件时如何自动更新。
 
 [--watch]: https://docs.deno.com/runtime/getting_started/command_line_interface/#watch-mode

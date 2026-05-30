@@ -1,25 +1,19 @@
 ---
 description: |
-  Use HTTP CRUD methods to perform operations on resources. Learn how to use HTTP handlers to create a RESTful API.
+  使用 HTTP CRUD 方法对资源执行操作。了解如何使用 HTTP 处理程序创建 RESTful API。
 ---
 
-The MDN [docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) are a
-great resource to learn more about HTTP methods. We'll touch on the four
-fundamental methods necessary to create a basic CRUD (create, read, update,
-delete) API here. Additionally, we'll briefly mention CORS requests and how
-`OPTIONS` comes into play.
+# 创建 CRUD API
 
-Using HTTP methods is a common way to create a REST API. Fresh supports common
-HTTP methods in handlers out of the box. Async HTTP requests are also supported.
-Read more about custom handlers [here](/zh/getting-started/custom-handlers).
+MDN [文档](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)是了解更多关于 HTTP 方法的绝佳资源。我们将在此处介绍创建基本 CRUD（创建、读取、更新、删除）API 所需的四种基本方法。此外，我们还将简要提及 CORS 请求以及 `OPTIONS` 如何发挥作用。
 
-In this example we'll be creating a small API that uses
-[Deno KV](https://deno.com/kv) to store users in a database.
+使用 HTTP 方法是创建 REST API 的常见方式。Fresh 在处理程序中开箱即用地支持常见的 HTTP 方法。也支持异步 HTTP 请求。在此[阅读](/zh/getting-started/custom-handlers)更多关于自定义处理程序的信息。
 
-Our project structure will look like this (in addition to the rest of the Fresh
-code from a new project):
+在这个示例中，我们将创建一个小型 API，使用 [Deno KV](https://deno.com/kv) 将用户存储在数据库中。
 
-```txt-files Project Structure
+我们的项目结构将如下所示（除了新项目中的其余 Fresh 代码）：
+
+```txt Project Structure
 <project root>
 └── routes
     └── api
@@ -28,12 +22,11 @@ code from a new project):
             └── index.ts
 ```
 
-In each section about a method, only the relevant handler will be shown. The
-full files are available at the bottom for reference.
+在关于每个方法的部分中，只会显示相关的处理程序。完整文件可在底部获取以供参考。
 
 ## POST
 
-`POST` (create) is used to create a resource.
+`POST`（创建）用于创建资源。
 
 ```tsx routes/api/users/index.ts
 export const handler: Handlers<User | null> = {
@@ -47,9 +40,7 @@ export const handler: Handlers<User | null> = {
 };
 ```
 
-Test this with Postman (or your favorite client) with a URL like
-`http://localhost:8000/api/users` and a method of `POST`. Make sure to have a
-payload like:
+使用 Postman（或你喜欢的客户端）通过类似 `http://localhost:8000/api/users` 的 URL 和 `POST` 方法进行测试。确保有一个类似这样的负载：
 
 ```json Request body
 {
@@ -58,7 +49,7 @@ payload like:
 }
 ```
 
-You should receive the same thing back:
+你应该收到相同的内容：
 
 ```json Response body
 { "id": "2", "name": "TestUserName" }
@@ -66,8 +57,7 @@ You should receive the same thing back:
 
 ## GET
 
-`GET` (read) is used to retrieve a resource and is by far the most common HTTP
-method. You can use `GET` to fetch database content, markdown, or static files.
+`GET`（读取）用于检索资源，是迄今为止最常见的 HTTP 方法。你可以使用 `GET` 来获取数据库内容、Markdown 或静态文件。
 
 ```tsx routes/api/users/[id].ts
 export const handler: Handlers<User | null> = {
@@ -80,24 +70,19 @@ export const handler: Handlers<User | null> = {
 };
 ```
 
-Let's practice retrieving our user! A `GET` request to
-`http://localhost:8000/api/users/2` should return:
+让我们练习检索我们的用户！向 `http://localhost:8000/api/users/2` 发送 `GET` 请求应该返回：
 
 ```json Response body
 { "id": "2", "name": "TestUserName" }
 ```
 
-## PUT (and PATCH)
+## PUT（和 PATCH）
 
-`PUT` (update) and `PATCH` are used to update a resource. While similar, there
-are differences and you should use the one that best suits your use case. Read
-more about HTTP methods on
-[MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
+`PUT`（更新）和 `PATCH` 用于更新资源。虽然它们相似，但存在差异，你应该使用最适合你用例的那个。在 [MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) 上阅读更多关于 HTTP 方法的信息。
 
-The short version of it: `PUT` requires the entire object to be submitted, while
-`PATCH` requires only the properties that are different to be submitted.
+简而言之：`PUT` 需要提交整个对象，而 `PATCH` 只需要提交不同的属性。
 
-An example of an update endpoint using `PUT`:
+使用 `PUT` 的更新端点示例：
 
 ```tsx routes/api/users/[id].ts
 export const handler: Handlers<User | null> = {
@@ -114,8 +99,7 @@ export const handler: Handlers<User | null> = {
 };
 ```
 
-Time to change their name. We'll now `PUT` a request to
-`http://localhost:8000/api/users/2` like:
+是时候更改他们的名字了。我们现在向 `http://localhost:8000/api/users/2` 发送 `PUT` 请求，类似这样：
 
 ```json Request body
 {
@@ -124,14 +108,13 @@ Time to change their name. We'll now `PUT` a request to
 }
 ```
 
-We should receive:
+我们应该收到：
 
 ```json Response body
 { "id": "2", "name": "New Name" }
 ```
 
-If, on the other hand, we chose to implement this as a `PATCH` operation, the
-request would just involve the changed property like this:
+另一方面，如果我们选择将其实现为 `PATCH` 操作，则请求将只涉及更改的属性，像这样：
 
 ```json Response body
 {
@@ -139,11 +122,11 @@ request would just involve the changed property like this:
 }
 ```
 
-No need to send in the id in this case.
+在这种情况下，无需发送 id。
 
 ## DELETE
 
-`DELETE` (delete) is used to delete a resource.
+`DELETE`（删除）用于删除资源。
 
 ```tsx routes/api/users/[id].ts
 export const handler: Handlers<User | null> = {
@@ -159,8 +142,7 @@ export const handler: Handlers<User | null> = {
 };
 ```
 
-Try sending `DELETE` to `http://localhost:8000/api/users/2` without a body.
-We'll get back:
+尝试向 `http://localhost:8000/api/users/2` 发送不带正文的 `DELETE` 请求。我们将收到：
 
 ```txt Response body
 user 2 deleted
@@ -168,11 +150,9 @@ user 2 deleted
 
 ## OPTIONS
 
-Options can be used for some advanced cases, including implementing preflight
-request checks for complex CORS use cases. See more on the
-[CORS documentation](/docs/1.x/examples/dealing-with-cors).
+Options 可用于一些高级情况，包括为复杂的 CORS 用例实现预检请求检查。在 [CORS 文档](/docs/1.x/examples/dealing-with-cors)中查看更多信息。
 
-## Full File Reference
+## 完整文件参考
 
 <details>
 <summary><code>[id].ts</code></summary>

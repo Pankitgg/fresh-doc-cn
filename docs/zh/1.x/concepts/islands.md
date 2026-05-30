@@ -1,16 +1,11 @@
 ---
 description: |
-  Islands enable client side interactivity in Fresh. They are hydrated on the client in addition to being rendered on the server.
+  岛屿在 Fresh 中启用客户端交互性。它们在服务端渲染后在客户端水合。
 ---
 
-Islands enable client side interactivity in Fresh. Islands are isolated Preact
-components that are rendered on the server and then hydrated on the client. This
-is different from all other components in Fresh, as they are usually rendered on
-the server only.
+岛屿在 Fresh 中启用客户端交互性。岛屿是隔离的 Preact 组件，在服务端渲染然后在客户端水合。这与 Fresh 中的所有其他组件不同，因为它们通常只在服务端渲染。
 
-Islands are defined by creating a file in the `islands/` folder in a Fresh
-project. The name of this file must be a PascalCase or kebab-case name of the
-island.
+岛屿通过在 Fresh 项目的 `islands/` 文件夹中创建文件来定义。此文件的名称必须是岛屿的帕斯卡命名或短横线命名。
 
 ```tsx islands/my-island.tsx
 import { useSignal } from "@preact/signals";
@@ -20,15 +15,14 @@ export default function MyIsland() {
 
   return (
     <div>
-      Counter is at {count}.{" "}
+      计数器当前为 {count}。{" "}
       <button onClick={() => (count.value += 1)}>+</button>
     </div>
   );
 }
 ```
 
-An island can be used in a page like a regular Preact component. Fresh will take
-care of automatically re-hydrating the island on the client.
+岛屿可以像常规 Preact 组件一样在页面中使用。Fresh 将自动处理在客户端重新水合岛屿。
 
 ```tsx route/index.tsx
 import MyIsland from "../islands/my-island.tsx";
@@ -38,9 +32,9 @@ export default function Home() {
 }
 ```
 
-## Passing JSX to islands
+## 向岛屿传递 JSX
 
-Islands support passing JSX elements via the `children` property.
+岛屿支持通过 `children` 属性传递 JSX 元素。
 
 ```tsx islands/my-island.tsx
 import { useSignal } from "@preact/signals";
@@ -55,7 +49,7 @@ export default function MyIsland({ children }: Props) {
 
   return (
     <div>
-      Counter is at {count}.{" "}
+      计数器当前为 {count}。{" "}
       <button onClick={() => (count.value += 1)}>+</button>
       {children}
     </div>
@@ -63,8 +57,7 @@ export default function MyIsland({ children }: Props) {
 }
 ```
 
-This allows you to pass static content rendered by the server to an island in
-the browser.
+这允许你将服务端渲染的静态内容传递给浏览器中的岛屿。
 
 ```tsx routes/index.tsx
 import MyIsland from "../islands/my-island.tsx";
@@ -72,16 +65,13 @@ import MyIsland from "../islands/my-island.tsx";
 export default function Home() {
   return (
     <MyIsland>
-      <p>This text is rendered on the server</p>
+      <p>这段文本在服务端渲染</p>
     </MyIsland>
   );
 }
 ```
 
-You can also create shared components in your `components/` directory, which can
-be used in both static content and interactive islands. When these components
-are used within islands, interactivity can be added, such as `onClick` handlers
-(using an `onClick` handler on a button outside of an island will not fire).
+你还可以在 `components/` 目录中创建共享组件，这些组件可以在静态内容和交互式岛屿中使用。当这些组件在岛屿中使用时，可以添加交互性，例如 `onClick` 处理程序（在岛屿外的按钮上使用 `onClick` 处理程序不会触发）。
 
 ```tsx islands/my-island.tsx
 import { useSignal } from "@preact/signals";
@@ -98,7 +88,7 @@ export default function MyIsland({ children }: Props) {
 
   return (
     <Card>
-      Counter is at {count}.{" "}
+      计数器当前为 {count}。{" "}
       <Button onClick={() => (count.value += 1)}>+</Button>
       {children}
     </Card>
@@ -106,48 +96,37 @@ export default function MyIsland({ children }: Props) {
 }
 ```
 
-## Passing other props to islands
+## 向岛屿传递其他属性
 
-Passing props to islands is supported, but only if the props are serializable.
-Fresh can serialize the following types of values:
+岛屿支持传递属性，但前提是属性是可序列化的。Fresh 可以序列化以下类型的值：
 
-- Primitive types `string`, `boolean`, `bigint`, and `null`
-- Most `number`s (`Infinity`, `-Infinity`, and `NaN` are silently converted to
-  `null`)
-- Plain objects with string keys and serializable values
-- Arrays containing serializable values
+- 原始类型 `string`、`boolean`、`bigint` 和 `null`
+- 大多数 `number`（`Infinity`、`-Infinity` 和 `NaN` 会被静默转换为 `null`）
+- 具有字符串键和可序列化值的普通对象
+- 包含可序列化值的数组
 - Uint8Array
-- JSX Elements (restricted to `props.children`)
-- Preact Signals (if the inner value is serializable)
+- JSX 元素（仅限于 `props.children`）
+- Preact Signals（如果内部值是可序列化的）
 
-Circular references are supported. If an object or signal is referenced multiple
-times, it is only serialized once and the references are restored upon
-deserialization. Passing complex objects like `Date`, custom classes, or
-functions is not supported.
+支持循环引用。如果对象或信号被多次引用，它只会被序列化一次，引用会在反序列化时恢复。不支持传递复杂对象如 `Date`、自定义类或函数。
 
-During server side rendering, Fresh annotates the HTML with special comments
-that indicate where each island will go. This gives the code sent to the client
-enough information to put the islands where they are supposed to go without
-requiring hydration for the static children of interactive islands. No
-Javascript is sent to the client when no interactivity is needed.
+在服务端渲染期间，Fresh 会用特殊注释注释 HTML，指示每个岛屿将去往何处。这给发送到客户端的代码提供了足够的信息，可以将岛屿放在它们应该在的位置，而无需对交互式岛屿的静态子项进行水合。当不需要交互性时，不会向客户端发送任何 JavaScript。
 
 ```html Response body
 <!--frsh-myisland_default:default:0-->
 <div>
-  Counter is at 0.
+  计数器当前为 0。
   <button>+</button>
   <!--frsh-slot-myisland_default:children-->
-  <p>This text is rendered on the server</p>
+  <p>这段文本在服务端渲染</p>
   <!--/frsh-slot-myisland_default:children-->
 </div>
 <!--/frsh-myisland_default:default:0-->
 ```
 
-### Nesting islands
+### 嵌套岛屿
 
-Islands can be nested within other islands as well. In that scenario they act
-like a normal Preact component, but still receive the serialized props if any
-were present.
+在这种情况下，它们的行为像普通的 Preact 组件，但如果存在序列化的属性，仍然会接收它们。
 
 ```tsx islands/other-island.tsx
 import { useSignal } from "@preact/signals";
@@ -167,20 +146,18 @@ export default function OtherIsland({ children, foo }: Props) {
 
   return (
     <div>
-      <p>String from props: {foo}</p>
+      <p>来自属性的字符串：{foo}</p>
       <p>
-        <button onClick={() => (number.value = randomNumber())}>Random</button>
+        <button onClick={() => (number.value = randomNumber())}>随机</button>
         {" "}
-        number is: {number}.
+        数字是：{number}。
       </p>
     </div>
   );
 }
 ```
 
-In essence, Fresh allows you to mix static and interactive parts in your app in
-a way that's most optimal for your app. We'll keep sending only the JavaScript
-that is needed for the islands to the browser.
+本质上，Fresh 允许你以最适合你的应用程序的方式在应用程序中混合静态和交互式部分。我们将继续只向浏览器发送岛屿所需的 JavaScript。
 
 ```tsx route/index.tsx
 import MyIsland from "../islands/my-island.tsx";
@@ -190,39 +167,37 @@ export default function Home() {
   return (
     <div>
       <MyIsland>
-        <OtherIsland foo="this prop will be serialized" />
+        <OtherIsland foo="此属性将被序列化" />
       </MyIsland>
-      <p>Some more server rendered text</p>
+      <p>更多服务端渲染文本</p>
     </div>
   );
 }
 ```
 
-## Rendering islands on client only
+## 仅在客户端渲染岛屿
 
-When using client-only APIs, like `EventSource` or `navigator.getUserMedia`,
-this component will not run on the server as it will produce an error like:
+当使用仅客户端的 API 时，如 `EventSource` 或 `navigator.getUserMedia`，此组件不会在服务端运行，因为它会产生如下错误：
 
 ```
 An error occurred during route handling or page rendering. ReferenceError: EventSource is not defined
-    at Object.MyIsland (file:///Users/someuser/fresh-project/islandsmy-island.tsx:6:18)
+    at Object.MyIsland (file:///Users/someuser/fresh-project/islands/my-island.tsx:6:18)
     at m (https://esm.sh/v129/preact-render-to-string@6.2.0/X-ZS8q/denonext/preact-render-to-string.mjs:2:2602)
     at m (https://esm.sh/v129/preact-render-to-string@6.2.0/X-ZS8q/denonext/preact-render-to-string.mjs:2:2113)
     ....
 ```
 
-Use the [`IS_BROWSER`](https://deno.land/x/fresh/runtime.ts?doc=&s=IS_BROWSER)
-flag as a guard to fix the issue:
+使用 [`IS_BROWSER`](https://deno.land/x/fresh/runtime.ts?doc=&s=IS_BROWSER) 标志作为保护来修复问题：
 
 ```tsx islands/my-island.tsx
 import { IS_BROWSER } from "$fresh/runtime.ts";
 
 export function MyIsland() {
-  // Return any prerenderable JSX here which makes sense for your island
+  // 在这里返回任何有意义的可预渲染 JSX
   if (!IS_BROWSER) return <div></div>;
 
-  // All the code which must run in the browser comes here!
-  // Like: EventSource, navigator.getUserMedia, etc.
+  // 所有必须在浏览器中运行的代码都在这里！
+  // 如：EventSource、navigator.getUserMedia 等。
   return <div></div>;
 }
 ```

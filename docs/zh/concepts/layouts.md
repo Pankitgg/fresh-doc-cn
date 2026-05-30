@@ -13,7 +13,7 @@ description: |
 
 在 `routes/` 下的任何目录中放置一个 `_layout.tsx` 文件。它会包裹该目录及其子目录中的每个页面。每个目录可以有一个布局。
 
-```txt-files 项目结构
+```txt 项目结构
 <project root>
 └── routes
     ├── _app.tsx           # App 包装器（最外层的 HTML shell）

@@ -1,21 +1,11 @@
 ---
 description: |
-  Add middleware routes to intercept requests or responses for analytics purposes, access control, or anything else.
+  中间件路由用于拦截请求或响应以进行分析、访问控制或其他用途。
 ---
 
-A middleware is defined in a `_middleware.ts` file. It will intercept the
-request in order for you to perform custom logic before or after the route
-handler. This allows modifying or checking requests and responses. Common
-use-cases for this are logging, authentication, and performance monitoring.
+中间件定义在 `_middleware.ts` 文件中。它将拦截请求，以便你在路由处理程序之前或之后执行自定义逻辑。这允许修改或检查请求和响应。常见的用例包括日志记录、访问控制和性能监控。
 
-Each middleware gets passed a `next` function in the context argument that is
-used to trigger child handlers. The `ctx` also has a `state` property that can
-be used to pass arbitrary data to downstream (or upstream) handlers. This
-`state` is included in `PageProps` by default, which is available to both the
-special [\_app](/docs/1.x/concepts/app-wrapper.md) wrapper and normal
-[routes](/docs/1.x/concepts/routes.md). `ctx.state` is normally set by modifying
-its properties, e.g. `ctx.state.loggedIn = true`, but you can also replace the
-entire object like `ctx.state = { loggedIn: true }`.
+每个中间件会在上下文参数中传入一个 `next` 函数，用于触发子处理程序。`ctx` 还有一个 `state` 属性，可用于向下游（或上游）处理程序传递任意数据。此 `state` 默认包含在 `PageProps` 中，可用于特殊的 [_app](/docs/1.x/concepts/app-wrapper.md) 包装器和普通[路由](/docs/1.x/concepts/routes.md)。`ctx.state` 通常通过修改其属性来设置，例如 `ctx.state.loggedIn = true`，但你也可以替换整个对象，如 `ctx.state = { loggedIn: true }`。
 
 ```ts routes/_middleware.ts
 import { FreshContext } from "$fresh/server.ts";
@@ -38,85 +28,75 @@ export async function handler(
 ```ts routes/myHandler.ts
 export const handler: Handlers<any, { data: string }> = {
   GET(_req, ctx) {
-    return new Response(`middleware data is ${ctx.state.data}`);
+    return new Response(`中间件数据是 ${ctx.state.data}`);
   },
 };
 ```
 
-Middlewares are scoped and can be layered. This means a project can have
-multiple middlewares, each covering a different set of routes. If multiple
-middlewares cover a route, they will all be run, in order of specificity (least
-specific first).
+中间件是作用域的，可以分层。这意味着项目可以有多个中间件，每个中间件覆盖不同的路由集。如果多个中间件覆盖一个路由，它们将全部按顺序运行（最不具体的优先）。
 
-For example, take a project with the following routes:
+例如，取一个具有以下路由的项目：
 
-```txt-files Project Structure
+```txt 项目结构
 └── <root>/routes
-    ├── _middleware.ts
-    ├── index.ts
-    └── admin
-        ├── _middleware.ts
-        └── index.ts
-        └── signin.ts
+    ├── _middleware.ts
+    ├── index.ts
+    └── admin
+        ├── _middleware.ts
+        └── index.ts
+        └── signin.ts
 ```
 
-For a request to `/` the request will flow like this:
+对于对 `/` 的请求，请求流程如下：
 
-1. The `routes/_middleware.ts` middleware is invoked.
-2. Calling `ctx.next()` will invoke the `routes/index.ts` handler.
+1. 调用 `routes/_middleware.ts` 中间件。
+2. 调用 `ctx.next()` 将调用 `routes/index.ts` 处理程序。
 
-For a request to `/admin` the request flows like this:
+对于对 `/admin` 的请求，请求流程如下：
 
-1. The `routes/_middleware.ts` middleware is invoked.
-2. Calling `ctx.next()` will invoke the `routes/admin/_middleware.ts`
-   middleware.
-3. Calling `ctx.next()` will invoke the `routes/admin/index.ts` handler.
+1. 调用 `routes/_middleware.ts` 中间件。
+2. 调用 `ctx.next()` 将调用 `routes/admin/_middleware.ts` 中间件。
+3. 调用 `ctx.next()` 将调用 `routes/admin/index.ts` 处理程序。
 
-For a request to `/admin/signin` the request flows like this:
+对于对 `/admin/signin` 的请求，请求流程如下：
 
-1. The `routes/_middleware.ts` middleware is invoked.
-2. Calling `ctx.next()` will invoke the `routes/admin/_middleware.ts`
-   middleware.
-3. Calling `ctx.next()` will invoke the `routes/admin/signin.ts` handler.
+1. 调用 `routes/_middleware.ts` 中间件。
+2. 调用 `ctx.next()` 将调用 `routes/admin/_middleware.ts` 中间件。
+3. 调用 `ctx.next()` 将调用 `routes/admin/signin.ts` 处理程序。
 
-A single middleware file can also define multiple middlewares (all for the same
-route) by exporting an array of handlers instead of a single handler. For
-example:
+单个中间件文件也可以通过导出处理程序数组而不是单个处理程序来定义多个中间件（全部用于同一路由）。例如：
 
 ```ts routes/_middleware.ts
 export const handler = [
   async function middleware1(req, ctx) {
-    // do something
+    // 做一些事情
     return ctx.next();
   },
   async function middleware2(req, ctx) {
-    // do something
+    // 做一些事情
     return ctx.next();
   },
 ];
 ```
 
-It should be noted that `middleware` has access to route parameters. If you're
-running a fictitious `routes/[tenant]/admin/_middleware.ts` like this:
+值得注意的是，`middleware` 可以访问路由参数。如果你运行一个虚构的 `routes/[tenant]/admin/_middleware.ts`，如下所示：
 
 ```ts routes/[tenant]/admin/_middleware.ts
 import { FreshContext } from "$fresh/server.ts";
 
 export async function handler(_req: Request, ctx: FreshContext) {
   const currentTenant = ctx.params.tenant;
-  // do something with the tenant
+  // 用租户做一些事情
   const resp = await ctx.next();
   return resp;
 }
 ```
 
-and the request is to `mysaas.com/acme/admin/`, then `currentTenant` will have
-the value of `acme` in your middleware.
+并且请求是 `mysaas.com/acme/admin/`，那么 `currentTenant` 在你的中间件中将具有值 `acme`。
 
-## Middleware Destination
+## 中间件目标
 
-To set the stage for this section, let's focus on the part of `FreshContext`
-that looks like this:
+为了本节的目的，让我们关注 `FreshContext` 中看起来像这样的部分：
 
 ```ts fresh 🍋
 export interface FreshContext<State = Record<string, unknown>> {
@@ -133,19 +113,17 @@ export interface FreshContext<State = Record<string, unknown>> {
 }
 ```
 
-and `router.DestinationKind` is defined like this:
+并且 `router.DestinationKind` 定义如下：
 
 ```ts fresh 🍋
 export type DestinationKind = "internal" | "static" | "route" | "notFound";
 ```
 
-This is useful if you want your middleware to only run when a request is headed
-for a `route`, as opposed to something like `http://localhost:8001/favicon.ico`.
+这很有用，如果你想让你的中间件仅在请求前往 `route` 时运行，而不是像 `http://localhost:8001/favicon.ico` 这样的东西。
 
-### Example
+### 示例
 
-Initiate a new Fresh project (`deno run -A -r https://fresh.deno.dev/`) and then
-create a `_middleware.ts` file in the `routes` folder like this:
+初始化一个新的 Fresh 项目（`deno run -A -r https://fresh.deno.dev/`），然后在 `routes` 文件夹中创建一个 `_middleware.ts` 文件，如下所示：
 
 ```ts routes/_middleware.ts
 import { FreshContext } from "$fresh/server.ts";
@@ -158,7 +136,7 @@ export async function handler(req: Request, ctx: FreshContext) {
 }
 ```
 
-If you start up your server (`deno task start`) you'll see the following:
+如果你启动服务器（`deno task start`），你将看到以下内容：
 
 ```sh Terminal
 Task start deno run -A --watch=static/,routes/ dev.ts
@@ -194,14 +172,11 @@ internal
 http://localhost:8000/_frsh/js/3c7400558fc00915df88cb181036c0dbf73ab7f5/chunk-RCK7U3UF.js
 ```
 
-That first `route` request is for when `Fresh` responds with the root level
-`index.tsx` route. The rest, as you can see, are either `internal` or `static`
-requests. You can use `ctx.destination` to filter these out if your middleware
-is only supposed to deal with routes.
+第一个 `route` 请求是当 `Fresh` 响应根级别 `index.tsx` 路由时。其余的，正如你所看到的，要么是 `internal` 要么是 `static` 请求。你可以使用 `ctx.destination` 来过滤这些，如果你的中间件只应该处理路由。
 
-## Middleware Redirects
+## 中间件重定向
 
-If you want to redirect a request from a middleware, you can do so by returning:
+如果你想从中间件重定向请求，你可以通过返回以下内容来实现：
 
 ```ts routes/_middleware.ts
 export function handler(req: Request): Response {
@@ -209,8 +184,7 @@ export function handler(req: Request): Response {
 }
 ```
 
-`307` stands for temporary redirect. You can also use `301` for permanent
-redirect. You can also redirect to a relative path by doing:
+`307` 表示临时重定向。你也可以使用 `301` 进行永久重定向。你还可以通过以下方式重定向到相对路径：
 
 ```ts routes/_middleware.ts
 export function handler(req: Request): Response {

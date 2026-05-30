@@ -16,7 +16,7 @@ nest automatically based on the directory tree.
 Place a `_layout.tsx` file in any directory under `routes/`. It wraps every page
 in that directory and its subdirectories. You can have one layout per directory.
 
-```txt-files Project structure
+```txt Project structure
 <project root>
 └── routes
     ├── _app.tsx           # App wrapper (outermost HTML shell)

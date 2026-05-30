@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 
-const zhSidebar = [
+// v2 (latest) 版本的中文侧边栏
+const zhSidebarV2 = [
   {
     text: '介绍',
     link: '/zh/introduction/'
@@ -16,7 +17,7 @@ const zhSidebar = [
       { text: '架构', link: '/zh/concepts/architecture' },
       { text: '岛屿', link: '/zh/concepts/islands' },
       { text: '路由', link: '/zh/concepts/routing' },
-      { text: 'App 类', link: '/zh/concepts/app' },
+      { text: 'App', link: '/zh/concepts/app' },
       { text: 'Context 对象', link: '/zh/concepts/context' },
       { text: '数据获取', link: '/zh/concepts/data-fetching' },
       { text: '中间件', link: '/zh/concepts/middleware' },
@@ -95,6 +96,70 @@ const zhSidebar = [
   {
     text: '贡献指南',
     link: '/zh/contributing/'
+  },
+]
+
+// 1.x 版本的中文侧边栏
+const zhSidebarV1 = [
+  {
+    text: '介绍',
+    link: '/zh/1.x/introduction/'
+  },
+  {
+    text: '快速开始',
+    link: '/zh/1.x/getting-started/'
+  },
+  {
+    text: '核心概念',
+    collapsed: false,
+    items: [
+      { text: '架构', link: '/zh/1.x/concepts/architecture' },
+      { text: '岛屿', link: '/zh/1.x/concepts/islands' },
+      { text: '路由', link: '/zh/1.x/concepts/routing' },
+      { text: '路由', link: '/zh/1.x/concepts/routes' },
+      { text: 'App 包装器', link: '/zh/1.x/concepts/app-wrapper' },
+      { text: '数据获取', link: '/zh/1.x/concepts/data-fetching' },
+      { text: '中间件', link: '/zh/1.x/concepts/middleware' },
+      { text: '布局', link: '/zh/1.x/concepts/layouts' },
+      { text: '部分更新', link: '/zh/1.x/concepts/partials' },
+      { text: '插件', link: '/zh/1.x/concepts/plugins' },
+      { text: '静态文件', link: '/zh/1.x/concepts/static-files' },
+      { text: '表单', link: '/zh/1.x/concepts/forms' },
+      { text: '错误页面', link: '/zh/1.x/concepts/error-pages' },
+      { text: '服务器组件', link: '/zh/1.x/concepts/server-components' },
+      { text: '服务器配置', link: '/zh/1.x/concepts/server-configuration' },
+      { text: '更新', link: '/zh/1.x/concepts/updating' },
+      { text: 'AOT 构建', link: '/zh/1.x/concepts/ahead-of-time-builds' },
+      { text: '部署', link: '/zh/1.x/concepts/deployment' },
+    ]
+  },
+  {
+    text: '示例',
+    collapsed: false,
+    items: [
+      { text: '活动链接', link: '/zh/1.x/examples/active-links' },
+      { text: 'Supabase 认证', link: '/zh/1.x/examples/authentication-with-supabase' },
+      { text: '更改源目录', link: '/zh/1.x/examples/changing-the-src-dir' },
+      { text: '客户端组件和库', link: '/zh/1.x/examples/client-side-components-and-libraries' },
+      { text: 'CRUD API', link: '/zh/1.x/examples/creating-a-crud-api' },
+      { text: '处理 CORS', link: '/zh/1.x/examples/dealing-with-cors' },
+      { text: '复杂路由', link: '/zh/1.x/examples/handling-complex-routes' },
+      { text: '初始化服务器', link: '/zh/1.x/examples/init-the-server' },
+      { text: '迁移到 Tailwind', link: '/zh/1.x/examples/migrating-to-tailwind' },
+      { text: '修改 head', link: '/zh/1.x/examples/modifying-the-head' },
+      { text: '渲染 Markdown', link: '/zh/1.x/examples/rendering-markdown' },
+      { text: '渲染原始 HTML', link: '/zh/1.x/examples/rendering-raw-html' },
+      { text: '设置语言', link: '/zh/1.x/examples/setting-the-language' },
+      { text: '岛屿间共享状态', link: '/zh/1.x/examples/sharing-state-between-islands' },
+      { text: '使用 CSP', link: '/zh/1.x/examples/using-csp' },
+      { text: '使用 Fresh Canary 版本', link: '/zh/1.x/examples/using-fresh-canary-version' },
+      { text: '使用 Twind v1', link: '/zh/1.x/examples/using-twind-v1' },
+      { text: '编写测试', link: '/zh/1.x/examples/writing-tests' },
+    ]
+  },
+  {
+    text: '集成',
+    link: '/zh/1.x/integrations/'
   },
 ]
 
@@ -243,7 +308,8 @@ export default defineConfig({
       { text: '工作台', link: 'https://studio.ai-nous.com/', icon: 'compass' },
     ],
     sidebar: {
-      '/zh/': zhSidebar,
+      '/zh/1.x/': zhSidebarV1,
+      '/zh/': zhSidebarV2,
       '/en/': enSidebar,
     },
     socialLinks: [

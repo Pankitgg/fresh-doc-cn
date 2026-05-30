@@ -50,7 +50,7 @@ specific first).
 
 For example, take a project with the following routes:
 
-```txt-files Project Structure
+```txt Project Structure
 └── <root>/routes
     ├── _middleware.ts
     ├── index.ts

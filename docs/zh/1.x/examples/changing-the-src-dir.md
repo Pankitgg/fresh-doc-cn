@@ -1,44 +1,43 @@
 ---
 description: |
-  Change the source directory to effectively manage your project.
+  更改源目录以有效管理你的项目。
 ---
 
-When you initialize a project with `deno run -A -r https://fresh.deno.dev`,
-you'll end up with a project like the following:
+# 更改源目录
 
-```txt-files Project Structure
+当你使用 `deno run -A -r https://fresh.deno.dev` 初始化项目时，你将得到类似以下的项目结构：
+
+```txt Project Structure
 <project root>
 ├── README.md
 ├── components
-│   └── Button.tsx
+│   └── Button.tsx
 ├── deno.json
 ├── dev.ts
 ├── fresh.gen.ts
 ├── islands
-│   └── Counter.tsx
+│   └── Counter.tsx
 ├── main.ts
 ├── routes
-│   ├── greet
-│   │   ├── [name].tsx
-│   ├── api
-│   │   └── joke.ts
-│   ├── _404.tsx
-│   └── index.tsx
+│   ├── greet
+│   │   ├── [name].tsx
+│   ├── api
+│   │   └── joke.ts
+│   ├── _404.tsx
+│   └── index.tsx
 └── static
     ├── favicon.ico
     └── logo.svg
 ```
 
-## Using a `src` directory
+## 使用 `src` 目录
 
-If you'd like your code to live in an `src` directory (or any other directory of
-your choosing), then you'll need to do the following things:
+如果你想要你的代码存放在 `src` 目录（或你选择的任何其他目录）中，那么你需要执行以下操作：
 
-1. Move all your files, except `deno.json` and `README.md`, to the `src`
-   directory.
-2. Modify the `start` task in `deno.json` to point to the new directory.
+1. 将所有文件移动到 `src` 目录，除了 `deno.json` 和 `README.md`。
+2. 修改 `deno.json` 中的 `start` 任务以指向新目录。
 
-Here's what the diff of `deno.json` looks like:
+以下是 `deno.json` 的差异：
 
 ```diff deno.json
  {
@@ -51,30 +50,30 @@ Here's what the diff of `deno.json` looks like:
      "$fresh/": "file:///Users/reed/code/fresh/",
 ```
 
-The resulting file structure looks like this:
+生成的文件结构如下所示：
 
-```txt-files Project Structure
+```txt Project Structure
 <project root>
 ├── README.md
 ├── deno.json
 └── src
     ├── components
-    │   └── Button.tsx
+    │   └── Button.tsx
     ├── dev.ts
     ├── fresh.gen.ts
     ├── islands
-    │   └── Counter.tsx
+    │   └── Counter.tsx
     ├── main.ts
     ├── routes
-    │   ├── greet
-    │   │   ├── [name].tsx
-    │   ├── api
-    │   │   └── joke.ts
-    │   ├── _404.tsx
-    │   └── index.tsx
+    │   ├── greet
+    │   │   ├── [name].tsx
+    │   ├── api
+    │   │   └── joke.ts
+    │   ├── _404.tsx
+    │   └── index.tsx
     └── static
         ├── favicon.ico
         └── logo.svg
 ```
 
-Success! Your code now lives elsewhere.
+成功了！你的代码现在存放在其他位置。

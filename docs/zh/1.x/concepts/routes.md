@@ -1,29 +1,17 @@
 ---
 description: |
-  Routes are the basic building block of Fresh applications. They are used to define the behaviour the application when a given path is requested.
+  路由是 Fresh 应用程序的基本构建块。它们用于定义当给定路径被请求时应用程序的行为。
 ---
 
-At their core, routes describe how a request for a given path should be handled,
-and what the response should be. To do this, routes have two main parts: the
-handler, and the component. A route can have either one, or both, but never
-neither.
+路由的核心是描述如何处理给定路径的请求，以及响应应该是什么。为此，路由有两个主要部分：处理程序和组件。路由可以有其中一个，或两者都有，但绝不能两者都没有。
 
-The handler is a function that is called for every request to the route. It
-needs to return a response that is then sent to the client. The response could
-be anything: a plain text string, a JSON object, an HTML page, a WebSocket
-connection, a streaming file, or pretty much anything else. The handler is
-passed a `render` function that it can call to invoke rendering a component.
+处理程序是为路由的每个请求调用的函数。它需要返回一个响应，然后发送给客户端。响应可以是任何东西：纯文本字符串、JSON 对象、HTML 页面、WebSocket 连接、流文件，或其他几乎任何东西。处理程序会传入一个 `render` 函数，它可以调用该函数来渲染组件。
 
-The component is the template for a page. It is a JSX element that is rendered
-on the server. The page component gets passed props that can be used by it to
-determine exactly what should be rendered. By default components receive props
-consisting of: the request URL, the matching route (as a string), the matches
-from the URL pattern match, any state set by middleware, and any data passed to
-the handler's `render` function.
+组件是页面的模板。它是在服务端渲染的 JSX 元素。页面组件会传入可以用于确定应该渲染什么的属性。默认情况下，组件会接收由以下组成的属性：请求 URL、匹配的路由（作为字符串）、URL 模式匹配的匹配项、中间件设置的任何 state，以及处理程序的 `render` 函数传入的任何数据。
 
-## Handler route
+## 处理程序路由
 
-Let's look at a basic route that returns a plain text string:
+让我们看一个返回纯文本字符串的基本路由：
 
 ```tsx routes/plain.tsx
 import { FreshContext, Handlers } from "$fresh/server.ts";
@@ -35,37 +23,27 @@ export const handler: Handlers = {
 };
 ```
 
-To define a handler, one needs to export a `handler` function or object from the
-route module. If the handler is an object, each key in the object is the name of
-the HTTP method that the handler should be called for. For example the `GET`
-handler above is called for `GET` requests. If the handler is a function, it is
-called for all requests regardless of the method. If an HTTP method does not
-have a corresponding handler, a 405 HTTP error is returned.
+要定义处理程序，需要从路由模块导出 `handler` 函数或对象。如果处理程序是对象，则对象中的每个键是应该调用处理程序的 HTTP 方法的名称。例如，上面的 `GET` 处理程序会为 `GET` 请求调用。如果处理程序是函数，则无论方法如何都会调用它。如果 HTTP 方法没有相应的处理程序，则返回 405 HTTP 错误。
 
-## Component route
+## 组件路由
 
-Now, let's render some HTML using the route component:
+现在，让我们使用路由组件渲染一些 HTML：
 
 ```tsx routes/html.tsx
 import { PageProps } from "$fresh/server.ts";
 
 export default function Page(props: PageProps) {
-  return <div>You are on the page '{props.url.href}'.</div>;
+  return <div>你在页面 '{props.url.href}' 上。</div>;
 }
 ```
 
-The page component needs to be the default export of the route module. It is
-passed props that can be used to render the page.
+页面组件需要是路由模块的默认导出。它传入可以用于渲染页面的属性。
 
-As you can see in the second example, if no handler is explicitly defined a
-default handler is used that just renders out the page component if present. You
-can also override the default handler though to modify how exactly rendering
-should work.
+如第二个示例所示，如果未显式定义处理程序，则使用默认处理程序，该处理程序只是渲染页面组件（如果存在）。你也可以覆盖默认处理程序以修改渲染应该如何工作。
 
-## Mixed handler and component route
+## 混合处理程序和组件路由
 
-In the below example, a custom handler is used to add a custom header to the
-response after rendering the page component.
+在下面的示例中，使用自定义处理程序在渲染页面组件后向响应添加自定义头。
 
 ```tsx routes/html.tsx
 import { FreshContext, Handlers, PageProps } from "$fresh/server.ts";
@@ -79,16 +57,13 @@ export const handler: Handlers = {
 };
 
 export default function Page(props: PageProps) {
-  return <div>You are on the page '{props.url.href}'.</div>;
+  return <div>你在页面 '{props.url.href}' 上。</div>;
 }
 ```
 
-## Async route components
+## 异步路由组件
 
-Having a separate route handler and component function is nice, when you want to
-test these in isolation, but can become a bit cumbersome to maintain. They
-require some additional indirection of declaring an interface for the component
-`Data` when you're passing it around through `ctx.render()`.
+拥有单独的路由处理程序和组件函数很好，当你想单独测试它们时，但维护可能有点麻烦。它们需要一些额外的间接声明组件 `Data` 的接口，当你通过 `ctx.render()` 传递它时。
 
 ```tsx routes/page.tsx
 interface Data {
@@ -103,56 +78,50 @@ export const handler: Handlers<Data> = {
 };
 
 export default function MyPage(props: PageProps<Data>) {
-  return <p>foo is: {props.data.foo}</p>;
+  return <p>foo 是：{props.data.foo}</p>;
 }
 ```
 
-When a route has both a component and a `GET` handler, they are typically very
-closely coupled. With async route components you can merge the two together and
-avoid having to create the `Data` interface boilerplate.
+当路由同时具有组件和 `GET` 处理程序时，它们通常非常紧密耦合。使用异步路由组件，你可以将两者合并，避免创建 `Data` 接口样板。
 
 ```tsx routes/page.tsx
-// Async route component
+// 异步路由组件
 export default async function MyPage(req: Request, ctx: RouteContext) {
   const value = await loadFooValue();
-  return <p>foo is: {value}</p>;
+  return <p>foo 是：{value}</p>;
 }
 ```
 
-The code gets a little shorter with async route components. Conceptually, you
-can think of async route components inlining the `GET` handler into the
-component function. Note, that you can still add additional HTTP handlers in the
-same file like before.
+使用异步路由组件，代码会稍微短一些。从概念上讲，你可以将异步路由组件视为将 `GET` 处理程序内联到组件函数中。请注意，你仍然可以在同一文件中添加额外的 HTTP 处理程序，就像以前一样。
 
 ```tsx routes/page.tsx
 export const handler: Handlers = {
   async POST(req) {
-    // ... do something here
+    // ... 在这里做一些事情
   },
 };
 
 export default async function MyPage(req: Request, ctx: RouteContext) {
   const value = await loadFooValue();
-  return <p>foo is: {value}</p>;
+  return <p>foo 是：{value}</p>;
 }
 ```
 
-### Returning Response objects
+### 返回 Response 对象
 
-Quite often a route handler needs to render a 404 page or bail out of rendering
-in another manner. This can be done by returning a `Response` object.
+通常路由处理程序需要渲染 404 页面或以另一种方式退出渲染。这可以通过返回 `Response` 对象来完成。
 
 ```tsx route/page.tsx
-// Async route component
+// 异步路由组件
 export default async function MyPage(req: Request, ctx: RouteContext) {
   const value = await loadFooValue();
 
-  // Return 404 if `value` is null
+  // 如果 `value` 为 null 则返回 404
   if (value === null) {
     return ctx.renderNotFound();
   }
 
-  // Returning a response object directly works too
+  // 直接返回响应对象也可以
   if (value === "redirect") {
     const headers = new Headers();
     headers.set("location", "/some-other-page");
@@ -162,15 +131,13 @@ export default async function MyPage(req: Request, ctx: RouteContext) {
     });
   }
 
-  return <p>foo is: {value}</p>;
+  return <p>foo 是：{value}</p>;
 }
 ```
 
-### Define helper
+### 定义辅助函数
 
-To make it a little quicker to write async routes, Fresh ships with a
-`defineRoute` helper which automatically infers the correct types for the
-function arguments.
+为了更快地编写异步路由，Fresh 提供了一个 `defineRoute` 辅助函数，它会自动为函数参数推断正确的类型。
 
 ```tsx routes/hello.tsx
 import { defineRoute } from "$fresh/server.ts";
@@ -180,7 +147,7 @@ export default defineRoute(async (req, ctx) => {
 
   return (
     <div class="page">
-      <h1>Hello {data.name}</h1>
+      <h1>你好 {data.name}</h1>
     </div>
   );
 });

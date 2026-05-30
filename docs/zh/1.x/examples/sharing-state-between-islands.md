@@ -1,15 +1,13 @@
 ---
 description: |
-  When you need to have state shared between islands, this page provides a few recipes.
+  当你需要岛屿之间共享状态时，本页面提供了一些方法。
 ---
 
-All of this content is lifted from this great
-[example](https://fresh-with-signals.deno.dev/) by Luca. The source can be found
-[here](https://github.com/lucacasonato/fresh-with-signals).
+所有这些内容都来自 Luca 的这个很棒的[示例](https://fresh-with-signals.deno.dev/)。源代码可以在[这里](https://github.com/lucacasonato/fresh-with-signals)找到。
 
-## Multiple Sibling Islands with Independent State
+## 具有独立状态的多个兄弟岛屿
 
-Imagine we have `Counter.tsx` like this:
+想象我们有这样的 `Counter.tsx`：
 
 ```tsx islands/Counter.tsx
 import { useSignal } from "@preact/signals";
@@ -19,8 +17,7 @@ interface CounterProps {
   start: number;
 }
 
-// This island is used to display a counter and increment/decrement it. The
-// state for the counter is stored locally in this island.
+// 此岛屿用于显示计数器并增加/减少它。计数器的状态存储在此岛屿中。
 export default function Counter(props: CounterProps) {
   const count = useSignal(props.start);
   return (
@@ -33,20 +30,18 @@ export default function Counter(props: CounterProps) {
 }
 ```
 
-Note how `useSignal` is within the `Counter` component. Then if we instantiate
-some counters like this...
+注意 `useSignal` 在 `Counter` 组件内。然后如果我们像这样实例化一些计数器...
 
 ```tsx routes/index.tsx
 <Counter start={3} />
 <Counter start={4} />
 ```
 
-they'll keep track of their own independent state. Not much sharing going on
-here, yet.
+它们将跟踪自己独立的状态。这里还没有太多共享。
 
-## Multiple Sibling Islands with Shared State
+## 具有共享状态的多个兄弟岛屿
 
-But we can switch things up by looking at a `SynchronizedSlider.tsx` like this:
+但我们可以通过查看这样的 `SynchronizedSlider.tsx` 来改变：
 
 ```tsx islands/SynchronizedSlider.tsx
 import { Signal } from "@preact/signals";
@@ -55,8 +50,7 @@ interface SliderProps {
   slider: Signal<number>;
 }
 
-// This island displays a slider with a value equal to the `slider` signal's
-// value. When the slider is moved, the `slider` signal is updated.
+// 此岛屿显示一个滑块，其值等于 `slider` 信号的值。当滑块移动时，`slider` 信号会更新。
 export default function SynchronizedSlider(props: SliderProps) {
   return (
     <input
@@ -71,7 +65,7 @@ export default function SynchronizedSlider(props: SliderProps) {
 }
 ```
 
-Now if we were to do the following...
+现在如果我们做以下操作...
 
 ```tsx routes/index.tsx
 export default function Home() {
@@ -86,12 +80,11 @@ export default function Home() {
 }
 ```
 
-they would all use the same value.
+它们都将使用相同的值。
 
-## Independent Islands
+## 独立岛屿
 
-We can also create a `signal` in a utility file and export it for consumption
-across multiple places.
+我们还可以在工具文件中创建 `signal` 并导出以供跨多个地方使用。
 
 ```ts utils/cart.ts
 import { signal } from "@preact/signals";
@@ -107,15 +100,14 @@ interface AddToCartProps {
   product: string;
 }
 
-// This island is used to add a product to the cart state.
+// 此岛屿用于将产品添加到购物车状态。
 export default function AddToCart(props: AddToCartProps) {
   return (
     <Button
       onClick={() => (cart.value = [...cart.value, props.product])}
       class="w-full"
     >
-      Add{cart.value.includes(props.product) ? " another" : ""} "{props.product}
-      " to cart
+      添加{cart.value.includes(props.product) ? " 另一个" : ""} "{props.product}" 到购物车
     </Button>
   );
 }
@@ -126,11 +118,11 @@ import { Button } from "../components/Button.tsx";
 import { cart } from "../utils/cart.ts";
 import * as icons from "../components/Icons.tsx";
 
-// This island is used to display the cart contents and remove items from it.
+// 此岛屿用于显示购物车内容并从中删除商品。
 export default function Cart() {
   return (
     <h1 class="text-xl flex items-center justify-center">
-      Cart
+      购物车
     </h1>
 
     <ul class="w-full bg-gray-50 mt-2 p-2 rounded-sm min-h-[6.5rem]">
@@ -139,7 +131,7 @@ export default function Cart() {
           <div class="text-gray-400">
             <icons.Cart class="w-8 h-8 inline-block" />
             <div>
-              Your cart is empty.
+              你的购物车是空的。
             </div>
           </div>
         </li>
@@ -177,13 +169,12 @@ function CartItem(props: CartItemProps) {
 }
 ```
 
-Now we can add the islands to our site by doing the following:
+现在我们可以通过以下方式将岛屿添加到我们的站点：
 
 ```tsx routes/cart.tsx
-<AddToCart product="Lemon" />
-<AddToCart product="Lime" />
+<AddToCart product="柠檬" />
+<AddToCart product="酸橙" />
 <Cart />
 ```
 
-What happens as a result? The `cart` signal is shared across the two `AddToCart`
-islands _and_ the `Cart` island.
+结果是什么？`cart` 信号在两个 `AddToCart` 岛屿和 `Cart` 岛屿之间共享。

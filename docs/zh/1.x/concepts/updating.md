@@ -1,22 +1,21 @@
 ---
 description: |
-  New versions of Fresh are regularly released. This page explains how to update your project.
+  新版本的 Fresh 会定期发布。本页解释如何更新你的项目。
 ---
 
-Fresh consists of multiple pieces which are independently versioned and
-released.
+# 更新
+
+Fresh 由多个独立版本和发布的部分组成。
 
 - Fresh (https://deno.land/x/fresh)
 - Preact (https://esm.sh/preact)
 - preact-render-to-string (https://esm.sh/preact-render-to-string)
 
-Some plugins also have their own dependencies that can be updated independently.
+一些插件也有自己的依赖项，可以独立更新。
 
-- Twind (https://esm.sh/twind) (for the twind plugin)
+- Twind (https://esm.sh/twind)（用于 twind 插件）
 
-For the most part these pieces can be updated independently. Certain versions of
-Fresh may require a minimum version of a given dependency. This is documented
-below.
+在大多数情况下，这些部分可以独立更新。某些版本的 Fresh 可能需要特定依赖项的最低版本。这在下面有记录。
 
 | Fresh version | Preact            | preact-render-to-string | Deno      |
 | ------------- | ----------------- | ----------------------- | --------- |
@@ -24,35 +23,28 @@ below.
 | 1.1.0-1.1.5   | >=10.8.1 <11.0.0  | >=5.2.0 <6.0.0          | >= 1.25.0 |
 | 1.2.0         | >=10.15.0 <11.0.0 | >=6.1.0                 | >= 1.25.0 |
 
-## Updating dependencies
+## 更新依赖
 
-To update your dependencies, you have two options:
+要更新你的依赖，你有两个选项：
 
-- Run the Fresh updater to update your project dependencies.
-- Manually update the dependency versions in your `deno.json` file.
+- 运行 Fresh 更新器来更新你的项目依赖。
+- 手动更新 `deno.json` 文件中的依赖版本。
 
-### Auto updater
+### 自动更新器
 
-The auto updater is a command line tool that will update your project's
-`deno.json` file to the latest versions of Fresh and its dependencies. It may
-also contain code mods for your project that will update your code to the latest
-recommended patterns for Fresh projects.
+自动更新器是一个命令行工具，会将你的项目的 `deno.json` 文件更新到 Fresh 及其依赖的最新版本。它还可能包含你的项目的代码修改，将你的代码更新到 Fresh 项目的最新推荐模式。
 
-To run the auto updater, run the following command from the root of your
-project:
+要运行自动更新器，从你的项目根目录运行以下命令：
 
 ```sh Terminal
 $ deno run -A -r https://fresh.deno.dev/update
 ```
 
-You will be prompted to confirm the changes that will be made to your project.
+系统将提示你确认将对你的项目进行的更改。
 
-### Manual update
+### 手动更新
 
-To manually update your project's dependencies, you can edit the `deno.json`
-file in the root of your projects directory. Dependency versions are encoded
-into the URLs in this file. For example, here is how to update a project from
-Fresh 1.0.2 to 1.1.3, and update Preact to the latest version:
+要手动更新项目的依赖，你可以编辑项目目录根部的 `deno.json` 文件。依赖版本编码在此文件的 URL 中。例如，以下是如何将项目从 Fresh 1.0.2 更新到 1.1.3，并将 Preact 更新到最新版本：
 
 ```diff deno.json
   {
@@ -74,28 +66,19 @@ Fresh 1.0.2 to 1.1.3, and update Preact to the latest version:
   }
 ```
 
-## Automatic update checks
+## 自动更新检查
 
-Fresh will periodically check if a new Fresh version is available if it's
-running outside of CI. This happens once per day and can be disabled by setting
-the `FRESH_NO_UPDATE_CHECK=true` environment variable.
+Fresh 会定期检查是否有新的 Fresh 版本可用，如果它在 CI 之外运行。这每天发生一次，可以通过设置 `FRESH_NO_UPDATE_CHECK=true` 环境变量来禁用。
 
-## Code mods
+## 代码修改
 
-Code mods are small scripts that can be run to update your project's code to
-match the latest recommended patterns for Fresh projects. Code mods can be run
-through the auto updater. Sometimes the code mod can not cover all cases, so you
-may need to manually update some code. This section explains the code mods
-currently available.
+代码修改是可以运行的小型脚本，以更新你的项目的代码以匹配 Fresh 项目的最新推荐模式。代码修改可以通过自动更新器运行。有时代码修改无法覆盖所有情况，因此你可能需要手动更新一些代码。本节解释当前可用的代码修改。
 
-### Classical JSX -> Automatic JSX
+### 经典 JSX -> 自动 JSX
 
-> This code mod is only available in Fresh 1.1.0 and above.
+> 此代码修改仅在 Fresh 1.1.0 及以上版本中可用。
 
-The classical JSX transform that relies on a `/** @jsx h */` pragma is no longer
-the recommended way to use JSX in Fresh projects. Instead, starting with version
-1.1.0, Fresh projects should use the automatic JSX transform that requires no
-JSX pragma or preact import.
+依赖于 `/** @jsx h */` 编译指示的经典 JSX 转换不再是 Fresh 项目中使用 JSX 的推荐方式。相反，从 1.1.0 版本开始，Fresh 项目应该使用自动 JSX 转换，不需要 JSX 编译指示或 preact 导入。
 
 ```diff routes/hello-world.tsx
 - /** @jsx h */
@@ -106,23 +89,12 @@ JSX pragma or preact import.
   }
 ```
 
-This code mod will update your deno.json file to include the relevant compiler
-options to enable the automatic JSX transform. It will then go through your
-project and remove any `/** @jsx h */` pragmas and `import { h } from "preact"`
-statements.
+此代码修改将更新你的 deno.json 文件以包含相关的编译器选项以启用自动 JSX 转换。然后它将遍历你的项目并删除任何 `/** @jsx h */` 编译指示和 `import { h } from "preact"` 语句。
 
-### Classic twind -> Twind plugin
+### 经典 twind -> Twind 插件
 
-> This code mod is only available in Fresh 1.1.0 and above.
+> 此代码修改仅在 Fresh 1.1.0 及以上版本中可用。
 
-Fresh version 1.1.0 introduced a new plugin for using twind with Fresh. This
-plugin is much nicer to use than the raw twind integration that was previously
-available.
+Fresh 1.1.0 版本引入了一个新的插件，用于在 Fresh 中使用 twind。这个插件比之前可用的原始 twind 集成更容易使用。
 
-This code mod will update your project to use the new twind plugin. It will
-update your `main.ts` file to import the twind plugin and add it to the plugins
-array. It will also update your files to remove many unnecessary uses of the
-`tw` function, and remove unnecessary twind imports. While the code mod can
-handle most cases, you may need to manually update some code. Additionally you
-will need to manually update your `twind.config.ts` if you use a custom
-configuration.
+此代码修改将更新你的项目以使用新的 twind 插件。它将更新你的 `main.ts` 文件以导入 twind 插件并将其添加到插件数组中。它还将更新你的文件以删除许多不必要的 `tw` 函数使用，并删除不必要的 twind 导入。虽然代码修改可以处理大多数情况，但你可能需要手动更新一些代码。此外，如果你使用自定义配置，你将需要手动更新你的 `twind.config.ts`。

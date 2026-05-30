@@ -1,10 +1,9 @@
 ---
 description: |
-  With a few tweaks one can use twind v1
+  通过一些调整，可以使用 twind v1
 ---
 
-When you initialize a project with `deno run -A -r https://fresh.deno.dev`,
-you'll end up with a `main.ts` like the following:
+当你使用 `deno run -A -r https://fresh.deno.dev` 初始化项目时，你会得到一个如下的 `main.ts`：
 
 ```ts main.ts
 /// <reference no-default-lib="true" />
@@ -22,7 +21,7 @@ import config from "./fresh.config.ts";
 await start(manifest, config);
 ```
 
-And the Fresh config is like this:
+Fresh 配置如下：
 
 ```ts fresh.config.ts
 import { defineConfig } from "$fresh/server.ts";
@@ -34,7 +33,7 @@ export default defineConfig({
 });
 ```
 
-Let's bump that up to v1:
+让我们升级到 v1：
 
 ```diff fresh.config.ts
  import { defineConfig } from "$fresh/server.ts";
@@ -45,9 +44,7 @@ Let's bump that up to v1:
  export default defineConfig({
 ```
 
-The twind config object has changed significantly in v1, so we must also change
-`twind.config.ts`. A good base looks like this (just replace whatever is there
-with this):
+twind 配置对象在 v1 中发生了重大变化，因此我们也必须更改 `twind.config.ts`。一个好的基础如下所示（只需用这个替换任何存在的内容）：
 
 ```ts twind.config.ts
 import { defineConfig, Preset } from "https://esm.sh/@twind/core@1.1.3";
@@ -62,7 +59,6 @@ export default {
 };
 ```
 
-(Note: the `as Preset` cast is required to fix a typing issue with twind.)
+（注意：`as Preset` 转换是修复 twind 类型问题所必需的。）
 
-To see what other presets exist, you can go to the
-[twind docs](https://twind.style/presets).
+要查看有哪些其他预设可用，你可以前往 [twind 文档](https://twind.style/presets)。

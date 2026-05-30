@@ -1,50 +1,33 @@
 ---
 description: |
-  Client side components and libraries
+  客户端组件和库
 ---
 
-Some components depend on client environments, browser-specific features, or
-dynamic user interactions, making them incompatible or non-functional during
-server-side rendering.
+# 客户端组件和库
 
-By employing conditional rendering and state management techniques, we can
-ensure graceful handling of library or data loading, improving workflow and
-usability of such components.
+某些组件依赖于客户端环境、浏览器特定功能或动态用户交互，这使得它们在服务器端渲染期间不兼容或无法正常工作。
 
-Let's explore an example utilizing this solution with Leaflet, a popular mapping
-library, in a Fresh application. The objective is to ensure the proper rendering
-of Leaflet components on the client side while gracefully handling them on the
-server side.
+通过采用条件渲染和状态管理技术，我们可以确保优雅地处理库或数据加载，从而改善此类组件的工作流程和可用性。
 
-The full code is available at the end of the page
+让我们探索一个在 Fresh 应用程序中使用 Leaflet（一个流行的地图库）的示例。目标是确保 Leaflet 组件在客户端正确渲染，同时在服务器端优雅地处理它们。
 
-## Explanation
+完整代码可在页面底部获取。
 
-The first step is creating the context variable to enhance usability across
-various components within a Fresh application. By initializing these variables
-with a null value and integrating type references, developers can streamline the
-use of client side features while adapting to scenarios where server side
-rendering might not be feasible.
+## 说明
 
-> [warn]: Proper typing might not be easily available, so we might need to
-> define our own types or not use types at all.
+第一步是创建上下文变量以增强 Fresh 应用程序中各个组件的可用性。通过将这些变量初始化为 null 值并集成类型引用，开发人员可以简化客户端功能的使用，同时适应服务器端渲染可能不可行的场景。
+
+> [warn]: 适当的类型可能不容易获得，因此我们可能需要定义自己的类型或根本不使用类型。
 
 ```ts context.ts
 export const leafletContext = createContext<typeof Leaflet | null>(null);
 ```
 
-Then, we should implement a Provider Component, this will handle loading and
-passing down values to be used in other components, other than that, we also
-need to handle the server side case as well.
+然后，我们应该实现一个 Provider 组件，它将处理加载并将值传递给其他组件使用，除此之外，我们还需要处理服务器端的情况。
 
-In this example, for the server side we are simply rendering a placeholder in
-place of our component tree. As for the context value, we are using html tags to
-inject the library on the window and a onLoad callback to set the value of our
-state, and this value will be handled/shared with our other components.
+在这个示例中，对于服务器端，我们只是在组件树的位置渲染一个占位符。至于上下文值，我们使用 html 标签在 window 上注入库，并使用 onLoad 回调来设置我们状态的值，这个值将与我们的其他组件一起处理/共享。
 
-> [warn]: Be careful with providers, the manner in which they load/inject both
-> script and css may cause issues. Leaflet, for instance, will throw errors if
-> we try to load it again.
+> [warn]: 小心使用 provider，它们加载/注入脚本和 css 的方式可能会引起问题。例如，如果我们尝试再次加载 Leaflet，它会抛出错误。
 
 ```tsx context.ts
 function LeafletProvider(props: { children: ComponentChildren }) {
@@ -79,11 +62,7 @@ function LeafletProvider(props: { children: ComponentChildren }) {
 }
 ```
 
-In order to utilize the context, call the useContext hook with the context
-variable this will give us access to the value set in the Provider. Handling
-cases where the context has not loaded values yet is a good practice as well, in
-this way we can have a smooth integration and manipulation of client-side data
-and logic on our server-side code.
+为了利用上下文，使用上下文变量调用 useContext hook，这将使我们能够访问 Provider 中设置的值。处理上下文尚未加载值的情况也是一个好习惯，这样我们就可以在服务器端代码中平滑地集成和操作客户端数据和逻辑。
 
 ```tsx component/Map.tsx
 function MapComponent() {
@@ -100,10 +79,7 @@ function MapComponent() {
 }
 ```
 
-Here is an example island encapsulating both the provider and component in order
-to demonstrate a simple usage. In real cases, it's usually better to add the
-Provider directly to our Page and then use Components that depend on that
-provider inside it.
+这是一个示例 island，封装了 provider 和 component，以演示简单的用法。在实际情况下，通常最好直接将 Provider 添加到我们的页面中，然后在其中使用依赖于该 provider 的组件。
 
 ```tsx islands/MapIsland.tsx
 export default function MapIsland() {
@@ -115,7 +91,7 @@ export default function MapIsland() {
 }
 ```
 
-## Full code:
+## 完整代码：
 
 ```tsx islands/MapIsland.tsx
 import * as Leaflet from "https://esm.sh/v135/@types/leaflet@1.9.4/index.d.ts";

@@ -1,20 +1,17 @@
 ---
 description: |
-  Sometimes URL based routing isn't enough.
+  有时基于 URL 的路由还不够。
 ---
 
-The page on [routing](/docs/1.x/concepts/routing) hints at complex routing based
-on URL patterns using a `RouteConfig` object. Let's dive into this in a bit more
-detail.
+# 处理复杂路由
 
-A `RouteConfig` has a `routeOverride` string property, which makes use of the
-[URL Pattern API](https://developer.mozilla.org/en-US/docs/Web/API/URL_Pattern_API).
-Here you can define named groups, wildcards, regex groups, and other bits.
+[路由](/docs/1.x/concepts/routing)页面提到了使用 `RouteConfig` 对象基于 URL 模式进行复杂路由。让我们更详细地了解一下。
 
-## Simple Route Config
+`RouteConfig` 有一个 `routeOverride` 字符串属性，它使用了 [URL Pattern API](https://developer.mozilla.org/en-US/docs/Web/API/URL_Pattern_API)。在这里你可以定义命名组、通配符、正则表达式组等。
 
-Let's look at the example from the routing page more closely. We'll flesh out
-the handler so that we end up with something like the following:
+## 简单路由配置
+
+让我们更仔细地看看路由页面中的示例。我们将完善处理程序，以便得到类似以下的内容：
 
 ```ts routes/x.tsx
 import { FreshContext, RouteConfig } from "$fresh/server.ts";
@@ -31,9 +28,7 @@ export const config: RouteConfig = {
 };
 ```
 
-Now if we hit the server with a request like
-`http://localhost:8000/x/bestModule@1.33.7/asdf`, then logging the params will
-show the following:
+现在如果我们向服务器发送类似 `http://localhost:8000/x/bestModule@1.33.7/asdf` 的请求，那么记录参数将显示以下内容：
 
 ```txt Console output
 {
@@ -43,9 +38,9 @@ show the following:
 }
 ```
 
-## Complex Route Config
+## 复杂路由配置
 
-Let's look at something a bit more complex:
+让我们看看更复杂的情况：
 
 ```ts routes/api.tsx
 import { FreshContext, RouteConfig } from "$fresh/server.ts";
@@ -62,9 +57,9 @@ export const config: RouteConfig = {
 };
 ```
 
-Values are available via `params.resource` and `params.id`.
+值可以通过 `params.resource` 和 `params.id` 获取。
 
-Here are some example URLs that match this:
+以下是一些匹配此模式的示例 URL：
 
 - `/api/db/bar/1`
 - `/api/db/jobs/1`
@@ -73,15 +68,12 @@ Here are some example URLs that match this:
 - `/api/db/jobs`
 - `/api/db/bar`
 
-Here are some that don't:
+以下是一些不匹配的 URL：
 
 - `/api/db/other/123`
 - `/api/db/jobs/abc`
 - `/api/db`
 
-## Regex
+## 正则表达式
 
-At this point is should be clear that this is essentially an exercise in
-understanding regex. There are [numerous](https://regexr.com/)
-[resources](https://regex101.com/) [available](https://chat.openai.com/) for
-getting assistance with regex.
+到此为止，应该清楚这基本上是理解正则表达式的练习。有[许多](https://regexr.com/)[资源](https://regex101.com/)[可用](https://chat.openai.com/)来帮助理解正则表达式。

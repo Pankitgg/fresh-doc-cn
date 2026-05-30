@@ -1,120 +1,124 @@
 ---
 description: |
-  Robustly handle user inputs using HTML `<form>` elements client side, and form
-  submission handlers server side.
+  Fresh 围绕原生 `<form>` 元素构建其表单提交基础设施。
 ---
 
-For stronger resiliency and user experience, Fresh relies on native browser
-support for form submissions with the HTML `<form>` element.
+表单是 Web 应用程序中用户交互的核心部分。Fresh 围绕原生 `<form>` 元素构建其表单基础设施，使其易于处理用户输入。
 
-In the browser, a `<form>` submit will send an HTML action (usually `GET` or
-`POST`) to the server, which responds with a new page to render.
+## 基本表单
 
-## POST request with `application/x-www-form-urlencoded`
+最基本的表单是一个简单的 HTML 表单，提交时会向服务器发送请求。
 
-Forms typically submit as a `GET` request with data encoded in the URL's search
-parameters, or as a `POST` request with either an
-`application/x-www-form-urlencoded` or `multipart/form-data` body.
+```tsx routes/search.tsx
+export default function Search() {
+  return (
+    <form>
+      <input type="text" name="q" />
+      <button type="submit">搜索</button>
+    </form>
+  );
+}
+```
 
-This example demonstrates how to handle `application/x-www-form-urlencoded`
-`<form>` submissions:
+当用户提交此表单时，浏览器会向当前 URL 发送 `GET` 请求，并将表单数据作为查询参数附加。
 
-```tsx routes/subscribe.tsx
+## 处理表单提交
+
+要处理表单提交，你可以使用路由的处理程序。对于 `GET` 表单，数据通过查询参数传递。对于 `POST` 表单，数据在请求体中传递。
+
+```tsx routes/search.tsx
+import { Handlers, PageProps } from "$fresh/server.ts";
+
+interface Data {
+  results: string[];
+  query: string;
+}
+
+export const handler: Handlers<Data> = {
+  GET(req, ctx) {
+    const url = new URL(req.url);
+    const query = url.searchParams.get("q") || "";
+    const results = NAMES.filter((name) => name.includes(query));
+    return ctx.render({ results, query });
+  },
+};
+
+export default function Page({ data }: PageProps<Data>) {
+  const { results, query } = data;
+  return (
+    <div>
+      <form>
+        <input type="text" name="q" value={query} />
+        <button type="submit">搜索</button>
+      </form>
+      <ul>
+        {results.map((name) => <li key={name}>{name}</li>)}
+      </ul>
+    </div>
+  );
+}
+```
+
+## POST 请求
+
+对于修改服务器数据的操作，你应该使用 `POST` 请求。这需要一个带有 `method="POST"` 属性的表单。
+
+```tsx routes/contact.tsx
 import { Handlers } from "$fresh/server.ts";
 
 export const handler: Handlers = {
-  async GET(req, ctx) {
-    return await ctx.render();
-  },
   async POST(req, ctx) {
     const form = await req.formData();
-    const email = form.get("email")?.toString();
-
-    // Add email to list.
-
-    // Redirect user to thank you page.
-    const headers = new Headers();
-    headers.set("location", "/thanks-for-subscribing");
+    const name = form.get("name");
+    const email = form.get("email");
+    // 处理表单数据
     return new Response(null, {
-      status: 303, // See Other
-      headers,
+      status: 303,
+      headers: { Location: "/success" },
     });
   },
 };
 
-export default function Subscribe() {
+export default function Contact() {
   return (
-    <>
-      <form method="post">
-        <input type="email" name="email" value="" />
-        <button type="submit">Subscribe</button>
-      </form>
-    </>
+    <form method="POST">
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <button type="submit">提交</button>
+    </form>
   );
 }
 ```
 
-When the user submits the form, Deno will retrieve the `email` value using the
-request's `formData()` method, add the email to a list, and redirect the user to
-a thank you page.
+## 使用岛屿进行客户端增强
 
-## Handling file uploads
+你还可以使用岛屿来增强表单的客户端交互性，例如添加验证或在提交时显示加载指示器。
 
-File uploads can be handled in a very similar manner to the example above. Note
-that this time, we have to explicitly declare the form's encoding to be
-`multipart/form-data`.
+```tsx islands/EnhancedForm.tsx
+import { useSignal } from "@preact/signals";
 
-```tsx routes/subscribe.tsx
-import { Handlers, type PageProps } from "$fresh/server.ts";
+export default function EnhancedForm() {
+  const loading = useSignal(false);
 
-interface Props {
-  message: string | null;
-}
-
-export const handler: Handlers<Props> = {
-  async GET(req, ctx) {
-    return await ctx.render({
-      message: null,
+  async function handleSubmit(e: Event) {
+    e.preventDefault();
+    loading.value = true;
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    await fetch(form.action, {
+      method: form.method,
+      body: formData,
     });
-  },
-  async POST(req, ctx) {
-    const form = await req.formData();
-    const file = form.get("my-file") as File;
+    loading.value = false;
+  }
 
-    if (!file) {
-      return ctx.render({
-        message: `Please try again`,
-      });
-    }
-
-    const name = file.name;
-    const contents = await file.text();
-
-    console.log(contents);
-
-    return ctx.render({
-      message: `${name} uploaded!`,
-    });
-  },
-};
-
-export default function Upload(props: PageProps<Props>) {
-  const { message } = props.data;
   return (
-    <>
-      <form method="post" encType="multipart/form-data">
-        <input type="file" name="my-file" />
-        <button type="submit">Upload</button>
-      </form>
-      {message ? <p>{message}</p> : null}
-    </>
+    <form onSubmit={handleSubmit} method="POST">
+      <input type="text" name="name" />
+      <button type="submit" disabled={loading.value}>
+        {loading.value ? "提交中..." : "提交"}
+      </button>
+    </form>
   );
 }
 ```
-
-## A note of caution
-
-These examples are simplified to demonstrate how Deno and Fresh handle HTTP
-requests. In the Real World™, you'll want to validate your data (_especially the
-file type_) and protect against cross-site request forgery. Consider yourself
-warned.

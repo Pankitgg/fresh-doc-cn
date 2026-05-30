@@ -1,87 +1,51 @@
 ---
 description: |
-  Fresh can be deployed to a variety of platforms easily.
+  Fresh 可以轻松将你的应用部署到 Deno Deploy 或其他平台。
 ---
 
-While Fresh is designed to be deployed to [Deno Deploy][deno-deploy], it can be
-deployed to any system or platform that can run a Deno based web server.
+Fresh 应用可以部署到各种平台。推荐的部署目标是 Deno Deploy，但 Fresh 也可以部署到任何可以运行 Deno 的环境。
 
-Here are instructions for specific providers / systems:
+## 部署到 Deno Deploy
 
-- [Deno Deploy](#deno-deploy)
-- [Docker](#docker)
-- [Self Contained Executable](#self-contained-executable)
+部署到 Deno Deploy 的最简单方法是通过 GitHub 集成。将你的代码推送到 GitHub 仓库，然后在 Deno Deploy 仪表板中创建一个新项目。
 
-## Deno Deploy
+1. 将你的代码推送到 GitHub
+2. 前往 [Deno Deploy 仪表板](https://dash.deno.com)
+3. 点击"New Project"
+4. 选择你的 GitHub 仓库
+5. 选择"Fresh"框架预设
+6. 在"Build command"字段中输入 `deno task build`
+7. 点击"Create project"
 
-The recommended way to deploy Fresh is by using Deno Deploy. Deno Deploy
-provides a GitHub integration that can deploy your Fresh projects to its
-globally distributed edge network in seconds, automatically.
+你的项目现在将部署到 Deno Deploy。每次你推送到你的仓库时，它将自动部署。
 
-View [the getting started guide][deploy-to-production] for instructions on how
-to deploy Fresh to Deno Deploy.
+## 部署到其他平台
 
-## Docker
+Fresh 也可以部署到任何可以运行 Deno 的平台。这包括：
 
-You can deploy Fresh to any platform that can run Docker containers. Docker is a
-tool to containerize projects and portably run them on any supported platform.
+- AWS
+- Google Cloud
+- Azure
+- 任何 VPS 或专用服务器
 
-When packaging your Fresh app for Docker, it is important that you set the
-`DENO_DEPLOYMENT_ID` environment variable in your container. This variable needs
-to be set to an opaque string ID that represents the version of your application
-that is currently being run. This could be a Git commit hash, or a hash of all
-files in your project. It is critical for the function of Fresh that this ID
-changes when _any_ file in your project changes - if it doesn't, incorrect
-caching **will** cause your project to not function correctly.
+要部署到其他平台，你需要：
 
-Here is an example `Dockerfile` for a Fresh project:
+1. 安装 Deno
+2. 克隆你的仓库
+3. 运行 `deno task build`
+4. 运行 `deno task start`
 
-```dockerfile Dockerfile
-FROM denoland/deno:1.38.3
+## 环境变量
 
-ARG GIT_REVISION
-ENV DENO_DEPLOYMENT_ID=${GIT_REVISION}
+Fresh 支持环境变量。这些可以在部署时设置，或在本地开发时使用 `.env` 文件。
 
-WORKDIR /app
-
-COPY . .
-RUN deno cache main.ts
-
-EXPOSE 8000
-
-CMD ["run", "-A", "main.ts"]
+```env .env
+DATABASE_URL=postgres://localhost/mydb
+API_KEY=secret
 ```
 
-To build your Docker image inside of a Git repository:
+环境变量可以通过 `Deno.env.get()` 访问。
 
-```sh Terminal
-$ docker build --build-arg GIT_REVISION=$(git rev-parse HEAD) -t my-fresh-app .
+```ts
+const databaseUrl = Deno.env.get("DATABASE_URL");
 ```
-
-Then run your Docker container:
-
-```sh Terminal
-$ docker run -t -i -p 80:8000 my-fresh-app
-```
-
-To deploy to a cloud provider, push it to a container registry and follow their
-documentation.
-
-- [Amazon Web Services][aws-container-registry]
-- [Google Cloud][gcp-container-registry]
-
-## Self Contained Executable
-
-With Deno 2.1, you can create a self-contained executable of your Fresh project
-that includes all assets and dependencies. This executable can run on any
-platform without requiring Deno to be installed.
-
-```sh Terminal
-$ deno task build
-$ deno compile --include static --include _fresh --include deno.json -A main.ts
-```
-
-[aws-container-registry]: https://docs.aws.amazon.com/AmazonECS/latest/userguide/create-container-image#create-container-image-push-ecr
-[gcp-container-registry]: https://cloud.google.com/container-registry/docs/pushing-and-pulling
-[deno-deploy]: https://deno.com/deploy
-[deploy-to-production]: /docs/1.x/getting-started/deploy-to-production

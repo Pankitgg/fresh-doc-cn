@@ -19,7 +19,7 @@ const app = new App({ basePath: "/foo" })
 
 示例项目结构：
 
-```txt-files Project structure
+```txt Project structure
 <project root>
 ├── deno.json
 ├── main.ts
@@ -100,7 +100,7 @@ export const css = ["./assets/dashboard.css"];
 
 如果不使用任何方式对路由进行分组，这会成为一个问题，因为每个路由段只能有一个 `_layout` 文件。
 
-```txt-files Project structure
+```txt Project structure
 └── <root>/routes
     ├── _layout.tsx  # 应用于此处所有路由 :(
     ├── about.tsx
@@ -111,7 +111,7 @@ export const css = ["./assets/dashboard.css"];
 
 我们可以用路由分组解决这个问题。路由分组是名称用括号括起来的文件夹。例如，`(info)` 将被视为路由分组，`(marketing)` 也是如此。这使我们能够将相关路由分组到一个文件夹中，并为每个组使用不同的 `_layout` 文件。
 
-```txt-files Project structure
+```txt Project structure
 └── <root>/routes
     ├── (marketing)
     │   ├── _layout.tsx  # 仅应用于 about.tsx 和 career.tsx
@@ -125,7 +125,7 @@ export const css = ["./assets/dashboard.css"];
 
 > [warn]：请注意不要让不同分组中的路由匹配到相同的 URL。这种情况会导致应该选择哪个路由文件产生歧义。
 >
-> ```txt-files Project structure
+> ```txt Project structure
 > └── <root>/routes
 >     ├── (group-1)
 >     │   └── about.tsx  # 错误：映射到相同的 `/about` URL

@@ -1,82 +1,44 @@
 ---
 description: |
-  Error pages can be used to customize the page that is shown when an error occurs in the application.
+  Fresh 中的错误页面可用于处理 404 和 500 错误。
 ---
 
-Fresh supports customizing the `404 Not Found`, and the
-`500 Internal Server Error` pages. These are shown when a request is made but no
-matching route exists, and when a middleware, route handler, or page component
-throws an error respectively.
+Fresh 支持自定义错误页面。你可以为 404（未找到）和 500（内部服务器错误）错误创建自定义页面。
 
-### 404: Not Found
+## 404 错误页面
 
-The 404 page can be customized by creating a `_404.tsx` file in the `routes/`
-folder. The file must have a default export that is a regular Preact component.
-A props object of type `PageProps` is passed in as an argument.
+要创建自定义 404 页面，请在 `routes` 文件夹中创建一个 `_404.tsx` 文件。
 
 ```tsx routes/_404.tsx
 import { PageProps } from "$fresh/server.ts";
 
-export default function NotFoundPage({ url }: PageProps) {
-  return <p>404 not found: {url.pathname}</p>;
-}
-```
-
-#### Manually render 404 pages
-
-The `_404.tsx` file will be invoked automatically when no route matches the URL.
-In some cases, one needs to manually trigger the rendering of the 404 page, for
-example when the route did match, but the requested resource does not exist.
-This can be achieved with `ctx.renderNotFound`.
-
-```tsx routes/blog/[slug].tsx
-import { Handlers, PageProps } from "$fresh/server.ts";
-
-export const handler: Handlers = {
-  async GET(req, ctx) {
-    const blogpost = await fetchBlogpost(ctx.params.slug);
-    if (!blogpost) {
-      return ctx.renderNotFound({
-        custom: "prop",
-      });
-    }
-    return ctx.render({ blogpost });
-  },
-};
-
-export default function BlogpostPage({ data }) {
+export default function NotFound(props: PageProps) {
   return (
-    <article>
-      <h1>{data.blogpost.title}</h1>
-      {/* rest of your page */}
-    </article>
+    <div>
+      <h1>404 - 未找到</h1>
+      <p>未找到页面：{props.url.pathname}</p>
+    </div>
   );
 }
 ```
 
-This can also be achieved by throwing an error, if you're uninterested in
-passing specific data to your 404 page:
+## 500 错误页面
 
-```tsx routes/missing-page.tsx
-import { Handlers } from "$fresh/server.ts";
-
-export const handler: Handlers = {
-  GET(_req, _ctx) {
-    throw new Deno.errors.NotFound();
-  },
-};
-```
-
-### 500: Internal Server Error
-
-The 500 page can be customized by creating a `_500.tsx` file in the `routes/`
-folder. The file must have a default export that is a regular Preact component.
-A props object of type `PageProps` is passed in as an argument.
+要创建自定义 500 页面，请在 `routes` 文件夹中创建一个 `_500.tsx` 文件。
 
 ```tsx routes/_500.tsx
 import { PageProps } from "$fresh/server.ts";
 
-export default function Error500Page({ error }: PageProps) {
-  return <p>500 internal error: {(error as Error).message}</p>;
+export default function InternalServerError(props: PageProps) {
+  return (
+    <div>
+      <h1>500 - 内部服务器错误</h1>
+      <p>发生错误。</p>
+    </div>
+  );
 }
 ```
+
+## 错误处理
+
+Fresh 自动捕获路由处理程序和组件中抛出的错误。如果发生错误，Fresh 将渲染 `_500.tsx` 页面（如果存在）。如果不存在 `_500.tsx` 页面，Fresh 将返回默认的 500 响应。
