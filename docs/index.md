@@ -44,12 +44,11 @@ onMounted(async () => {
 }
 
 body {
-  background: linear-gradient(135deg, #a8e0e8 0%, #d8f5a2 50%, #fef9c3 100%);
   min-height: 100vh;
 }
 
 .VPNavBar {
-  background: transparent !important;
+  background: linear-gradient(135deg, #a8e0e8 0%, #d8f5a2 50%, #fef9c3 100%) !important;
   backdrop-filter: none !important;
 }
 
