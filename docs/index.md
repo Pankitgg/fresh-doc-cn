@@ -47,9 +47,19 @@ body {
   min-height: 100vh;
 }
 
+/* 内容页：只在头部导航显示渐变（默认 body 无渐变）*/
+
 .VPNavBar {
-  background: linear-gradient(135deg, #a8e0e8 0%, #d8f5a2 50%, #fef9c3 100%) !important;
   backdrop-filter: none !important;
+  background: linear-gradient(135deg, #a8e0e8 0%, #d8f5a2 50%, #fef9c3 100%) !important;
+}
+
+/* 首页：全页面显示渐变，头部导航透明以自然衔接 body 渐变 */
+body:has(.VPHome) {
+  background: linear-gradient(135deg, #a8e0e8 0%, #d8f5a2 50%, #fef9c3 100%);
+}
+body:has(.VPHome) .VPNavBar {
+  background: transparent !important;
 }
 
 .VPNav {
