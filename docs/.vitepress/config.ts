@@ -232,6 +232,38 @@ export default defineConfig({
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
       })(window, document, "clarity", "script", "wwkdcgqap7");
     `],
+    ['style', {}, `
+      /* 全局：大屏和小屏都隐藏暗黑模式切换按钮/菜单项 */
+      .VPNavBarAppearance,
+      .VPNavBarAppearance *,
+      .VPNavBar .VPNavBarAppearance,
+      .VPSwitchAppearance,
+      .item.appearance,
+      .menu .item.appearance,
+      .appearance-action,
+      .VPSidebar .item.appearance,
+      .VPMenu .item.appearance,
+      .VPNavScreenAppearance,
+      .VPNavScreenAppearance *,
+      [class*="VPSidebar"] [class*="appearance"],
+      [class*="VPMenu"] [class*="appearance"],
+      [class*="VPNavScreen"] [class*="Appearance"] {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      /* 内容页：只在头部导航显示渐变 */
+      .VPNavBar {
+        backdrop-filter: none !important;
+        background: linear-gradient(135deg, #a8e0e8 0%, #d8f5a2 50%, #fef9c3 100%) !important;
+      }
+      /* 首页：全页面显示渐变，头部导航透明以自然衔接 body 渐变 */
+      body:has(.VPHome) {
+        background: linear-gradient(135deg, #a8e0e8 0%, #d8f5a2 50%, #fef9c3 100%);
+      }
+      body:has(.VPHome) .VPNavBar {
+        background: transparent !important;
+      }
+    `],
   ],
 
   themeConfig: {
