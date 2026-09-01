@@ -107,9 +107,28 @@ body:has(.VPHome) .VPNavBar {
 
 .VPNavBarAppearance,
 .VPNavBarAppearance *,
-.VPNavBar .VPNavBarAppearance {
+.VPNavBar .VPNavBarAppearance,
+.VPSidebarAppearance,
+.VPSidebarAppearance *,
+.VPDocAsideAppearance,
+.VPDocAsideAppearance * {
   display: none !important;
   visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+/* 额外：通过 aria-label 匹配"外观/Appearance"切换按钮 */
+[aria-label*="Appearance" i],
+button[title*="Appearance" i],
+button[title*="外观" i],
+button[aria-label*="appearance" i],
+button[aria-label*="外观" i] {
+  display: none !important;
 }
 
 .VPNavBarHamburger {
