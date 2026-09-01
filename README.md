@@ -10,6 +10,14 @@
 
 我会一直更新优化，如果有相同一起学习fresh和deno，以及在全栈道路上探索的人，欢迎交流
 
+## 当前信息
+
+- **同步官方版本**：Fresh `@fresh/core` v2.3.3（freshframework/fresh main 分支）
+- **最近同步时间**：2026/09/01 01:00（Asia/Shanghai）
+- **更新内容**：
+  - `vite.md`：新增从 Builder 迁移到 Vite 的完整指南（5 步 + Checklist）
+  - `websockets.md`：新增 Vite 开发服务器下 WebSocket 升级版本要求与替代方案
+
 我的
 
 博客：[pankitgg的博客](https://blog.ai-nous.com/)  
